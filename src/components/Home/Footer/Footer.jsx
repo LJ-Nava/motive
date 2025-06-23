@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/Footer.scss';
+import MotiveLogo from '../../../assets/MotiveLogo.png';
+import '../../styles/home/Footer.scss';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -26,7 +27,7 @@ const Footer = () => {
             {/* Company Info */}
             <div className="footer__section footer__section--company">
               <div className="footer__logo">
-                <img src="/logo.svg" alt="Motive Home Care" className="footer__logo-img" />
+                <img src={MotiveLogo} alt="Motive Home Care" className="footer__logo-img" />
                 <div className="footer__logo-text">
                   <span className="footer__logo-main">Motive</span>
                   <span className="footer__logo-sub">Home Care</span>
