@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../styles/Services.scss';
+import '../../styles/home/Services.scss';
 
 const Services = () => {
   const [activeService, setActiveService] = useState(0);
