@@ -9,7 +9,7 @@ import Footer from './components/Home/Footer/Footer.jsx';
 import CoverageAreas from './components/Coverage/CoverageAreas.jsx';
 import AgenciesJoin from './components/Form/AgenciesJoin.jsx';
 import TherapistApplicationForm from './components/Form/TherapistApplicationForm.jsx';
-import AboutUs from './components/AboutUs/AboutUs.jsx'; // Import the new About component
+import AboutUs from './components/AboutUs/AboutUs.jsx';
 import './components/styles/globals.scss';
 
 // Home Page Component
@@ -42,11 +42,14 @@ const PageLayout = ({ children }) => {
 };
 
 function App() {
+  // 🎯 Configuración de basename dinámico para desarrollo y producción
+  const basename = process.env.NODE_ENV === 'production' ? '/motive' : '';
+  
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="App">
         <Routes>
-          {/* Home Route */}
+          {/* Home Route - Carga Hero directamente */}
           <Route path="/" element={<HomePage />} />
           
           {/* Coverage Areas Route */}
@@ -79,7 +82,7 @@ function App() {
             } 
           />
           
-          {/* About Us Route - NEW */}
+          {/* About Us Route */}
           <Route 
             path="/about" 
             element={
@@ -96,37 +99,6 @@ function App() {
             </PageLayout>
           } /> */}
           
-          {/* 404 Route */}
-          <Route path="*" element={
-            <div style={{ 
-              minHeight: '100vh', 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              flexDirection: 'column',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              color: 'white',
-              textAlign: 'center',
-              padding: '2rem'
-            }}>
-              <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>404</h1>
-              <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>Page not found</p>
-              <a 
-                href="/" 
-                style={{ 
-                  background: 'rgba(255,255,255,0.2)', 
-                  color: 'white', 
-                  padding: '1rem 2rem', 
-                  borderRadius: '12px', 
-                  textDecoration: 'none',
-                  border: '1px solid rgba(255,255,255,0.3)',
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                Return Home
-              </a>
-            </div>
-          } />
         </Routes>
       </div>
     </Router>

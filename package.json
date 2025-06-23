@@ -1,6 +1,5 @@
 {
   "name": "motive",
-  "homepage": "https://LJ-Nava.github.io/motive",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "PUBLIC_URL=/motive gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
