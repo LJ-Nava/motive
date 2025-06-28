@@ -42,8 +42,10 @@ const PageLayout = ({ children }) => {
 };
 
 function App() {
-  // 🎯 Configuración de basename dinámico para desarrollo y producción
-  const basename = process.env.NODE_ENV === 'production' ? '/motive' : '';
+  // 🎯 Detecta automáticamente si está en desarrollo o producción
+  // En desarrollo: PUBLIC_URL=/ (desde .env.development)
+  // En producción: PUBLIC_URL=/motive (desde homepage en package.json)
+  const basename = process.env.PUBLIC_URL || '';
   
   return (
     <Router basename={basename}>
