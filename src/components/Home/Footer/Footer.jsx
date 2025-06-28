@@ -1,22 +1,37 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import MotiveLogo from '../../../assets/MotiveLogo.png';
 import '../../styles/home/Footer.scss';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
 
   const quickLinks = [
-    { label: 'Our Services', href: '#services' },
-    { label: 'For Agencies', href: '#agencies' },
-    { label: 'For Therapists', href: '#therapists' },
-    { label: 'About Us', href: '#about' }
+    { label: 'Our Services', href: '/' },
+    { label: 'For Agencies', href: '/agencies/join' },
+    { label: 'For Therapists', href: '/therapists/apply' },
+    { label: 'About Us', href: '/about' }
   ];
 
   const services = [
-    { label: 'Physical Therapy', href: '#pt' },
-    { label: 'Occupational Therapy', href: '#ot' },
-    { label: 'Speech Therapy', href: '#st' }
+    { label: 'Physical Therapy', href: '/coverage-areas' },
+    { label: 'Occupational Therapy', href: '/coverage-areas' },
+    { label: 'Speech Therapy', href: '/coverage-areas' }
   ];
+
+  const handleNavClick = (href, event) => {
+    event.preventDefault();
+    navigate(href);
+    // Scroll to top after navigation
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+  };
 
   return (
     <footer className="footer" id="contact">
@@ -38,7 +53,7 @@ const Footer = () => {
               </p>
               <div className="footer__social">
                 <a 
-                  href="https://linkedin.com/company/motivehomecare" 
+                  href="https://www.linkedin.com/posts/motive-home-care-inc_hiring-activity-6947022243461742592-fxMT" 
                   className="footer__social-link"
                   target="_blank" 
                   rel="noopener noreferrer"
@@ -56,20 +71,22 @@ const Footer = () => {
               <ul className="footer__links">
                 {quickLinks.map((link, index) => (
                   <li key={index} className="footer__link-item">
-                    <a 
-                      href={link.href} 
+                    <button 
+                      onClick={(e) => handleNavClick(link.href, e)}
                       className="footer__link"
-                      onClick={(e) => {
-                        if (link.href.startsWith('#')) {
-                          e.preventDefault();
-                          document.querySelector(link.href)?.scrollIntoView({
-                            behavior: 'smooth'
-                          });
-                        }
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        padding: 0,
+                        font: 'inherit',
+                        textAlign: 'left'
                       }}
                     >
                       {link.label}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -81,9 +98,22 @@ const Footer = () => {
               <ul className="footer__links">
                 {services.map((service, index) => (
                   <li key={index} className="footer__link-item">
-                    <a href={service.href} className="footer__link">
+                    <button 
+                      onClick={(e) => handleNavClick(service.href, e)}
+                      className="footer__link"
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        padding: 0,
+                        font: 'inherit',
+                        textAlign: 'left'
+                      }}
+                    >
                       {service.label}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>

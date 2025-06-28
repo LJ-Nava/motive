@@ -180,7 +180,7 @@ const TherapistApplicationForm = () => {
           <p>Join California's leading therapy professionals. Quick application, fast placement, competitive opportunities.</p>
           <div className="motive-hero-stats">
             <div className="motive-stat-item">
-              <span className="motive-stat-number">2,400+</span>
+              <span className="motive-stat-number">8,000+</span>
               <span className="motive-stat-label">Successful Placements</span>
             </div>
             <div className="motive-stat-item">

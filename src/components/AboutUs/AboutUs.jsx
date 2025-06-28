@@ -136,7 +136,7 @@ const AboutUs = () => {
                 </svg>
               </div>
               <div className="about-us__stat-content">
-                <h3 className="about-us__stat-number">2,400+</h3>
+                <h3 className="about-us__stat-number">8,000+</h3>
                 <p className="about-us__stat-label">Successful Placements</p>
                 <span className="about-us__stat-subtitle">Since 2023</span>
               </div>

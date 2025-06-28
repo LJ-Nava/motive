@@ -1,58 +1,50 @@
-// PROFESSIONAL 3D NETWORK STYLES - IMPROVED VERSION
-// Coherent with main design and enhanced professional appearance
+// SIMPLIFIED PROFESSIONAL NETWORK STYLES
+// Clean, trustworthy design focused on showcasing partner agencies
 
 :root {
-  // Main brand colors matching the design system
-  --motive-primary: #4361ee;
-  --motive-secondary: #3f37c9;
-  --motive-accent: #f72585;
-  --motive-warning: #ff8500;
-  --motive-success: #06d6a0;
-  --motive-info: #0077b6;
+  // Professional color palette
+  --motive-primary: #2563eb;
+  --motive-secondary: #1e40af;
+  --motive-accent: #3b82f6;
+  --motive-success: #059669;
+  --motive-warning: #d97706;
   
   // Neutral colors
-  --motive-white: #ffffff;
-  --motive-gray-50: #f8fafc;
-  --motive-gray-100: #f1f5f9;
-  --motive-gray-200: #e2e8f0;
-  --motive-gray-300: #cbd5e1;
-  --motive-gray-400: #94a3b8;
-  --motive-gray-500: #64748b;
-  --motive-gray-600: #475569;
-  --motive-gray-700: #334155;
-  --motive-gray-800: #1e293b;
-  --motive-gray-900: #0f172a;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
 
-  // Enhanced contrast variables
-  --card-bg-solid: rgba(255, 255, 255, 0.95);
-  --card-bg-overlay: rgba(255, 255, 255, 0.15);
-  --text-contrast: #0F172A;
-  --text-secondary: #475569;
-  
   // Spacing
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-3: 0.75rem;
-  --spacing-4: 1rem;
-  --spacing-5: 1.25rem;
-  --spacing-6: 1.5rem;
-  --spacing-8: 2rem;
-  --spacing-10: 2.5rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
-  --spacing-20: 5rem;
-  --spacing-24: 6rem;
-  --spacing-32: 8rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
 
   // Typography
-  --font-sm: 0.875rem;
-  --font-base: 1rem;
-  --font-lg: 1.125rem;
-  --font-xl: 1.25rem;
-  --font-2xl: 1.5rem;
-  --font-3xl: 1.875rem;
-  --font-4xl: 2.25rem;
-  --font-5xl: 3rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
 
   // Shadows
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -68,1917 +60,368 @@
   --radius-2xl: 1.5rem;
 
   // Transitions
-  --transition-fast: 0.15s ease-out;
-  --transition-base: 0.25s ease-out;
-  --transition-slow: 0.35s ease-out;
+  --transition: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
 }
 
 .network-section {
-  position: relative;
-  min-height: 100vh;
-  padding: var(--spacing-32) 0;
-  background: var(--motive-white);
-  overflow: hidden;
+  padding: var(--space-24) 0;
+  background: var(--white);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   
-  // BACKGROUND EFFECTS - Coherent with main design
-  .network-background {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    
-    .gradient-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.04;
-      animation: orbFloat 35s ease-in-out infinite;
-      
-      &.orb-1 {
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, var(--motive-primary), transparent);
-        top: 0%;
-        left: 0%;
-        animation-delay: 0s;
-      }
-      
-      &.orb-2 {
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, var(--motive-secondary), transparent);
-        top: 50%;
-        right: 10%;
-        animation-delay: 12s;
-      }
-      
-      &.orb-3 {
-        width: 450px;
-        height: 450px;
-        background: radial-gradient(circle, var(--motive-info), transparent);
-        bottom: 10%;
-        left: 40%;
-        animation-delay: 24s;
-      }
-      
-      &.orb-4 {
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, var(--motive-accent), transparent);
-        top: 25%;
-        right: 55%;
-        animation-delay: 18s;
-      }
-      
-      &.orb-5 {
-        width: 350px;
-        height: 350px;
-        background: radial-gradient(circle, var(--motive-warning), transparent);
-        bottom: 30%;
-        right: 20%;
-        animation-delay: 30s;
-      }
-    }
-    
-    .network-grid {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(rgba(67, 97, 238, 0.008) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(67, 97, 238, 0.008) 1px, transparent 1px);
-      background-size: 80px 80px;
-      animation: gridMove 50s linear infinite;
-    }
-    
-    .floating-particles {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        radial-gradient(4px 4px at 150px 80px, rgba(67, 97, 238, 0.02), transparent),
-        radial-gradient(3px 3px at 300px 200px, rgba(63, 55, 201, 0.02), transparent),
-        radial-gradient(2px 2px at 450px 150px, rgba(0, 119, 182, 0.02), transparent),
-        radial-gradient(3px 3px at 600px 300px, rgba(247, 37, 133, 0.015), transparent),
-        radial-gradient(2px 2px at 750px 180px, rgba(255, 133, 0, 0.015), transparent);
-      background-size: 800px 400px;
-      animation: particlesDrift 30s linear infinite;
-    }
-    
-    .light-rays {
-      position: absolute;
-      inset: 0;
-      background: 
-        linear-gradient(45deg, transparent 0%, rgba(67, 97, 238, 0.008) 25%, transparent 50%),
-        linear-gradient(-45deg, transparent 0%, rgba(63, 55, 201, 0.008) 25%, transparent 50%);
-      animation: lightRaysSweep 20s ease-in-out infinite;
-    }
-  }
-  
   .network-container {
-    position: relative;
-    z-index: 2;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-6);
+    padding: 0 var(--space-6);
     
     @media (max-width: 768px) {
-      padding: 0 var(--spacing-4);
+      padding: 0 var(--space-4);
     }
   }
-  
-  // HEADER - Coherent with main design
+
+  // HEADER SECTION
   .network-header {
     text-align: center;
-    margin-bottom: var(--spacing-24);
+    margin-bottom: var(--space-16);
     
     .trust-badge {
-      position: relative;
       display: inline-flex;
       align-items: center;
-      gap: var(--spacing-3);
-      background: rgba(67, 97, 238, 0.1);
-      border: 1px solid rgba(67, 97, 238, 0.2);
+      gap: var(--space-2);
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
       border-radius: var(--radius-2xl);
-      padding: var(--spacing-3) var(--spacing-6);
-      font-size: var(--font-sm);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
       font-weight: 600;
-      color: var(--motive-primary);
-      margin-bottom: var(--spacing-8);
-      backdrop-filter: blur(10px);
-      transition: all var(--transition-base);
-      overflow: hidden;
+      color: var(--gray-700);
+      margin-bottom: var(--space-6);
+      transition: var(--transition);
       
       &:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-      }
-      
-      .badge-shimmer {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(45deg, 
-          transparent 30%, 
-          rgba(67, 97, 238, 0.04) 50%, 
-          transparent 70%);
-        animation: shimmer 4s ease-in-out infinite;
+        background: var(--gray-50);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
       }
       
       .badge-icon {
-        font-size: var(--font-lg);
-        filter: drop-shadow(0 0 8px rgba(67, 97, 238, 0.3));
-        z-index: 2;
-        animation: iconPulse 3s ease-in-out infinite;
-      }
-      
-      .badge-glow {
-        position: absolute;
-        inset: -4px;
-        border-radius: calc(var(--radius-2xl) + 4px);
-        background: linear-gradient(135deg, 
-          rgba(67, 97, 238, 0.08), 
-          rgba(63, 55, 201, 0.08)
-        );
-        filter: blur(12px);
-        opacity: 0.6;
-        animation: glowPulse 5s ease-in-out infinite;
-        z-index: 1;
+        font-size: var(--text-base);
       }
     }
     
     .network-title {
-      font-size: var(--font-5xl);
+      font-size: var(--text-4xl);
       font-weight: 800;
-      color: var(--motive-gray-900);
-      margin-bottom: var(--spacing-6);
+      color: var(--gray-900);
+      margin-bottom: var(--space-4);
       line-height: 1.1;
-      letter-spacing: -0.02em;
       
       @media (max-width: 768px) {
-        font-size: var(--font-4xl);
+        font-size: var(--text-3xl);
       }
       
-      @media (max-width: 480px) {
-        font-size: var(--font-3xl);
-      }
-      
-      .title-gradient {
-        background: linear-gradient(135deg, var(--motive-primary) 0%, var(--motive-secondary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      .title-highlight {
+        color: var(--motive-primary);
         position: relative;
-        filter: drop-shadow(0 0 20px rgba(67, 97, 238, 0.15));
-        animation: titleGlow 6s ease-in-out infinite;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, var(--motive-primary), var(--motive-accent));
+          border-radius: 2px;
+          opacity: 0.3;
+        }
       }
     }
     
     .network-subtitle {
-      font-size: var(--font-xl);
-      color: var(--motive-gray-600);
-      max-width: 700px;
+      font-size: var(--text-lg);
+      color: var(--gray-600);
+      max-width: 600px;
       margin: 0 auto;
-      line-height: 1.7;
-      font-weight: 400;
+      line-height: 1.6;
       
       @media (max-width: 768px) {
-        font-size: var(--font-lg);
+        font-size: var(--text-base);
       }
     }
   }
-  
-  // STATS GRID - Matching main design
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-6);
-    margin-bottom: var(--spacing-24);
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    
-    @media (max-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-4);
-    }
-    
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-3);
-    }
-    
-    .stat-card {
-      position: relative;
-      background: var(--motive-white);
-      border: 1px solid var(--motive-gray-200);
-      border-radius: var(--radius-2xl);
-      padding: var(--spacing-8) var(--spacing-6);
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-4);
-      box-shadow: var(--shadow-md);
-      transition: all var(--transition-base);
-      overflow: hidden;
-      
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-xl);
-        border-color: var(--motive-primary);
-        
-        .icon-glow {
-          opacity: 1;
-          transform: scale(1.2);
-        }
-        
-        .card-shimmer {
-          animation: cardShimmer 1.5s ease-out;
-        }
-      }
-      
-      .stat-icon-container {
-        position: relative;
-        flex-shrink: 0;
-        
-        .stat-icon {
-          font-size: 2.5rem;
-          filter: drop-shadow(0 0 15px rgba(67, 97, 238, 0.2));
-          position: relative;
-          z-index: 2;
-          transition: all var(--transition-base);
-        }
-        
-        .icon-glow {
-          position: absolute;
-          inset: -12px;
-          border-radius: 50%;
-          background: radial-gradient(circle, 
-            rgba(67, 97, 238, 0.15) 0%, 
-            transparent 70%
-          );
-          opacity: 0;
-          transform: scale(1);
-          transition: all var(--transition-slow);
-          filter: blur(15px);
-        }
-      }
-      
-      .stat-content {
-        flex: 1;
-        
-        .stat-number {
-          font-size: var(--font-3xl);
-          font-weight: 800;
-          background: linear-gradient(135deg, var(--motive-primary), var(--motive-secondary));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: var(--spacing-1);
-          line-height: 1;
-          transition: all var(--transition-base);
-          
-          @media (max-width: 768px) {
-            font-size: var(--font-2xl);
-          }
-        }
-        
-        .stat-label {
-          font-size: var(--font-sm);
-          color: var(--motive-gray-600);
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-      }
-      
-      .card-shimmer {
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, 
-          transparent 0%, 
-          rgba(67, 97, 238, 0.05) 50%, 
-          transparent 100%
-        );
-        transform: skewX(-15deg);
-      }
-    }
-  }
-  
-  // 3D CAROUSEL - IMPROVED
-  .carousel-container {
+
+  // AGENCY SHOWCASE
+  .agency-showcase {
     position: relative;
-    height: 1000px; 
-    margin: var(--spacing-20) auto;
-    perspective: 3500px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-    
-    @media (max-width: 1400px) {
-      max-width: 1000px;
-    }
-    
-    @media (max-width: 1200px) {
-      max-width: 900px;
-    }
-    
-    @media (max-width: 992px) {
-      max-width: 800px;
-      height: 900px;
-    }
+    background: var(--gray-50);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-12);
     
     @media (max-width: 768px) {
-      max-width: 600px;
-      height: 850px;
+      padding: var(--space-8);
     }
     
-    @media (max-width: 480px) {
-      max-width: 100%;
-      height: 750px;
-    }
-    
-    .carousel-stage {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-      user-select: none;
-    }
-    
-    // 3D AGENCY CARDS - PROFESSIONAL REDESIGN
-    .agency-card {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 380px; 
-      height: 500px; 
-      transform-origin: center center;
-      cursor: pointer;
-      transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+    // Featured Agency (Large Display)
+    .featured-agency {
+      margin-bottom: var(--space-12);
       
-      @media (max-width: 1400px) {
-        width: 360px;
-        height: 480px;
-      }
-      
-      @media (max-width: 1200px) {
-        width: 340px;
-        height: 460px;
-      }
-      
-      @media (max-width: 992px) {
-        width: 320px;
-        height: 440px;
-      }
-      
-      @media (max-width: 768px) {
-        width: 300px;
-        height: 420px;
-      }
-      
-      @media (max-width: 480px) {
-        width: 280px;
-        height: 400px;
-      }
-      
-      &.back-card {
-        pointer-events: none;
-      }
-      
-      &.front-card:hover {
-        .card-container {
-          transform: translateY(-8px) rotateX(1deg);
-          
-          .light-refraction {
-            opacity: 1;
-          }
-        }
-        
-        .holographic-film {
-          animation: holographicShift 2s ease-out;
-        }
-      }
-      
-      .card-container {
-        width: 100%;
-        height: 100%;
+      .featured-card {
+        background: var(--white);
+        border: 2px solid var(--gray-200);
+        border-radius: var(--radius-xl);
+        padding: var(--space-10);
+        box-shadow: var(--shadow-lg);
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+        transition: var(--transition);
         position: relative;
-        transform-style: preserve-3d;
-        transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        overflow: hidden;
         
-        // ENHANCED GLASSMORPHISM BACKGROUND
-        .card-background {
+        @media (max-width: 768px) {
+          flex-direction: column;
+          text-align: center;
+          gap: var(--space-6);
+          padding: var(--space-8);
+        }
+        
+        &::before {
+          content: '';
           position: absolute;
-          inset: 0;
-          border-radius: var(--radius-2xl);
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(37, 99, 235, 0.05) 50%, 
+            transparent 100%);
+          animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        .featured-logo {
+          width: 120px;
+          height: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--white);
+          border: 3px solid var(--gray-200);
+          border-radius: var(--radius-xl);
+          box-shadow: var(--shadow-md);
+          flex-shrink: 0;
+          position: relative;
           overflow: hidden;
           
-          // Enhanced glass layer with better readability
-          .glass-layer {
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px) saturate(110%);
-            border-radius: var(--radius-2xl);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            z-index: 2;
+          @media (max-width: 768px) {
+            width: 100px;
+            height: 100px;
           }
           
-          // Subtle gradient overlay with agency colors
-          .gradient-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, 
-              var(--agency-gradient-from, var(--motive-primary)) 0%, 
-              var(--agency-gradient-to, var(--motive-secondary)) 100%
-            );
-            opacity: 0.03;
-            border-radius: var(--radius-2xl);
-            mix-blend-mode: multiply;
-            z-index: 3;
+          img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
           }
           
-          // Holographic film effect
-          .holographic-film {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, 
-              transparent 20%, 
-              rgba(255, 255, 255, 0.04) 25%, 
-              transparent 30%,
-              transparent 40%,
-              rgba(255, 255, 255, 0.02) 45%,
-              transparent 50%
-            );
-            border-radius: var(--radius-2xl);
-            animation: holographicFloat 8s ease-in-out infinite;
-            z-index: 4;
-          }
-          
-          // 3D depth layers
-          .depth-layer-1 {
-            position: absolute;
-            inset: 2px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: calc(var(--radius-2xl) - 2px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            z-index: 5;
-          }
-          
-          .depth-layer-2 {
-            position: absolute;
-            inset: 4px;
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: calc(var(--radius-2xl) - 4px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            z-index: 6;
-          }
-          
-          // Light refraction effect
-          .light-refraction {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, 
-              rgba(255, 255, 255, 0.08) 0%, 
-              transparent 20%, 
-              transparent 80%, 
-              rgba(255, 255, 255, 0.04) 100%
-            );
-            border-radius: var(--radius-2xl);
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            z-index: 7;
-          }
-          
-          // Enhanced border effect
-          .card-border {
-            position: absolute;
-            inset: -1px;
-            border-radius: calc(var(--radius-2xl) + 1px);
-            background: linear-gradient(135deg, 
-              rgba(255, 255, 255, 0.3), 
-              transparent 20%, 
-              transparent 80%, 
-              rgba(255, 255, 255, 0.2)
-            );
-            padding: 1px;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: xor;
-            -webkit-mask-composite: xor;
-            z-index: 8;
-          }
-          
-          // Floating sparkles
-          .floating-sparkles {
-            position: absolute;
-            inset: 0;
-            background-image: 
-              radial-gradient(2px 2px at 25% 15%, rgba(255, 255, 255, 0.15), transparent),
-              radial-gradient(1px 1px at 75% 25%, rgba(255, 255, 255, 0.2), transparent),
-              radial-gradient(1px 1px at 15% 75%, rgba(255, 255, 255, 0.1), transparent),
-              radial-gradient(2px 2px at 85% 85%, rgba(255, 255, 255, 0.15), transparent);
-            background-size: 120px 120px;
-            border-radius: var(--radius-2xl);
-            animation: sparkleFloat 15s linear infinite;
-            z-index: 9;
+          .logo-fallback {
+            font-size: var(--text-xl);
+            font-weight: 800;
+            color: var(--motive-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
           }
         }
         
-        // LOGO SECTION - IMPROVED
-        .logo-section {
-          position: absolute;
-          top: 20%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 15;
+        .featured-info {
+          flex: 1;
+          
+          .agency-name {
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--space-2);
+            
+            @media (max-width: 768px) {
+              font-size: var(--text-2xl);
+            }
+          }
+          
+          .established {
+            font-size: var(--text-lg);
+            color: var(--gray-600);
+            font-weight: 500;
+            
+            &::before {
+              content: '🏥 ';
+              margin-right: var(--space-1);
+            }
+          }
+        }
+      }
+    }
+    
+    // Agency Grid (Small Cards)
+    .agency-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+      
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: var(--space-3);
+      }
+      
+      .agency-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-lg);
+        padding: var(--space-4);
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-md);
+          border-color: var(--motive-accent);
+        }
+        
+        &.active {
+          border-color: var(--motive-primary);
+          box-shadow: var(--shadow-lg);
+          background: linear-gradient(135deg, var(--white) 0%, #f8faff 100%);
+          
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 20px 20px 0;
+            border-color: transparent var(--motive-primary) transparent transparent;
+          }
+          
+          .card-content .agency-name {
+            color: var(--motive-primary);
+          }
+        }
+        
+        .card-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
           
           .logo-container {
-            .logo-3d-wrapper {
-              width: 140px;
-              height: 140px;
-              position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-3);
+            overflow: hidden;
+            
+            img {
+              max-width: 80%;
+              max-height: 80%;
+              object-fit: contain;
+              filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+            }
+            
+            .logo-fallback {
+              font-size: var(--text-sm);
+              font-weight: 700;
+              color: var(--motive-primary);
               display: flex;
               align-items: center;
               justify-content: center;
-              transform-style: preserve-3d;
-              
-              @media (max-width: 768px) {
-                width: 120px;
-                height: 120px;
-              }
-              
-              @media (max-width: 480px) {
-                width: 100px;
-                height: 100px;
-              }
-              
-              // 3D shadow
-              .logo-shadow {
-                position: absolute;
-                inset: 6px;
-                background: rgba(0, 0, 0, 0.05);
-                border-radius: 50%;
-                filter: blur(12px);
-                transform: translateZ(-10px);
-              }
-              
-              .logo-rings {
-                position: absolute;
-                inset: 0;
-                transform-style: preserve-3d;
-                
-                .logo-ring {
-                  position: absolute;
-                  border-radius: 50%;
-                  border: 1px solid var(--agency-color, var(--motive-primary));
-                  opacity: 0.08;
-                  
-                  &.ring-1 {
-                    inset: 0;
-                    animation: logoRingRotate 15s linear infinite;
-                    transform: rotateX(45deg);
-                  }
-                  
-                  &.ring-2 {
-                    inset: 15px;
-                    animation: logoRingRotate 20s linear infinite reverse;
-                    transform: rotateY(45deg);
-                  }
-                  
-                  &.ring-3 {
-                    inset: 30px;
-                    animation: logoRingRotate 25s linear infinite;
-                    transform: rotateX(-45deg) rotateY(45deg);
-                    opacity: 0.05;
-                  }
-                }
-              }
-              
-              .logo-content {
-                width: 110px;
-                height: 110px;
-                background: var(--motive-white);
-                border: 3px solid var(--agency-color, var(--motive-primary));
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                z-index: 5;
-                box-shadow: 
-                  var(--shadow-xl),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.9),
-                  0 0 0 1px rgba(255, 255, 255, 0.6);
-                transform: translateZ(12px);
-                overflow: hidden;
-                
-                @media (max-width: 768px) {
-                  width: 90px;
-                  height: 90px;
-                }
-                
-                @media (max-width: 480px) {
-                  width: 75px;
-                  height: 75px;
-                }
-                
-                .logo-glow-bg {
-                  position: absolute;
-                  inset: -2px;
-                  background: var(--agency-color, var(--motive-primary));
-                  border-radius: 50%;
-                  opacity: 0.1;
-                  filter: blur(8px);
-                  animation: logoGlowPulse 4s ease-in-out infinite;
-                }
-                
-                // Logo image container
-                .logo-image-container {
-                  width: 80%;
-                  height: 80%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  z-index: 2;
-                  
-                  .agency-logo-img {
-                    max-width: 100%;
-                    max-height: 100%;
-                    object-fit: contain;
-                    filter: drop-shadow(0 0 8px rgba(67, 97, 238, 0.15));
-                    transition: all var(--transition-base);
-                    
-                    &:hover {
-                      transform: scale(1.05);
-                      filter: drop-shadow(0 0 12px rgba(67, 97, 238, 0.25));
-                    }
-                  }
-                  
-                  .logo-initials-fallback {
-                    font-size: 1.6rem;
-                    font-weight: 900;
-                    color: var(--agency-color, var(--motive-primary));
-                    filter: drop-shadow(0 0 8px rgba(67, 97, 238, 0.2));
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    
-                    @media (max-width: 768px) {
-                      font-size: 1.4rem;
-                    }
-                    
-                    @media (max-width: 480px) {
-                      font-size: 1.2rem;
-                    }
-                  }
-                }
-                
-                .logo-sparkle {
-                  position: absolute;
-                  top: 15%;
-                  right: 15%;
-                  width: 5px;
-                  height: 5px;
-                  background: rgba(255, 255, 255, 0.8);
-                  border-radius: 50%;
-                  animation: logoSparkle 3s ease-in-out infinite;
-                }
-              }
-              
-              .logo-ambient-light {
-                position: absolute;
-                inset: -15px;
-                border-radius: 50%;
-                background: radial-gradient(circle, 
-                  var(--agency-color, var(--motive-primary)) 0%, 
-                  transparent 70%
-                );
-                opacity: 0.05;
-                filter: blur(20px);
-                animation: logoAmbientPulse 5s ease-in-out infinite;
-              }
-            }
-          }
-        }
-        
-        // AGENCY INFO - REDESIGNED FOR BETTER ORGANIZATION
-        .agency-info {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          padding: var(--spacing-8) var(--spacing-6);
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(10px);
-          border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
-          z-index: 10;
-          
-          @media (max-width: 480px) {
-            padding: var(--spacing-6) var(--spacing-4);
-          }
-          
-          .agency-header {
-            text-align: center;
-            margin-bottom: var(--spacing-6);
-            
-            .agency-name {
-              font-size: var(--font-xl);
-              font-weight: 700;
-              color: var(--text-contrast);
-              margin-bottom: var(--spacing-2);
-              line-height: 1.2;
-              text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-              
-              @media (max-width: 768px) {
-                font-size: var(--font-lg);
-              }
-              
-              @media (max-width: 480px) {
-                font-size: var(--font-base);
-              }
-            }
-          }
-          
-          .agency-stats {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-4);
-            margin-bottom: var(--spacing-6);
-            
-            .stat-item {
-              display: flex;
-              align-items: center;
-              gap: var(--spacing-3);
-              padding: var(--spacing-4);
-              background: rgba(255, 255, 255, 0.1);
-              border-radius: var(--radius-lg);
-              backdrop-filter: blur(5px);
-              border: 1px solid rgba(255, 255, 255, 0.15);
-              transition: all var(--transition-base);
-              
-              &:hover {
-                background: rgba(255, 255, 255, 0.15);
-                transform: translateY(-1px);
-                box-shadow: var(--shadow-sm);
-              }
-              
-              .stat-icon {
-                font-size: var(--font-lg);
-                filter: drop-shadow(0 0 5px rgba(67, 97, 238, 0.3));
-                flex-shrink: 0;
-              }
-              
-              .stat-details {
-                flex: 1;
-                
-                .stat-number {
-                  font-size: var(--font-base);
-                  font-weight: 700;
-                  color: var(--text-contrast);
-                  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-                  margin-bottom: var(--spacing-1);
-                  
-                  @media (max-width: 480px) {
-                    font-size: var(--font-sm);
-                  }
-                }
-                
-                .stat-label {
-                  font-size: var(--font-sm);
-                  color: var(--text-secondary);
-                  font-weight: 500;
-                  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
-                  
-                  @media (max-width: 480px) {
-                    font-size: 0.75rem;
-                  }
-                }
-              }
-            }
-          }
-          
-          .website-section {
-            text-align: center;
-            
-            .website-link {
-              display: inline-flex;
-              align-items: center;
-              gap: var(--spacing-2);
-              padding: var(--spacing-3) var(--spacing-4);
-              background: rgba(67, 97, 238, 0.08);
-              color: var(--motive-primary);
-              text-decoration: none;
-              border-radius: var(--radius-lg);
-              font-size: var(--font-sm);
-              font-weight: 600;
-              border: 1px solid rgba(67, 97, 238, 0.15);
-              transition: all var(--transition-base);
-              backdrop-filter: blur(5px);
-              
-              &:hover {
-                background: rgba(67, 97, 238, 0.12);
-                transform: translateY(-2px);
-                box-shadow: var(--shadow-md);
-                border-color: rgba(67, 97, 238, 0.25);
-              }
-              
-              .link-icon {
-                font-size: var(--font-base);
-              }
-              
-              .link-text {
-                font-weight: 600;
-              }
-              
-              .link-arrow {
-                font-weight: 700;
-                transition: transform var(--transition-fast);
-              }
-              
-              &:hover .link-arrow {
-                transform: translateX(2px);
-              }
-            }
-          }
-        }
-        
-        // CONNECTION LINES
-        .connection-lines {
-          position: absolute;
-          bottom: var(--spacing-2);
-          left: 50%;
-          transform: translateX(-50%);
-          width: 85%;
-          height: 6px;
-          
-          .connection-line {
-            position: absolute;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 1px;
-            overflow: hidden;
-            backdrop-filter: blur(3px);
-            
-            &.line-1 {
-              top: 0;
-              width: 100%;
-            }
-            
-            &.line-2 {
-              top: 3px;
-              width: 60%;
-              left: 20%;
-            }
-            
-            .line-pulse {
-              position: absolute;
-              top: 0;
-              left: -50%;
               width: 100%;
               height: 100%;
-              background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--agency-color, var(--motive-primary)) 50%, 
-                transparent 100%
-              );
-              border-radius: 1px;
-              animation: linePulse 5s ease-in-out infinite;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  // CTA SECTION - MATCHING MAIN DESIGN
-  .cta-section {
-    position: relative;
-    text-align: center;
-    border-radius: var(--radius-2xl);
-    padding: var(--spacing-24) var(--spacing-20);
-    margin-top: var(--spacing-32);
-    overflow: hidden;
-    background: var(--motive-white);
-    border: 2px solid var(--motive-gray-200);
-    box-shadow: var(--shadow-xl);
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    
-    @media (max-width: 768px) {
-      padding: var(--spacing-16) var(--spacing-12);
-      margin-top: var(--spacing-24);
-    }
-    
-    @media (max-width: 480px) {
-      padding: var(--spacing-12) var(--spacing-8);
-      margin-top: var(--spacing-20);
-    }
-    
-    .cta-background-effects {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      
-      .cta-gradient-1 {
-        position: absolute;
-        top: -50%;
-        left: -25%;
-        width: 150%;
-        height: 200%;
-        background: radial-gradient(circle, 
-          rgba(67, 97, 238, 0.015) 0%, 
-          transparent 70%
-        );
-        animation: ctaGradientMove 25s ease-in-out infinite;
-      }
-      
-      .cta-gradient-2 {
-        position: absolute;
-        bottom: -50%;
-        right: -25%;
-        width: 150%;
-        height: 200%;
-        background: radial-gradient(circle, 
-          rgba(63, 55, 201, 0.015) 0%, 
-          transparent 70%
-        );
-        animation: ctaGradientMove 25s ease-in-out infinite reverse;
-      }
-      
-      .cta-particles {
-        position: absolute;
-        inset: 0;
-        background-image: 
-          radial-gradient(2px 2px at 25% 35%, rgba(67, 97, 238, 0.02), transparent),
-          radial-gradient(1px 1px at 75% 65%, rgba(63, 55, 201, 0.02), transparent),
-          radial-gradient(1px 1px at 45% 25%, rgba(0, 119, 182, 0.02), transparent),
-          radial-gradient(1px 1px at 30% 75%, rgba(67, 97, 238, 0.015), transparent);
-        background-size: 400px 400px;
-        animation: ctaParticlesDrift 30s linear infinite;
-      }
-      
-      .cta-waves {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(45deg, 
-          transparent 0%, 
-          rgba(67, 97, 238, 0.008) 25%, 
-          transparent 50%, 
-          rgba(63, 55, 201, 0.008) 75%, 
-          transparent 100%
-        );
-        animation: ctaWaves 18s ease-in-out infinite;
-      }
-    }
-    
-    .cta-content {
-      position: relative;
-      z-index: 2;
-      
-      .cta-title {
-        font-size: var(--font-4xl);
-        font-weight: 800;
-        color: var(--motive-gray-900);
-        margin-bottom: var(--spacing-6);
-        background: linear-gradient(135deg, var(--motive-gray-900) 0%, var(--motive-primary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: titleGlow 8s ease-in-out infinite;
-        
-        @media (max-width: 768px) {
-          font-size: var(--font-3xl);
-        }
-        
-        @media (max-width: 480px) {
-          font-size: var(--font-2xl);
-        }
-      }
-      
-      .cta-subtitle {
-        font-size: var(--font-xl);
-        color: var(--motive-gray-600);
-        max-width: 700px;
-        margin: 0 auto var(--spacing-12);
-        line-height: 1.7;
-        
-        @media (max-width: 768px) {
-          font-size: var(--font-lg);
-          margin-bottom: var(--spacing-10);
-        }
-        
-        @media (max-width: 480px) {
-          font-size: var(--font-base);
-          margin-bottom: var(--spacing-8);
-        }
-      }
-      
-      .cta-buttons {
-        display: flex;
-        gap: var(--spacing-6);
-        justify-content: center;
-        
-        @media (max-width: 480px) {
-          flex-direction: column;
-          gap: var(--spacing-4);
-        }
-        
-        .cta-btn {
-          position: relative;
-          padding: var(--spacing-5) var(--spacing-10);
-          border-radius: var(--radius-xl);
-          font-size: var(--font-base);
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          border: none;
-          cursor: pointer;
-          transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-          overflow: hidden;
-          min-width: 200px;
-          
-          .btn-text {
-            position: relative;
-            z-index: 3;
-          }
-          
-          .btn-effects {
-            position: absolute;
-            inset: 0;
-            border-radius: var(--radius-xl);
-            opacity: 0;
-            transition: opacity 0.6s ease;
-          }
-          
-          .btn-ripple {
-            position: absolute;
-            inset: 0;
-            border-radius: var(--radius-xl);
-            background: radial-gradient(circle, 
-              rgba(255, 255, 255, 0.15) 0%, 
-              transparent 70%
-            );
-            transform: scale(0);
-            opacity: 0;
-            transition: all 0.8s ease;
-          }
-          
-          &:hover {
-            .btn-effects {
-              opacity: 1;
-              animation: btnEffectsPulse 1.2s ease-out;
-            }
-            
-            .btn-ripple {
-              transform: scale(2);
-              opacity: 1;
-              animation: btnRippleEffect 1s ease-out;
             }
           }
           
-          &.primary {
-            background: linear-gradient(135deg, var(--motive-primary), var(--motive-secondary));
-            color: var(--motive-white);
-            box-shadow: var(--shadow-lg);
-            
-            &:hover {
-              transform: translateY(-3px) scale(1.02);
-              box-shadow: var(--shadow-xl);
-            }
-            
-            .btn-effects {
-              background: linear-gradient(135deg, var(--motive-accent), var(--motive-primary));
-              filter: blur(4px);
-            }
-          }
-          
-          &.secondary {
-            background: rgba(67, 97, 238, 0.05);
-            color: var(--motive-primary);
-            border: 2px solid rgba(67, 97, 238, 0.15);
-            backdrop-filter: blur(15px);
-            
-            &:hover {
-              background: rgba(67, 97, 238, 0.08);
-              transform: translateY(-3px) scale(1.02);
-              box-shadow: var(--shadow-lg);
-              border-color: rgba(67, 97, 238, 0.25);
-            }
-            
-            .btn-effects {
-              background: rgba(67, 97, 238, 0.08);
-              filter: blur(4px);
-            }
+          .agency-name {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--gray-700);
+            line-height: 1.3;
+            transition: var(--transition);
           }
         }
       }
     }
+    
+    // Progress Indicators
+    .progress-indicators {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      
+      .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: none;
+        background: var(--gray-300);
+        cursor: pointer;
+        transition: var(--transition);
+        
+        &:hover {
+          background: var(--gray-400);
+          transform: scale(1.2);
+        }
+        
+        &.active {
+          background: var(--motive-primary);
+          width: 24px;
+          border-radius: 4px;
+        }
+      }
+    }
   }
+
+
 }
 
-// KEYFRAME ANIMATIONS - OPTIMIZED
-
-@keyframes orbFloat {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-  }
-  20% {
-    transform: translateY(-40px) rotate(72deg) scale(1.05);
-  }
-  40% {
-    transform: translateY(-20px) rotate(144deg) scale(0.95);
-  }
-  60% {
-    transform: translateY(-50px) rotate(216deg) scale(1.08);
-  }
-  80% {
-    transform: translateY(-10px) rotate(288deg) scale(0.98);
-  }
-}
-
-@keyframes gridMove {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  100% {
-    transform: translateX(-80px) translateY(-80px);
-  }
-}
-
-@keyframes particlesDrift {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  100% {
-    transform: translateX(-800px) translateY(-400px);
-  }
-}
-
-@keyframes lightRaysSweep {
-  0%, 100% {
-    opacity: 0.3;
-    transform: translateX(-60px);
-  }
-  50% {
-    opacity: 0.6;
-    transform: translateX(60px);
-  }
-}
-
+// ANIMATIONS
 @keyframes shimmer {
   0% {
-    transform: translateX(-100%) skewX(-12deg);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%) skewX(-12deg);
-    opacity: 0;
-  }
-}
-
-@keyframes iconPulse {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 8px rgba(67, 97, 238, 0.3));
-  }
-  50% {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 15px rgba(67, 97, 238, 0.5));
-  }
-}
-
-@keyframes glowPulse {
-  0%, 100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-@keyframes titleGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 20px rgba(67, 97, 238, 0.15));
-    transform: scale(1);
-  }
-  50% {
-    filter: drop-shadow(0 0 30px rgba(67, 97, 238, 0.25));
-    transform: scale(1.005);
-  }
-}
-
-@keyframes cardShimmer {
-  0% {
     left: -100%;
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
   }
   100% {
     left: 100%;
-    opacity: 0;
   }
 }
 
-@keyframes holographicFloat {
-  0%, 100% {
-    transform: translateX(-10px) skewX(0deg);
-    opacity: 0.2;
-  }
-  50% {
-    transform: translateX(10px) skewX(0.5deg);
-    opacity: 0.4;
-  }
-}
-
-@keyframes holographicShift {
-  0% {
-    transform: translateX(-30px) skewX(-2deg);
-    opacity: 0.1;
-  }
-  50% {
-    transform: translateX(0px) skewX(0deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateX(30px) skewX(2deg);
-    opacity: 0.1;
-  }
-}
-
-@keyframes sparkleFloat {
-  0%, 100% {
-    transform: translateX(0) translateY(0);
-  }
-  25% {
-    transform: translateX(-5px) translateY(-5px);
-  }
-  50% {
-    transform: translateX(0) translateY(-10px);
-  }
-  75% {
-    transform: translateX(5px) translateY(-5px);
-  }
-}
-
-@keyframes logoRingRotate {
-  0% {
-    transform: rotateX(45deg) rotateY(0deg);
-  }
-  100% {
-    transform: rotateX(45deg) rotateY(360deg);
-  }
-}
-
-@keyframes logoGlowPulse {
-  0%, 100% {
-    opacity: 0.1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.2;
-    transform: scale(1.15);
-  }
-}
-
-@keyframes logoSparkle {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.3);
-  }
-}
-
-@keyframes logoAmbientPulse {
-  0%, 100% {
-    opacity: 0.05;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.1;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes linePulse {
-  0% {
-    left: -50%;
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    left: 150%;
-    opacity: 0;
-  }
-}
-
-@keyframes ctaGradientMove {
-  0%, 100% {
-    transform: translateX(0) translateY(0);
-  }
-  25% {
-    transform: translateX(20px) translateY(-20px);
-  }
-  50% {
-    transform: translateX(0) translateY(-40px);
-  }
-  75% {
-    transform: translateX(-20px) translateY(-20px);
-  }
-}
-
-@keyframes ctaParticlesDrift {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  100% {
-    transform: translateX(-400px) translateY(-400px);
-  }
-}
-
-@keyframes ctaWaves {
-  0%, 100% {
-    transform: translateX(-15px) scaleX(1);
-    opacity: 0.2;
-  }
-  50% {
-    transform: translateX(15px) scaleX(1.1);
-    opacity: 0.5;
-  }
-}
-
-@keyframes btnEffectsPulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-@keyframes btnRippleEffect {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-}
-
-// PERFORMANCE OPTIMIZATIONS
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-// HARDWARE ACCELERATION
+// ACCESSIBILITY
 .network-section {
   .agency-card,
-  .card-container,
-  .card-background,
-  .logo-3d-wrapper,
-  .agency-info,
-  .glass-layer {
-    transform: translateZ(0);
-    will-change: transform, opacity;
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
-  
-  // Force GPU acceleration on key elements
-  .card-background .glass-layer {
-    transform: translate3d(0, 0, 0);
-  }
-  
-  .logo-section {
-    transform: translate3d(0, 0, 0);
-  }
-  
-  .agency-info {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-// ACCESSIBILITY AND CONTRAST
-.network-section {
-  // Better focus states for accessibility
-  .agency-card {
-    &:focus-visible {
-      outline: 3px solid var(--motive-primary);
-      outline-offset: 4px;
-    }
-  }
-  
-  .cta-btn {
-    &:focus-visible {
-      outline: 3px solid var(--motive-primary);
-      outline-offset: 4px;
-    }
-  }
-  
-  .website-link {
+  .indicator {
     &:focus-visible {
       outline: 2px solid var(--motive-primary);
       outline-offset: 2px;
     }
   }
-  
-  // High contrast mode support
-  @media (prefers-contrast: high) {
-    .card-background .glass-layer {
-      background: rgba(255, 255, 255, 0.98);
-    }
-    
-    .agency-name {
-      color: #000000;
-      text-shadow: none;
-    }
-    
-    .stat-number {
-      color: #000000;
-      text-shadow: none;
-    }
-    
-    .stat-label {
-      color: #333333;
-      text-shadow: none;
-    }
-  }
 }
 
-// RESPONSIVE TYPOGRAPHY
-@media (max-width: 1200px) {
-  .network-section {
-    .network-title {
-      font-size: var(--font-4xl);
-    }
-    
-    .network-subtitle {
-      font-size: var(--font-lg);
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .network-section {
-    padding: var(--spacing-24) 0;
-    
-    .network-title {
-      font-size: var(--font-3xl);
-    }
-    
-    .network-subtitle {
-      font-size: var(--font-base);
-    }
-    
-    .cta-title {
-      font-size: var(--font-2xl);
-    }
-    
-    .cta-subtitle {
-      font-size: var(--font-base);
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .network-section {
-    padding: var(--spacing-20) 0;
-    
-    .network-header {
-      margin-bottom: var(--spacing-16);
-    }
-    
-    .stats-grid {
-      margin-bottom: var(--spacing-16);
-    }
-    
-    .carousel-container {
-      margin: var(--spacing-16) auto;
-    }
-    
-    .cta-section {
-      margin-top: var(--spacing-20);
-    }
-  }
-}
-
-// PRINT STYLES
-@media print {
-  .network-section {
-    .network-background,
-    .floating-sparkles,
-    .holographic-film,
-    .light-refraction,
-    .cta-background-effects {
-      display: none;
-    }
-    
-    .agency-card {
-      position: static;
-      transform: none;
-      width: 100%;
-      height: auto;
-      margin-bottom: var(--spacing-6);
-      page-break-inside: avoid;
-    }
-    
-    .carousel-container {
-      height: auto;
-      perspective: none;
-    }
-    
-    .carousel-stage {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-6);
-    }
-    
-    .card-background {
-      background: var(--motive-white) !important;
-      border: 1px solid var(--motive-gray-300) !important;
-    }
-    
-    .agency-name,
-    .stat-number,
-    .stat-label {
-      color: #000000 !important;
-      text-shadow: none !important;
-    }
-  }
-}
-
-// ADDITIONAL SCSS FOR REAL AGENCY LOGOS AND IMPROVED DISPLAY
-// Add this to your existing Network.scss file
-
-// Enhanced logo image handling
-.agency-logo-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(67, 97, 238, 0.15));
-  transition: all var(--transition-base);
-  border-radius: var(--radius-sm);
-  
-  &:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 12px rgba(67, 97, 238, 0.25));
-  }
-  
-  // Handle different logo aspect ratios
-  &[src*="ca-logo-color"] {
-    // California state logo adjustments
-    max-height: 80%;
-    filter: brightness(1.1) drop-shadow(0 0 8px rgba(67, 97, 238, 0.15));
-  }
-  
-  &[src*="ICHHPInc.-Logo"] {
-    // Intracare logo adjustments
-    max-height: 85%;
-    object-fit: contain;
-  }
-  
-  &[src*="Unison"] {
-    // Unison logo adjustments
-    max-height: 75%;
-    object-fit: contain;
-  }
-  
-  &[src*="qt_q_55"] {
-    // Supportive Health Group logo adjustments
-    max-height: 90%;
-    filter: brightness(1.05) drop-shadow(0 0 8px rgba(67, 97, 238, 0.15));
-  }
-  
-  &[src*="vasthh"] {
-    // Vast Home Health logo adjustments
-    max-height: 80%;
-    object-fit: contain;
-  }
-  
-  &[src*="americarehh"] {
-    // Americare logo adjustments
-    max-height: 85%;
-    object-fit: contain;
-  }
-}
-
-// Fallback logo styling improvements
-.logo-initials-fallback {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--agency-color, var(--motive-primary));
-  filter: drop-shadow(0 0 8px rgba(67, 97, 238, 0.2));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-  
-  @media (max-width: 768px) {
-    font-size: 1.4rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.2rem;
-  }
-}
-
-// Enhanced agency info with better spacing for real data
-.agency-info {
-  // Adjust padding for longer agency names
-  .agency-name {
-    line-height: 1.1;
-    word-wrap: break-word;
-    hyphens: auto;
-    
-    // Handle longer names
-    &:has-text("Intracare Home Health Providers") {
-      font-size: calc(var(--font-xl) * 0.9);
-    }
-    
-    &:has-text("Happy Home Health Services") {
-      font-size: calc(var(--font-xl) * 0.9);
-    }
-    
-    &:has-text("Bright Home Health Care") {
-      font-size: calc(var(--font-xl) * 0.9);
-    }
-  }
-  
-  // Enhanced phone number display
-  .phone-display {
-    font-size: var(--font-sm);
-    color: var(--text-secondary);
-    font-weight: 500;
-    margin-bottom: var(--spacing-2);
-    text-align: center;
-    
-    &::before {
-      content: "📞 ";
-      margin-right: var(--spacing-1);
-    }
-  }
-}
-
-// Website link improvements for real domains
-.website-link {
-  .link-text {
-    font-size: var(--font-sm);
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    
-    @media (max-width: 768px) {
-      max-width: 150px;
-      font-size: 0.75rem;
-    }
-  }
-  
-  // Special handling for "Contact via website" cases
-  &[href*="Contact"] {
-    background: rgba(255, 193, 7, 0.08);
-    border-color: rgba(255, 193, 7, 0.15);
-    color: var(--motive-warning);
-    
-    &:hover {
-      background: rgba(255, 193, 7, 0.12);
-      border-color: rgba(255, 193, 7, 0.25);
-    }
-    
-    .link-icon {
-      color: var(--motive-warning);
-    }
-  }
-}
-
-// Loading states for logo images
-.logo-image-container {
-  position: relative;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba(255, 255, 255, 0.3) 50%, 
-      transparent 100%
-    );
-    opacity: 0;
-    animation: logoShimmer 2s ease-in-out infinite;
-  }
-  
-  .agency-logo-img {
-    &[src=""] {
-      display: none;
-    }
-    
-    // Show shimmer while loading
-    &:not([complete]) + .logo-initials-fallback::after {
-      opacity: 1;
-    }
-  }
-}
-
-@keyframes logoShimmer {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-// Error handling for broken images
-.agency-logo-img {
-  &[src]:not([src=""]) {
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--motive-gray-100);
-      border-radius: var(--radius-sm);
-      display: none;
-    }
-  }
-  
-  // Show fallback on error
-  &[data-error="true"] {
-    display: none;
-    
-    & + .logo-initials-fallback {
-      display: flex !important;
-    }
-  }
-}
-
-// Enhanced tooltips for agency information
-.agency-card {
-  &:hover {
-    .agency-tooltip {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(-5px);
-    }
-  }
-}
-
-.agency-tooltip {
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%) translateY(0);
-  background: var(--motive-gray-900);
-  color: var(--motive-white);
-  padding: var(--spacing-2) var(--spacing-3);
-  border-radius: var(--radius-md);
-  font-size: var(--font-sm);
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition-base);
-  z-index: 100;
-  pointer-events: none;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 5px solid transparent;
-    border-top-color: var(--motive-gray-900);
-  }
-}
-
-// Responsive improvements for real agency names
-@media (max-width: 768px) {
-  .agency-name {
-    font-size: var(--font-base) !important;
-    line-height: 1.2;
-  }
-  
-  .website-link .link-text {
-    font-size: 0.7rem;
-    max-width: 120px;
-  }
-}
-
-@media (max-width: 480px) {
-  .agency-name {
-    font-size: var(--font-sm) !important;
-  }
-  
-  .logo-content {
-    .agency-logo-img,
-    .logo-initials-fallback {
-      font-size: 1rem;
-    }
-  }
-}
-
-// Print styles for real agency data
-@media print {
-  .agency-card {
-    .agency-logo-img {
-      max-width: 60px;
-      max-height: 60px;
-    }
-    
-    .agency-name {
-      font-size: 14px !important;
-      color: #000000 !important;
-    }
-    
-    .website-link {
-      &::after {
-        content: " (" attr(href) ")";
-        font-size: 10px;
-        color: #666666;
-      }
-    }
-  }
-}
-
-// High contrast mode adjustments
-@media (prefers-contrast: high) {
-  .agency-logo-img {
-    filter: contrast(1.2) brightness(1.1);
-  }
-  
-  .logo-initials-fallback {
-    background: var(--motive-white);
-    border: 2px solid var(--motive-gray-900);
-    border-radius: 50%;
-    text-shadow: none;
+// REDUCED MOTION
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

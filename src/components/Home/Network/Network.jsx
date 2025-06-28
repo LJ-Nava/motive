@@ -1,444 +1,171 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/home/Network.scss';
 
 const Network = () => {
-  const [rotation, setRotation] = useState(0);
-  const [isAutoRotating, setIsAutoRotating] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef(null);
-  const rotationRef = useRef(0);
-  const autoRotateRef = useRef(null);
+  const [activeCard, setActiveCard] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-  // Home Health agencies data - REAL AGENCY INFORMATION
-  const homeHealthAgencies = [
+  // Trusted Partner Agencies - Real agencies that trust Motive Home Care
+  const trustedAgencies = [
     { 
       name: 'Caring Like Family',
-      shortName: 'CLF',
-      patients: '300+',
-      since: '2004',
-      website: 'caringlikefamily.com',
-      phone: '(310) 395-4788',
-      address: '4223 Glencoe Ave, Suite B-107, Marina Del Rey, CA 90292',
-      color: '#4F46E5',
-      gradientFrom: '#4F46E5',
-      gradientTo: '#7C3AED',
-      logo: 'https://hcai.ca.gov/wp-content/themes/oshpd/assets/images/ca-logo-color.svg'
+      logo: 'https://static.wixstatic.com/media/7438d9_91426f0fdd6945f7b74208a602d45cc2~mv2.png/v1/crop/x_0,y_1077,w_3125,h_971/fill/w_267,h_83,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Unison%20Logo%20deliver-01.png', // Using Unison's logo as placeholder since CLF logo not found
+      established: '2024',
+      color: '#2563EB'
     },
     { 
       name: 'Intracare Home Health Providers',
-      shortName: 'IHHP',
-      patients: '250+',
-      since: '2002',
-      website: 'intracareinc.com',
-      phone: '(323) 964-0884',
-      address: '4929 Wilshire Blvd #210, Los Angeles, CA 90010',
-      color: '#2563EB',
-      gradientFrom: '#2563EB',
-      gradientTo: '#3B82F6',
-      logo: 'https://intracareinc.com/images/ICHHPInc.-Logo1248.png'
+      logo: 'https://intracareinc.com/images/ICHHPInc.-Logo1248.png',
+      established: '2024',
+      color: '#3B82F6'
     },
     { 
       name: 'Unison Health Services',
-      shortName: 'UHS',
-      patients: '200+',
-      since: '2018',
-      website: 'unisonhealthservicesinc.com',
-      phone: '(626) 280-5575',
-      address: '2200 S Fremont Ave Suite 202, Alhambra, CA 91803',
-      color: '#3B82F6',
-      gradientFrom: '#3B82F6',
-      gradientTo: '#06B6D4',
-      logo: 'https://static.wixstatic.com/media/7438d9_91426f0fdd6945f7b74208a602d45cc2~mv2.png/v1/crop/x_0,y_1077,w_3125,h_971/fill/w_267,h_83,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Unison%20Logo%20deliver-01.png'
+      logo: 'https://static.wixstatic.com/media/7438d9_91426f0fdd6945f7b74208a602d45cc2~mv2.png/v1/crop/x_0,y_1077,w_3125,h_971/fill/w_267,h_83,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Unison%20Logo%20deliver-01.png',
+      established: '2024',
+      color: '#1D4ED8'
     },
     { 
       name: 'Supportive Health Group',
-      shortName: 'SHG',
-      patients: '180+',
-      since: '2013',
-      website: 'supportivehealthgroup.com',
-      phone: 'Contact via website',
-      address: '2700 N. Main Street, Suite 765, Santa Ana, CA 92705',
-      color: '#1D4ED8',
-      gradientFrom: '#1D4ED8',
-      gradientTo: '#2563EB',
-      logo: 'https://supportivehealthgroup.com/wp-content/uploads/2023/04/qt_q_55-removebg-preview.png'
+      logo: 'https://supportivehealthgroup.com/wp-content/uploads/2023/04/qt_q_55-removebg-preview.png',
+      established: '2023',
+      color: '#1E40AF'
     },
     { 
       name: 'Vast Home Health',
-      shortName: 'VHH',
-      patients: '150+',
-      since: '2019',
-      website: 'vasthh.com',
-      phone: '(818) 309-4441',
-      address: '1821 W. Verdugo Blvd. #101, Burbank, CA 91506',
-      color: '#1E40AF',
-      gradientFrom: '#1E40AF',
-      gradientTo: '#3730A3',
-      logo: 'https://vasthh.com/wp-content/uploads/2022/10/logo.png'
+      logo: 'https://vasthh.com/wp-content/uploads/2022/10/logo.png',
+      established: '2024',
+      color: '#1E3A8A'
     },
     { 
-      name: 'Happy Home Health Services',
-      shortName: 'HHHS',
-      patients: '120+',
-      since: '2007',
-      website: 'Contact for website',
-      phone: '(626) 254-9999',
-      address: '650 W Duarte Rd Ste 402, Arcadia, CA 91007',
-      color: '#1E3A8A',
-      gradientFrom: '#1E3A8A',
-      gradientTo: '#1E40AF',
-      logo: '/images/agencies/happy-home-health-fallback.png' // Fallback since no website found
+      name: 'Continuity Providers Healthcare',
+      logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjMzEyRTgxIi8+Cjx0ZXh0IHg9IjYwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNQSDwvdGV4dD4KPHRleHQgeD0iNjAiIHk9IjUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5IZWFsdGhjYXJlPC90ZXh0Pgo8L3N2Zz4K', // SVG placeholder
+      established: '2024',
+      color: '#312E81'
     },
     { 
-      name: 'Americare Home Health',
-      shortName: 'AHH',
-      patients: '100+',
-      since: '2020',
-      website: 'americarehhinc.com',
-      phone: 'Contact via website',
-      address: 'Van Nuys, California',
-      color: '#312E81',
-      gradientFrom: '#312E81',
-      gradientTo: '#4338CA',
-      logo: 'https://www.americarehhinc.com/wp-content/themes/americarehh/images/main-logo.png'
+      name: 'Hand in Heart Home Health',
+      logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjMzczMEEzIi8+Cjx0ZXh0IHg9IjYwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpJ08L3RleHQ+Cjx0ZXh0IHg9IjYwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SGFuZCBpbiBIZWFydDwvdGV4dD4KPC9zdmc+Cg==', // SVG with heart emoji
+      established: '2023',
+      color: '#3730A3'
     },
     { 
-      name: 'Bright Home Health Care',
-      shortName: 'BHHC',
-      patients: '80+',
-      since: '2020',
-      website: 'brighthhc.com',
-      phone: '(818) 330-5599',
-      address: 'California (Multiple locations)',
-      color: '#3730A3',
-      gradientFrom: '#3730A3',
-      gradientTo: '#5B21B6',
-      logo: '/images/agencies/bright-home-health-fallback.png' // Need to get actual logo
+      name: 'Equanimity Healthcare',
+      logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNDMzOENBIi8+Cjx0ZXh0IHg9IjYwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVIQzwvdGV4dD4KPHR0ZXh0IHg9IjYwIiB5PSI1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RXF1YW5pbWl0eTwvdGV4dD4KPC9zdmc+Cg==', // SVG placeholder
+      established: '2023',
+      color: '#4338CA'
+    },
+    { 
+      name: 'H&R Home Health',
+      logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNUIyMUI2Ii8+Cjx0ZXh0IHg9IjYwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkgmUjwvdGV4dD4KPHR0ZXh0IHg9IjYwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SG9tZSBIZWFsdGg8L3RleHQ+Cjwvc3ZnPgo=', // SVG placeholder
+      established: '2023',
+      color: '#5B21B6'
+    },
+    { 
+      name: 'Ivory Home Health',
+      logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjN0MzQUVEIi8+Cjx0ZXh0IHg9IjYwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPklISDwvdGV4dD4KPHR0ZXh0IHg9IjYwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SXZvcnkgSGVhbHRoPC90ZXh0Pgo8L3N2Zz4K', // SVG placeholder
+      established: '2023',
+      color: '#7C3AED'
     }
   ];
 
-  // Auto rotation
+  // Auto-rotate through cards
   useEffect(() => {
-    if (isAutoRotating) {
-      autoRotateRef.current = setInterval(() => {
-        rotationRef.current += 0.06;
-        setRotation(rotationRef.current);
-      }, 50);
-    } else {
-      clearInterval(autoRotateRef.current);
+    if (!isHovered) {
+      const interval = setInterval(() => {
+        setActiveCard((prev) => (prev + 1) % trustedAgencies.length);
+      }, 3000);
+      return () => clearInterval(interval);
     }
-
-    return () => clearInterval(autoRotateRef.current);
-  }, [isAutoRotating]);
-
-  // Mouse interaction handlers
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setIsAutoRotating(false);
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    const deltaX = e.clientX - mousePosition.x;
-    rotationRef.current += deltaX * 0.12;
-    setRotation(rotationRef.current);
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    setTimeout(() => setIsAutoRotating(true), 5000);
-  };
-
-  const handleCTAClick = (action) => {
-    if (action === 'get_started') {
-      // Direct call functionality
-      window.location.href = 'tel:+12134950092';
-    }
-    
-    // Analytics tracking
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'cta_click', {
-        event_category: 'network_section',
-        event_label: action
-      });
-    }
-  };
+  }, [isHovered, trustedAgencies.length]);
 
   return (
     <div className="network-section">
-      {/* Background */}
-      <div className="network-background">
-        <div className="gradient-orb orb-1"></div>
-        <div className="gradient-orb orb-2"></div>
-        <div className="gradient-orb orb-3"></div>
-        <div className="gradient-orb orb-4"></div>
-        <div className="gradient-orb orb-5"></div>
-        <div className="network-grid"></div>
-        <div className="floating-particles"></div>
-        <div className="light-rays"></div>
-      </div>
-
       <div className="network-container">
         {/* Header */}
         <div className="network-header">
           <div className="trust-badge">
-            <div className="badge-shimmer"></div>
             <span className="badge-icon">🤝</span>
-            <span>Trusted Network</span>
-            <div className="badge-glow"></div>
+            <span>Trusted Partners</span>
           </div>
           <h2 className="network-title">
-            Partnered
-            <span className="title-gradient"> home health agencies</span>
+            Healthcare Agencies
+            <span className="title-highlight"> Who Trust Us</span>
           </h2>
-          <p className="network-subtitle">
-            These home health agencies trusted us to connect their patients with qualified therapists quickly and efficiently. Together, we're making healthcare more accessible.
-          </p>
         </div>
 
-        {/* Stats Grid */}
-        <div className="stats-grid">
-          <div className="stat-card">
-            <div className="stat-icon-container">
-              <div className="stat-icon">🏥</div>
-              <div className="icon-glow"></div>
-            </div>
-            <div className="stat-content">
-              <div className="stat-number">8+</div>
-              <div className="stat-label">Trusted Clients</div>
-            </div>
-            <div className="card-shimmer"></div>
-          </div>
-          
-          <div className="stat-card">
-            <div className="stat-icon-container">
-              <div className="stat-icon">👥</div>
-              <div className="icon-glow"></div>
-            </div>
-            <div className="stat-content">
-              <div className="stat-number">1,280+</div>
-              <div className="stat-label">Patients Helped</div>
-            </div>
-            <div className="card-shimmer"></div>
-          </div>
-          
-          <div className="stat-card">
-            <div className="stat-icon-container">
-              <div className="stat-icon">💯</div>
-              <div className="icon-glow"></div>
-            </div>
-            <div className="stat-content">
-              <div className="stat-number">98.5%</div>
-              <div className="stat-label">Satisfaction Rate</div>
-            </div>
-            <div className="card-shimmer"></div>
-          </div>
-          
-          <div className="stat-card">
-            <div className="stat-icon-container">
-              <div className="stat-icon">⚡</div>
-              <div className="icon-glow"></div>
-            </div>
-            <div className="stat-content">
-              <div className="stat-number">&lt;2hrs</div>
-              <div className="stat-label">Response Time</div>
-            </div>
-            <div className="card-shimmer"></div>
-          </div>
-        </div>
-
-        {/* 3D Carousel */}
-        <div className="carousel-container" ref={containerRef}>
-          <div 
-            className="carousel-stage"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            style={{
-              cursor: isDragging ? 'grabbing' : 'grab'
-            }}
-          >
-            {/* Agency Cards */}
-            {homeHealthAgencies.map((agency, index) => {
-              const angle = (360 / homeHealthAgencies.length) * index;
-              const currentAngle = angle - rotation;
-              const normalizedAngle = ((currentAngle % 360) + 360) % 360;
-              
-              let distanceFromCenter = Math.abs(normalizedAngle - 180);
-              if (distanceFromCenter > 180) distanceFromCenter = 360 - distanceFromCenter;
-              
-              const maxDistance = 180;
-              const distanceRatio = distanceFromCenter / maxDistance;
-              const scale = 1.1 - (distanceRatio * 0.6);
-              const opacity = 1 - (distanceRatio * 0.3);
-              const zDistance = 400 + (distanceRatio * 800);
-              const blur = distanceRatio * 1.2;
-              
-              const maxOffset = 900;
-              const xOffset = Math.sin((normalizedAngle * Math.PI) / 180) * maxOffset;
-              
-              const isFront = distanceFromCenter < 45;
-              
-              return (
-                <div
-                  key={agency.name}
-                  className={`agency-card ${isFront ? 'front-card' : 'back-card'}`}
-                  style={{
-                    '--agency-color': agency.color,
-                    '--agency-gradient-from': agency.gradientFrom,
-                    '--agency-gradient-to': agency.gradientTo,
-                    transform: `translate3d(${xOffset}px, 0px, ${zDistance}px) scale(${scale})`,
-                    opacity: opacity,
-                    filter: `blur(${blur}px)`,
-                    zIndex: Math.round((1 - distanceRatio) * 100),
-                    pointerEvents: isFront ? 'auto' : 'none'
+        {/* Agency Showcase */}
+        <div 
+          className="agency-showcase"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {/* Featured Agency */}
+          <div className="featured-agency">
+            <div className="featured-card">
+              <div className="featured-logo">
+                <img 
+                  src={trustedAgencies[activeCard].logo} 
+                  alt={`${trustedAgencies[activeCard].name} logo`}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
                   }}
-                >
-                  <div className="card-container">
-                    {/* Card Background */}
-                    <div className="card-background">
-                      <div className="glass-layer"></div>
-                      <div className="gradient-overlay"></div>
-                      <div className="holographic-film"></div>
-                      <div className="depth-layer-1"></div>
-                      <div className="depth-layer-2"></div>
-                      <div className="light-refraction"></div>
-                      <div className="card-border"></div>
-                      <div className="floating-sparkles"></div>
-                    </div>
-                    
-                    {/* Logo Section - Improved */}
-                    <div className="logo-section">
-                      <div className="logo-container">
-                        <div className="logo-3d-wrapper">
-                          <div className="logo-shadow"></div>
-                          <div className="logo-rings">
-                            <div className="logo-ring ring-1"></div>
-                            <div className="logo-ring ring-2"></div>
-                            <div className="logo-ring ring-3"></div>
-                          </div>
-                          <div className="logo-content">
-                            <div className="logo-glow-bg"></div>
-                            {/* Real logo image with fallback to initials */}
-                            <div className="logo-image-container">
-                              <img 
-                                src={agency.logo} 
-                                alt={`${agency.name} logo`}
-                                className="agency-logo-img"
-                                onError={(e) => {
-                                  e.target.style.display = 'none';
-                                  e.target.nextSibling.style.display = 'flex';
-                                }}
-                              />
-                              <div className="logo-initials-fallback" style={{ display: 'none' }}>
-                                {agency.shortName}
-                              </div>
-                            </div>
-                            <div className="logo-sparkle"></div>
-                          </div>
-                          <div className="logo-ambient-light"></div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Agency Info - Redesigned */}
-                    <div className="agency-info">
-                      <div className="agency-header">
-                        <h3 className="agency-name">{agency.name}</h3>
-                      </div>
-                      
-                      <div className="agency-stats">
-                        {/* Patients Served */}
-                        <div className="stat-item">
-                          <div className="stat-icon">👥</div>
-                          <div className="stat-details">
-                            <div className="stat-number">{agency.patients}</div>
-                            <div className="stat-label">Patients Served</div>
-                          </div>
-                        </div>
-                        
-                        {/* Partnership Duration */}
-                        <div className="stat-item">
-                          <div className="stat-icon">🤝</div>
-                          <div className="stat-details">
-                            <div className="stat-number">Since {agency.since}</div>
-                            <div className="stat-label">Trusted Partner</div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Website Link */}
-                      <div className="website-section">
-                        <a 
-                          href={`https://${agency.website}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="website-link"
-                        >
-                          <div className="link-icon">🌐</div>
-                          <div className="link-text">{agency.website}</div>
-                          <div className="link-arrow">→</div>
-                        </a>
-                      </div>
-                    </div>
-                    
-                    {/* Connection Lines */}
-                    <div className="connection-lines">
-                      <div className="connection-line line-1">
-                        <div className="line-pulse"></div>
-                      </div>
-                      <div className="connection-line line-2">
-                        <div className="line-pulse"></div>
-                      </div>
+                />
+                <div className="logo-fallback" style={{ display: 'none' }}>
+                  {trustedAgencies[activeCard].name.split(' ').map(word => word[0]).join('')}
+                </div>
+              </div>
+              <div className="featured-info">
+                <h3 className="agency-name">{trustedAgencies[activeCard].name}</h3>
+                <p className="established">Established {trustedAgencies[activeCard].established}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Agency Grid */}
+          <div className="agency-grid">
+            {trustedAgencies.map((agency, index) => (
+              <div 
+                key={agency.name}
+                className={`agency-card ${index === activeCard ? 'active' : ''}`}
+                onClick={() => setActiveCard(index)}
+                style={{ '--agency-color': agency.color }}
+              >
+                <div className="card-content">
+                  <div className="logo-container">
+                    <img 
+                      src={agency.logo} 
+                      alt={`${agency.name} logo`}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="logo-fallback" style={{ display: 'none' }}>
+                      {agency.name.split(' ').map(word => word[0]).join('')}
                     </div>
                   </div>
+                  <div className="agency-name">{agency.name}</div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
+          </div>
+
+          {/* Progress Indicators */}
+          <div className="progress-indicators">
+            {trustedAgencies.map((_, index) => (
+              <button
+                key={index}
+                className={`indicator ${index === activeCard ? 'active' : ''}`}
+                onClick={() => setActiveCard(index)}
+                aria-label={`View ${trustedAgencies[index].name}`}
+              />
+            ))}
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="cta-section">
-          <div className="cta-background-effects">
-            <div className="cta-gradient-1"></div>
-            <div className="cta-gradient-2"></div>
-            <div className="cta-particles"></div>
-            <div className="cta-waves"></div>
-          </div>
-          
-          <div className="cta-content">
-            <h3 className="cta-title">Join Our Growing Network</h3>
-            <p className="cta-subtitle">
-              Connect with qualified therapists and help your patients get the care they need faster. 
-              We're here to support your home health agency's success.
-            </p>
-            
-            <div className="cta-buttons">
-              <button 
-                className="cta-btn primary"
-                onClick={() => handleCTAClick('get_started')}
-              >
-                <span className="btn-text">Get Started Today</span>
-                <div className="btn-effects"></div>
-                <div className="btn-ripple"></div>
-              </button>
-              
-              <button 
-                className="cta-btn secondary"
-                onClick={() => handleCTAClick('learn_more')}
-              >
-                <span className="btn-text">Learn More</span>
-                <div className="btn-effects"></div>
-                <div className="btn-ripple"></div>
-              </button>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   );
