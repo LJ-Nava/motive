@@ -176,21 +176,7 @@ const Header = () => {
               </ul>
             </nav>
 
-            {/* Actions */}
-            <div className="header__actions">
-              <button 
-                className="header__cta"
-                onClick={handleCTAClick}
-                aria-label="Get started with Motive Home Care"
-              >
-                <span>Start Today</span>
-                <div className="header__cta-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </div>
-              </button>
-            </div>
+            
 
             {/* Mobile Toggle */}
             <button 

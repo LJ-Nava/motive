@@ -84,12 +84,6 @@ const AboutUs = () => {
                     <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5-2.5l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>
                   </svg>
                 </button>
-                <button 
-                  className="about-us__cta about-us__cta--secondary"
-                  onClick={() => handleCTAClick('learn_more')}
-                >
-                  <span>Learn More</span>
-                </button>
               </div>
             </div>
             <div className="about-us__hero-visual">
@@ -420,12 +414,6 @@ const AboutUs = () => {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5-2.5l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>
                 </svg>
-              </button>
-              <button 
-                className="about-us__cta about-us__cta--secondary"
-                onClick={() => handleCTAClick('contact_us')}
-              >
-                <span>Contact Us</span>
               </button>
             </div>
             <p className="about-us__cta-subtitle">

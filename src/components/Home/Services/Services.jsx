@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/home/Services.scss';
 
 const Services = () => {
   const [activeService, setActiveService] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const servicesRef = useRef(null);
+  const navigate = useNavigate();
 
   // Servicios simplificados con textos de la página original
   const therapyServices = [
@@ -135,6 +137,51 @@ const Services = () => {
     setActiveService(index);
   };
 
+  // ✅ FUNCIONES DE NAVEGACIÓN CON REACT ROUTER
+  const handleAgencyClick = () => {
+    // Analytics tracking
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'agency_button_click', {
+        event_category: 'services',
+        event_label: 'join_network'
+      });
+    }
+    
+    // Navegar a la página de agencias
+    navigate('/agencies/join');
+    
+    // Scroll to top después de navegar
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+  };
+
+  const handleTherapistClick = () => {
+    // Analytics tracking
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'therapist_button_click', {
+        event_category: 'services',
+        event_label: 'apply_today'
+      });
+    }
+    
+    // Navegar a la página de terapeutas
+    navigate('/therapists/apply');
+    
+    // Scroll to top después de navegar
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+  };
+
   return (
     <section className="services" id="services" ref={servicesRef}>
       <div className="services__container">
@@ -202,14 +249,6 @@ const Services = () => {
                   <h4 className="services__service-title">
                     {therapyServices[activeService].type}
                   </h4>
-                  <div className="services__service-metrics">
-                    <span className="services__metric">
-                      {therapyServices[activeService].professionals} Available
-                    </span>
-                    <span className="services__metric">
-                      {therapyServices[activeService].responseTime} Response
-                    </span>
-                  </div>
                 </div>
               </div>
               
@@ -269,7 +308,7 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Call to action rediseñado con colores consistentes */}
+        {/* Call to action rediseñado con navegación React Router */}
         <div className={`services__cta ${isVisible ? 'fade-in' : ''}`}>
           <div className="services__cta-content">
             <h3 className="services__cta-title" id="ready-to-start">
@@ -290,12 +329,15 @@ const Services = () => {
                 <p className="services__option-description">
                   Looking for qualified therapists to serve your patients
                 </p>
-                <a href="/agencies/join" className="services__option-button">
+                <button 
+                  onClick={handleAgencyClick}
+                  className="services__option-button"
+                >
                   Join Our Network
                   <svg viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/>
                   </svg>
-                </a>
+                </button>
               </div>
 
               <div className="services__cta-option">
@@ -308,12 +350,15 @@ const Services = () => {
                 <p className="services__option-description">
                   Ready to connect with premium healthcare opportunities
                 </p>
-                <a href="/therapists/apply" className="services__option-button">
+                <button 
+                  onClick={handleTherapistClick}
+                  className="services__option-button"
+                >
                   Apply Today
                   <svg viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/>
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
 
