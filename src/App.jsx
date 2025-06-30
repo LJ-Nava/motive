@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// ✅ CAMBIO PRINCIPAL: HashRouter en lugar de BrowserRouter
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Home/Header/Header.jsx';
 import Hero from './components/Home/Hero/Hero.jsx';
 import Services from './components/Home/Services/Services.jsx';
@@ -42,13 +43,9 @@ const PageLayout = ({ children }) => {
 };
 
 function App() {
-  // 🎯 Detecta automáticamente si está en desarrollo o producción
-  // En desarrollo: PUBLIC_URL=/ (desde .env.development)
-  // En producción: PUBLIC_URL=/motive (desde homepage en package.json)
-  const basename = process.env.PUBLIC_URL || '';
-  
+  // ✅ HashRouter no necesita basename, maneja las rutas automáticamente
   return (
-    <Router basename={basename}>
+    <Router>
       <div className="App">
         <Routes>
           {/* Home Route - Carga Hero directamente */}
@@ -94,12 +91,6 @@ function App() {
             } 
           />
           
-          {/* Future Routes - Ready for expansion */}
-          {/* <Route path="/contact" element={
-            <PageLayout>
-              <Contact />
-            </PageLayout>
-          } /> */}
           
         </Routes>
       </div>
