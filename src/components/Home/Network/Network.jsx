@@ -9,7 +9,7 @@ const Network = () => {
   const trustedAgencies = [
     { 
       name: 'Caring Like Family',
-      logo: 'https://static.wixstatic.com/media/7438d9_91426f0fdd6945f7b74208a602d45cc2~mv2.png/v1/crop/x_0,y_1077,w_3125,h_971/fill/w_267,h_83,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Unison%20Logo%20deliver-01.png', // Using Unison's logo as placeholder since CLF logo not found
+      logo: 'a', // Using Unison's logo as placeholder since CLF logo not found
       established: '2024',
       color: '#2563EB'
     },
@@ -39,13 +39,13 @@ const Network = () => {
     },
     { 
       name: 'Continuity Providers Healthcare',
-      logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjMzEyRTgxIi8+Cjx0ZXh0IHg9IjYwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNQSDwvdGV4dD4KPHRleHQgeD0iNjAiIHk9IjUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5IZWFsdGhjYXJlPC90ZXh0Pgo8L3N2Zz4K', // SVG placeholder
+      logo: 'https://continuityproviders.com/wp-content/themes/continuityph/images/main_logo.png', // SVG placeholder
       established: '2024',
       color: '#312E81'
     },
     { 
       name: 'Hand in Heart Home Health',
-      logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjMzczMEEzIi8+Cjx0ZXh0IHg9IjYwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpJ08L3RleHQ+Cjx0ZXh0IHg9IjYwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SGFuZCBpbiBIZWFydDwvdGV4dD4KPC9zdmc+Cg==', // SVG with heart emoji
+      logo: 'https://www.handinhearthomehealth.com/wp-content/themes/handinheart/images/main_logo.png', // SVG with heart emoji
       established: '2023',
       color: '#3730A3'
     },
@@ -57,13 +57,13 @@ const Network = () => {
     },
     { 
       name: 'H&R Home Health',
-      logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNUIyMUI2Ii8+Cjx0ZXh0IHg9IjYwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkgmUjwvdGV4dD4KPHR0ZXh0IHg9IjYwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SG9tZSBIZWFsdGg8L3RleHQ+Cjwvc3ZnPgo=', // SVG placeholder
+      logo: 'https://static.wixstatic.com/media/8c35f5_872e74e902a3400d9f7c721265ba94c4~mv2.png/v1/fill/w_743,h_753,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/8c35f5_872e74e902a3400d9f7c721265ba94c4~mv2.png', // SVG placeholder
       established: '2023',
       color: '#5B21B6'
     },
     { 
       name: 'Ivory Home Health',
-      logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjN0MzQUVEIi8+Cjx0ZXh0IHg9IjYwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPklISDwvdGV4dD4KPHR0ZXh0IHg9IjYwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SXZvcnkgSGVhbHRoPC90ZXh0Pgo8L3N2Zz4K', // SVG placeholder
+      logo: 'https://img1.wsimg.com/isteam/ip/1018b022-77e5-4a0f-9b88-caf951010613/Logo%20of%20IHHSI.PNG/:/rs=h:196/ll', // SVG placeholder
       established: '2023',
       color: '#7C3AED'
     }
