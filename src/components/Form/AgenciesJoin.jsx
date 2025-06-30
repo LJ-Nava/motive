@@ -110,13 +110,94 @@ const AgenciesJoin = () => {
     }
   };
 
+  // ✅ NUEVA FUNCIÓN CON FORMSUBMIT
   const handleFinalSubmit = async () => {
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 2500));
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
+    try {
+      // Crear FormData para FormSubmit
+      const formDataToSend = new FormData();
+      
+      // Campos principales del formulario
+      formDataToSend.append('Agency_Name', formData.agencyName);
+      formDataToSend.append('Agency_Type', formData.agencyType);
+      formDataToSend.append('Contact_Email', formData.contactEmail);
+      formDataToSend.append('Phone', formData.phone);
+      formDataToSend.append('Additional_Information', formData.additionalInfo || 'No additional information provided');
+      
+      // Mensaje estructurado y profesional
+      const structuredMessage = `
+🏥 NEW AGENCY APPLICATION - ${formData.agencyName}
+
+═══════════════════════════════════════
+
+📋 AGENCY INFORMATION:
+• Agency Name: ${formData.agencyName}
+• Facility Type: ${formData.agencyType}
+• Contact Email: ${formData.contactEmail}
+• Phone Number: ${formData.phone}
+
+💬 ADDITIONAL DETAILS:
+${formData.additionalInfo || 'No additional information provided'}
+
+📅 APPLICATION DATE: ${new Date().toLocaleString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit'
+})}
+
+🌐 SOURCE: Website Application Form
+      `;
+      
+      formDataToSend.append('message', structuredMessage);
+      
+      // Configuraciones de FormSubmit
+      formDataToSend.append('_subject', 'We have a new referral by the page - Agency Application');
+      formDataToSend.append('_captcha', 'false');
+      formDataToSend.append('_template', 'table'); // Formato tabla más profesional
+      formDataToSend.append('_autoresponse', 
+        `Thank you for your interest in partnering with Motive Home Care, ${formData.agencyName}! We have received your application and will contact you within 2 hours to discuss how we can work together to serve your community.`
+      );
+      
+      // Metadatos adicionales
+      formDataToSend.append('_form_source', 'Agency Partnership Application');
+      formDataToSend.append('_timestamp', new Date().toISOString());
+      
+      console.log('Enviando formulario a FormSubmit...');
+      
+      // Enviar a FormSubmit
+      const response = await fetch('https://formsubmit.co/info@motivehomecare.com', {
+        method: 'POST',
+        body: formDataToSend
+      });
+      
+      console.log('Response status:', response.status);
+      
+      if (response.ok || response.status === 200) {
+        console.log('✅ Formulario enviado exitosamente');
+        
+        // Analytics tracking (opcional)
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'agency_application_submit', {
+            agency_type: formData.agencyType,
+            agency_name: formData.agencyName
+          });
+        }
+        
+        setSubmitted(true);
+      } else {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+      
+    } catch (error) {
+      console.error('❌ Error sending form:', error);
+      alert('There was an error submitting your application. Please try again or contact us directly at (213) 495-0092.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -179,7 +260,7 @@ const AgenciesJoin = () => {
               <div className="success-actions">
                 <button 
                   className="btn btn-primary"
-                  onClick={() => window.location.href = '/'}
+                  onClick={() => window.location.href = '/motive'}
                 >
                   <span className="btn-icon">🏠</span>
                   Return to Homepage
@@ -643,8 +724,8 @@ const AgenciesJoin = () => {
               <span>🌟</span>
               Ready to Connect?
             </div>
-            <h2>Your Community Deserves Excellence</h2>
-            <p>Every healthcare agency plays a vital role in community well-being. Let's explore how we can work together to enhance the care you provide.</p>
+            <h2 className='ColorBack'>Your Community Deserves Excellence</h2>
+            <p className='ColorBack'>Every healthcare agency plays a vital role in community well-being. Let's explore how we can work together to enhance the care you provide.</p>
             
             <div className="cta-actions">
               <button 
@@ -667,7 +748,7 @@ const AgenciesJoin = () => {
 
             <div className="cta-promise">
               <div className="promise-icon">🤝</div>
-              <p>We are committed to supporting your agency's mission with the same professionalism and dedication you bring to patient care.</p>
+              <p className='ColorBack'>We are committed to supporting your agency's mission with the same professionalism and dedication you bring to patient care.</p>
             </div>
           </div>
         </div>

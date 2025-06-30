@@ -45,7 +45,7 @@ const Hero = () => {
       icon: "⭐"
     },
     { 
-      value: "150+", 
+      value: "550+", 
       label: "Active Professionals",
       icon: "🏥"
     }
@@ -188,13 +188,6 @@ const Hero = () => {
                 <span className="hero__btn-arrow">→</span>
               </button>
               
-              <button 
-                className="hero__secondary-btn"
-                onClick={() => handleCTAClick('secondary')}
-                aria-label="Learn more about our process"
-              >
-                Learn Our Process
-              </button>
             </div>
 
             {/* Contact Info */}

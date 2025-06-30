@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../styles/form/TherapistApplicationForm.scss';
 
-
 const TherapistApplicationForm = () => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -21,7 +20,7 @@ const TherapistApplicationForm = () => {
     { value: 'occupational-therapy', label: 'Occupational Therapy (OT)', icon: '🖐️' },
     { value: 'speech-therapy', label: 'Speech-Language Pathology (SLP)', icon: '💬' },
     { value: 'pta', label: 'Physical Therapist Assistant (PTA)', icon: '🤝' },
-    { value: 'cota', label: 'Certified Occupational Therapy Assistant (COTA)', icon: '✋' },
+    { value: 'cota', label: ' Occupational Therapy Assistant (COTA)', icon: '✋' },
     { value: 'slpa', label: 'Speech-Language Pathology Assistant (SLPA)', icon: '🗣️' }
   ];
 
@@ -101,6 +100,7 @@ const TherapistApplicationForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // ✅ NUEVA FUNCIÓN CON FORMSUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -109,22 +109,93 @@ const TherapistApplicationForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Crear FormData para FormSubmit
+      const formDataToSend = new FormData();
       
-      // Analytics tracking
-      if (typeof window !== 'undefined' && window.gtag) {
-        window.gtag('event', 'therapist_application_submit', {
-          discipline: formData.discipline,
-          experience: formData.yearsExperience,
-          coverage_areas: formData.coverageAreas.length
-        });
+      // Campos principales del formulario
+      formDataToSend.append('Full_Name', formData.fullName);
+      formDataToSend.append('Email_Address', formData.email);
+      formDataToSend.append('Phone_Number', formData.phone);
+      formDataToSend.append('Primary_Discipline', formData.discipline);
+      formDataToSend.append('Years_of_Experience', formData.yearsExperience);
+      formDataToSend.append('Coverage_Areas', formData.coverageAreas.join(', '));
+      
+      // Encontrar la etiqueta de la disciplina
+      const disciplineLabel = disciplines.find(d => d.value === formData.discipline)?.label || formData.discipline;
+      
+      // Mensaje estructurado y profesional
+      const structuredMessage = `
+👩‍⚕️ NEW THERAPIST APPLICATION - ${formData.fullName}
+
+═══════════════════════════════════════
+
+📋 PERSONAL INFORMATION:
+• Full Name: ${formData.fullName}
+• Email: ${formData.email}
+• Phone: ${formData.phone}
+
+💼 PROFESSIONAL DETAILS:
+• Primary Discipline: ${disciplineLabel}
+• Years of Experience: ${formData.yearsExperience}
+• Coverage Areas: ${formData.coverageAreas.join(', ')}
+
+📅 APPLICATION DATE: ${new Date().toLocaleString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit'
+})}
+
+🌐 SOURCE: Website Therapist Application Form
+      `;
+      
+      formDataToSend.append('message', structuredMessage);
+      
+      // Configuraciones de FormSubmit
+      formDataToSend.append('_subject', 'We have a new referral by the page - Therapist Application');
+      formDataToSend.append('_captcha', 'false');
+      formDataToSend.append('_template', 'table'); // Formato tabla más profesional
+      formDataToSend.append('_autoresponse', 
+        `Thank you for your interest in joining our therapy network, ${formData.fullName}! We have received your application and will review it within 24 hours. Our team will contact you soon to discuss opportunities that match your expertise in ${disciplineLabel}.`
+      );
+      
+      // Metadatos adicionales
+      formDataToSend.append('_form_source', 'Therapist Application');
+      formDataToSend.append('_discipline_type', disciplineLabel);
+      formDataToSend.append('_timestamp', new Date().toISOString());
+      
+      console.log('Enviando formulario de terapeuta a FormSubmit...');
+      
+      // Enviar a FormSubmit
+      const response = await fetch('https://formsubmit.co/info@motivehomecare.com', {
+        method: 'POST',
+        body: formDataToSend
+      });
+      
+      console.log('Response status:', response.status);
+      
+      if (response.ok || response.status === 200) {
+        console.log('✅ Formulario de terapeuta enviado exitosamente');
+        
+        // Analytics tracking
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'therapist_application_submit', {
+            discipline: formData.discipline,
+            experience: formData.yearsExperience,
+            coverage_areas: formData.coverageAreas.length
+          });
+        }
+        
+        setIsSubmitted(true);
+      } else {
+        throw new Error(`HTTP Error: ${response.status}`);
       }
       
-      setIsSubmitted(true);
-      
     } catch (error) {
-      alert('❌ Error submitting application. Please try again.');
+      console.error('❌ Error sending therapist form:', error);
+      alert('There was an error submitting your application. Please try again or contact us directly at (213) 495-0092.');
     } finally {
       setIsSubmitting(false);
     }
@@ -159,7 +230,7 @@ const TherapistApplicationForm = () => {
             </div>
             <button 
               className="motive-return-home-btn"
-              onClick={() => window.location.href = '/'}
+              onClick={() => window.location.href = '/motive'}
             >
               Return to Homepage
             </button>
