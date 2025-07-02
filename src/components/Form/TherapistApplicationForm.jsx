@@ -44,11 +44,34 @@ const TherapistApplicationForm = () => {
     { value: '16+', label: '16+ years' }
   ];
 
+  const formatPhoneNumber = (value) => {
+    // Remove all non-digits
+    const digits = value.replace(/\D/g, '');
+    
+    // Apply (---) ---_--- format
+    if (digits.length <= 3) {
+      return `(${digits}`;
+    } else if (digits.length <= 6) {
+      return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    } else {
+      return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+    }
+  };
+
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
+    if (field === 'phone') {
+      // Format phone number as user types
+      const formattedPhone = formatPhoneNumber(value);
+      setFormData(prev => ({
+        ...prev,
+        [field]: formattedPhone
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [field]: value
+      }));
+    }
     
     if (errors[field]) {
       setErrors(prev => ({
@@ -82,6 +105,8 @@ const TherapistApplicationForm = () => {
     
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
+    } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(formData.phone)) {
+      newErrors.phone = 'Please enter a valid phone number in format (123) 456-7890';
     }
     
     if (!formData.discipline) {
@@ -100,7 +125,6 @@ const TherapistApplicationForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // ✅ NUEVA FUNCIÓN CON FORMSUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -109,10 +133,8 @@ const TherapistApplicationForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Crear FormData para FormSubmit
       const formDataToSend = new FormData();
       
-      // Campos principales del formulario
       formDataToSend.append('Full_Name', formData.fullName);
       formDataToSend.append('Email_Address', formData.email);
       formDataToSend.append('Phone_Number', formData.phone);
@@ -120,10 +142,8 @@ const TherapistApplicationForm = () => {
       formDataToSend.append('Years_of_Experience', formData.yearsExperience);
       formDataToSend.append('Coverage_Areas', formData.coverageAreas.join(', '));
       
-      // Encontrar la etiqueta de la disciplina
       const disciplineLabel = disciplines.find(d => d.value === formData.discipline)?.label || formData.discipline;
       
-      // Mensaje estructurado y profesional
       const structuredMessage = `
 👩‍⚕️ NEW THERAPIST APPLICATION - ${formData.fullName}
 
@@ -153,22 +173,19 @@ const TherapistApplicationForm = () => {
       
       formDataToSend.append('message', structuredMessage);
       
-      // Configuraciones de FormSubmit
       formDataToSend.append('_subject', 'We have a new referral by the page - Therapist Application');
       formDataToSend.append('_captcha', 'false');
-      formDataToSend.append('_template', 'table'); // Formato tabla más profesional
+      formDataToSend.append('_template', 'table');
       formDataToSend.append('_autoresponse', 
         `Thank you for your interest in joining our therapy network, ${formData.fullName}! We have received your application and will review it within 24 hours. Our team will contact you soon to discuss opportunities that match your expertise in ${disciplineLabel}.`
       );
       
-      // Metadatos adicionales
       formDataToSend.append('_form_source', 'Therapist Application');
       formDataToSend.append('_discipline_type', disciplineLabel);
       formDataToSend.append('_timestamp', new Date().toISOString());
       
       console.log('Enviando formulario de terapeuta a FormSubmit...');
       
-      // Enviar a FormSubmit
       const response = await fetch('https://formsubmit.co/info@motivehomecare.com', {
         method: 'POST',
         body: formDataToSend
@@ -179,7 +196,6 @@ const TherapistApplicationForm = () => {
       if (response.ok || response.status === 200) {
         console.log('✅ Formulario de terapeuta enviado exitosamente');
         
-        // Analytics tracking
         if (typeof window !== 'undefined' && window.gtag) {
           window.gtag('event', 'therapist_application_submit', {
             discipline: formData.discipline,
@@ -216,7 +232,7 @@ const TherapistApplicationForm = () => {
             <p>Thank you for your interest in joining our therapy network. Our team will review your application and contact you within 24 hours.</p>
             <div className="motive-next-steps">
               <div className="motive-step-item">
-                <span className="motive-step-number">1</span>
+                <span className eenmaal="motive-step-number">1</span>
                 <span>Application Review (24hrs)</span>
               </div>
               <div className="motive-step-item">
@@ -259,7 +275,7 @@ const TherapistApplicationForm = () => {
               <span className="motive-stat-label">Satisfaction Rate</span>
             </div>
             <div className="motive-stat-item">
-              <span className="motive-stat-number">&lt;24hrs</span>
+              <span className="motive-stat-number">24hrs</span>
               <span className="motive-stat-label">Response Time</span>
             </div>
           </div>
@@ -305,157 +321,158 @@ const TherapistApplicationForm = () => {
                   {errors.email && <span className="motive-error-message">{errors.email}</span>}
                 </div>
 
-                <div className="motive-form-group">
-                  <label htmlFor="phone">Phone Number *</label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className={errors.phone ? 'motive-input-error' : ''}
-                    placeholder="(555) 123-4567"
-                  />
-                  {errors.phone && <span className="motive-error-message">{errors.phone}</span>}
-                </div>
-              </div>
-            </div>
-
-            {/* Professional Information */}
-            <div className="motive-form-section">
-              <h3>Professional Information</h3>
-              
-              <div className="motive-form-group">
-                <label>Primary Discipline *</label>
-                <div className="motive-discipline-grid">
-                  {disciplines.map(disc => (
-                    <div
-                      key={disc.value}
-                      className={`motive-discipline-card ${formData.discipline === disc.value ? 'motive-discipline-selected' : ''}`}
-                      onClick={() => handleInputChange('discipline', disc.value)}
-                    >
-                      <span className="motive-discipline-icon">{disc.icon}</span>
-                      <span className="motive-discipline-label">{disc.label}</span>
-                    </div>
-                  ))}
-                </div>
-                {errors.discipline && <span className="motive-error-message">{errors.discipline}</span>}
-              </div>
-
-              <div className="motive-form-group">
-                <label htmlFor="yearsExperience">Years of Experience *</label>
-                <select
-                  id="yearsExperience"
-                  value={formData.yearsExperience}
-                  onChange={(e) => handleInputChange('yearsExperience', e.target.value)}
-                  className={errors.yearsExperience ? 'motive-input-error' : ''}
-                >
-                  <option value="">Select your experience level</option>
-                  {experienceOptions.map(option => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-                {errors.yearsExperience && <span className="motive-error-message">{errors.yearsExperience}</span>}
-              </div>
-            </div>
-
-            {/* Coverage Areas */}
-            <div className="motive-form-section">
-              <h3>Coverage Areas *</h3>
-              <p className="motive-section-description">Select all areas where you're willing to provide services</p>
-              <div className="motive-coverage-grid">
-                {coverageAreas.map(area => (
-                  <label key={area} className="motive-checkbox-item">
-                    <input
-                      type="checkbox"
-                      checked={formData.coverageAreas.includes(area)}
-                      onChange={() => handleAreaChange(area)}
-                    />
-                    <span className="motive-checkmark"></span>
-                    <span className="motive-checkbox-label">{area}</span>
-                  </label>
-                ))}
-              </div>
-              {errors.coverageAreas && <span className="motive-error-message">{errors.coverageAreas}</span>}
-            </div>
-
-            {/* Submit Button */}
-            <div className="motive-form-submit-section">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="motive-submit-button"
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="motive-spinner"></div>
-                    Submitting Application...
-                  </>
-                ) : (
-                  <>
-                    Submit Application
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                  </>
-                )}
-              </button>
-              <p className="motive-submit-note">
-                By submitting this application, you agree to be contacted by our team regarding therapy opportunities.
-              </p>
-            </div>
-          </form>
-        </div>
-
-        {/* Sidebar */}
-        <div className="motive-form-sidebar">
-          <div className="motive-benefits-card">
-            <h4>Why Choose Motive?</h4>
-            <ul className="motive-benefits-list">
-              <li>
-                <span className="motive-benefit-icon">⚡</span>
-                <div>
-                  <strong>Fast Placement</strong>
-                  <p>Get matched within 48 hours</p>
-                </div>
-              </li>
-              <li>
-                <span className="motive-benefit-icon">💎</span>
-                <div>
-                  <strong>Premium Agencies</strong>
-                  <p>Top-rated healthcare providers</p>
-                </div>
-              </li>
-              <li>
-                <span className="motive-benefit-icon">💰</span>
-                <div>
-                  <strong>Competitive Rates</strong>
-                  <p>Best compensation packages</p>
-                </div>
-              </li>
-              <li>
-                <span className="motive-benefit-icon">🤝</span>
-                <div>
-                  <strong>Personal Support</strong>
-                  <p>Dedicated account manager</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div className="motive-contact-card">
-            <h4>Questions?</h4>
-            <p>Our team is here to help you every step of the way.</p>
-            <a href="tel:+12134950092" className="motive-contact-button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-              </svg>
-              (213) 495-0092
-            </a>
+          <div className="motive-form-group">
+            <label htmlFor="phone">Phone Number *</label>
+            <input
+              id="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={(e) => handleInputChange('phone', e.target.value)}
+              className={errors.phone ? 'motive-input-error' : ''}
+              placeholder="(123) 456-7890"
+              maxLength={14}
+            />
+            {errors.phone && <span className="motive-error-message">{errors.phone}</span>}
           </div>
         </div>
       </div>
+
+      {/* Professional Information */}
+      <div className="motive-form-section">
+        <h3>Professional Information</h3>
+        
+        <div className="motive-form-group">
+          <label>Primary Discipline *</label>
+          <div className="motive-discipline-grid">
+            {disciplines.map(disc => (
+              <div
+                key={disc.value}
+                className={`motive-discipline-card ${formData.discipline === disc.value ? 'motive-discipline-selected' : ''}`}
+                onClick={() => handleInputChange('discipline', disc.value)}
+              >
+                <span className="motive-discipline-icon">{disc.icon}</span>
+                <span className="motive-discipline-label">{disc.label}</span>
+              </div>
+            ))}
+          </div>
+          {errors.discipline && <span className="motive-error-message">{errors.discipline}</span>}
+        </div>
+
+        <div className="motive-form-group">
+          <label htmlFor="yearsExperience">Years of Experience *</label>
+          <select
+            id="yearsExperience"
+            value={formData.yearsExperience}
+            onChange={(e) => handleInputChange('yearsExperience', e.target.value)}
+            className={errors.yearsExperience ? 'motive-input-error' : ''}
+          >
+            <option value="">Select your experience level</option>
+            {experienceOptions.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          {errors.yearsExperience && <span className="motive-error-message">{errors.yearsExperience}</span>}
+        </div>
+      </div>
+
+      {/* Coverage Areas */}
+      <div className="motive-form-section">
+        <h3>Coverage Areas *</h3>
+        <p className="motive-section-description">Select all areas where you're willing to provide services</p>
+        <div className="motive-coverage-grid">
+          {coverageAreas.map(area => (
+            <label key={area} className="motive-checkbox-item">
+              <input
+                type="checkbox"
+                checked={formData.coverageAreas.includes(area)}
+                onChange={() => handleAreaChange(area)}
+              />
+              <span className="motive-checkmark"></span>
+              <span className="motive-checkbox-label">{area}</span>
+            </label>
+          ))}
+        </div>
+        {errors.coverageAreas && <span className="motive-error-message">{errors.coverageAreas}</span>}
+      </div>
+
+      {/* Submit Button */}
+      <div className="motive-form-submit-section">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="motive-submit-button"
+        >
+          {isSubmitting ? (
+            <>
+              <div className="motive-spinner"></div>
+              Submitting Application...
+            </>
+          ) : (
+            <>
+              Submit Application
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </>
+          )}
+        </button>
+        <p className="motive-submit-note">
+          By submitting this application, you agree to be contacted by our team regarding therapy opportunities.
+        </p>
+      </div>
+    </form>
+  </div>
+
+  {/* Sidebar */}
+  <div className="motive-form-sidebar">
+    <div className="motive-benefits-card">
+      <h4>Why Choose Motive?</h4>
+      <ul className="motive-benefits-list">
+        <li>
+          <span className="motive-benefit-icon">⚡</span>
+          <div>
+            <strong>Fast Placement</strong>
+            <p>Get matched within 48 hours</p>
+          </div>
+        </li>
+        <li>
+          <span className="motive-benefit-icon">💎</span>
+          <div>
+            <strong>Premium Agencies</strong>
+            <p>Top-rated healthcare providers</p>
+          </div>
+        </li>
+        <li>
+          <span className="motive-benefit-icon">💰</span>
+          <div>
+            <strong>Competitive Rates</strong>
+            <p>Best compensation packages</p>
+          </div>
+        </li>
+        <li>
+          <span className="motive-benefit-icon">🤝</span>
+          <div>
+            <strong>Personal Support</strong>
+            <p>Dedicated account manager</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div className="motive-contact-card">
+      <h4>Questions?</h4>
+      <p>Our team is here to help you every step of the way.</p>
+      <a href="tel:+12134950092" className="motive-contact-button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
+        (213) 495-0092
+      </a>
+    </div>
+  </div>
+</div>
     </div>
   );
 };

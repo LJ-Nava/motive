@@ -69,11 +69,25 @@ const AboutUs = () => {
               <h2 className="about-us__hero-subtitle">
                 Professional Healthcare Staffing Excellence for California Agencies
               </h2>
-              <p className="about-us__hero-description">
-                Founded by a Physical Therapist who understood that patients deserved better. 
-                Today, we connect healthcare agencies with California's most dedicated therapy professionals. 
-                Exceptional response times, quality outcomes, and genuine partnership—accessible to every agency.
-              </p>
+              
+              {/* ✅ CONTENIDO MOVIDO DESDE SERVICES */}
+              <div className="about-us__hero-description-section">
+                <p className="about-us__hero-description">
+                  At Motive Home Care, we're committed to enhancing the quality of in-home therapy. 
+                  Located in the heart of Los Angeles, we specialize in staffing home health agencies 
+                  with the finest physical, occupational and speech therapists. Our dedicated team 
+                  prides itself on providing reliable and timely service, ensuring that we connect 
+                  you with clinicians who are not only experienced but also deeply passionate about 
+                  patient care.
+                </p>
+                
+                <p className="about-us__hero-description">
+                  Founded by a Physical Therapist who understood that patients deserved better. 
+                  Today, we connect healthcare agencies with California's most dedicated therapy professionals. 
+                  Exceptional response times, quality outcomes, and genuine partnership—accessible to every agency.
+                </p>
+              </div>
+              
               <div className="about-us__hero-actions">
                 <button 
                   className="about-us__cta about-us__cta--primary"

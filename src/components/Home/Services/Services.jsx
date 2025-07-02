@@ -3,98 +3,80 @@ import { useNavigate } from 'react-router-dom';
 import '../../styles/home/Services.scss';
 
 const Services = () => {
-  const [activeService, setActiveService] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
   const servicesRef = useRef(null);
   const navigate = useNavigate();
 
-  // Servicios simplificados con textos de la página original
-  const therapyServices = [
+  // Testimonials más diversos y humildes
+  const testimonials = [
     {
-      id: 'physical-therapy',
-      type: 'Physical Therapy',
-      shortName: 'PT',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2m4-2v4m0 0l3-3m-3 3l-3-3"/>
-        </svg>
-      ),
-      professionals: '150+',
-      responseTime: '<2hrs',
-      description: 'Experienced physical therapists specializing in post-surgical rehabilitation, neurological recovery, and mobility restoration. Our PTs bring years of home health experience to help patients regain strength and independence.',
-      keyPoints: [
-        'Post-surgical rehabilitation',
-        'Neurological recovery',
-        'Home safety assessments',
-        'Equipment training',
-        'Patient education',
-        'Consistent care continuity'
-      ]
+      name: "Maria Gonzalez",
+      role: "Physical Therapist",
+      company: "Community Health Center",
+      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      quote: "Motive helped me find meaningful work where I can truly make a difference in people's lives. The team treats everyone with respect and genuine care.",
+      location: "Los Angeles, CA"
     },
     {
-      id: 'occupational-therapy',
-      type: 'Occupational Therapy',
-      shortName: 'OT',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 7.172V5L8 4z"/>
-        </svg>
-      ),
-      professionals: '75+',
-      responseTime: '<2hrs',
-      description: 'Skilled occupational therapists focused on helping patients regain independence in daily activities. Our OTs provide meaningful, functional improvements that matter most to patients and families.',
-      keyPoints: [
-        'Activities of daily living training',
-        'Cognitive rehabilitation support',
-        'Adaptive equipment recommendations',
-        'Home modification assessments',
-        'Family education and support',
-        'Integrated care coordination'
-      ]
+      name: "David Kim",
+      role: "Occupational Therapist", 
+      company: "Senior Care Facility",
+      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      quote: "What I appreciate most is how Motive listens to what matters to me as a therapist. They understand that we're all in this together.",
+      location: "San Diego, CA"
     },
     {
-      id: 'speech-therapy',
-      type: 'Speech Therapy',
-      shortName: 'SLP',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
-        </svg>
-      ),
-      professionals: '50+',
-      responseTime: '<2hrs',
-      description: 'Expert speech-language pathologists who provide patient, effective therapy for communication and swallowing disorders. Our SLPs are dedicated to helping patients regain their voice and confidence.',
-      keyPoints: [
-        'Swallowing disorders evaluation',
-        'Communication recovery programs',
-        'Voice and speech rehabilitation',
-        'Cognitive therapy support',
-        'Technology-assisted therapy',
-        'Caregiver training programs'
-      ]
+      name: "Jennifer Torres",
+      role: "Speech Language Pathologist",
+      company: "Pediatric Therapy Center",
+      image: "https://images.unsplash.com/photo-1594824804732-ca8d76052d6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      quote: "Working with Motive feels like being part of a supportive community. They've helped me grow professionally while staying true to my values.",
+      location: "Orange County, CA"
+    },
+    {
+      name: "Michael Johnson",
+      role: "Physical Therapist Assistant",
+      company: "Rehabilitation Hospital",
+      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      quote: "Motive connected me with opportunities I never knew existed. They see potential in everyone and help you reach it.",
+      location: "Riverside, CA"
+    },
+    {
+      name: "Sarah Chen",
+      role: "Occupational Therapist",
+      company: "Home Health Agency",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      quote: "The personal touch at Motive is incredible. They remember your name, your goals, and actually care about your success.",
+      location: "Bakersfield, CA"
     }
   ];
 
-  // Ventajas simplificadas
-  const serviceBenefits = [
-    
+  // Beneficios con enfoque más humilde y auténtico
+  const benefits = [
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+      ),
+      title: "Personal Connection",
+      subtitle: "We treat everyone like family",
+      description: "Every conversation matters to us. We take time to understand your unique situation, goals, and what truly matters to you in your career journey.",
+      image: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      accent: "#3b82f6"
+    },
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
       ),
-      title: 'Quality Assured',
-      description: 'Thorough screening, background checks, and ongoing professional development for your peace of mind.'
-    },
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-        </svg>
-      ),
-      title: 'Ongoing Support',
-      description: 'Regular communication throughout the placement process with guaranteed patient continuity.'
+      title: "Quality Care Matching",
+      subtitle: "The right fit for everyone",
+      description: "We believe in careful, thoughtful matches. Our team works hard to connect therapists with opportunities where they can thrive and make a real difference.",
+      image: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      accent: "#8b5cf6"
     },
     {
       icon: (
@@ -102,10 +84,45 @@ const Services = () => {
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
         </svg>
       ),
-      title: 'Professional Excellence',
-      description: 'Reliable therapy staffing with clear communication and transparent process at every step.'
+      title: "Ongoing Support",
+      subtitle: "We're here when you need us",
+      description: "From your first conversation to ongoing career growth, our team is committed to being a resource you can count on. Your success is our success.",
+      image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      accent: "#06b6d4"
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+      ),
+      title: "Professional Growth",
+      subtitle: "Growing together as a community",
+      description: "We believe everyone deserves opportunities to learn and advance. We're committed to helping you build the career you envision for yourself.",
+      image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      accent: "#f59e0b"
     }
   ];
+
+  // Partículas más sutiles y elegantes
+  const ElegantParticles = () => {
+    return (
+      <div className="elegant-particles">
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i} 
+            className={`particle particle-${i + 1}`}
+            style={{
+              '--delay': `${i * 0.5}s`,
+              '--duration': `${15 + Math.random() * 10}s`,
+              '--size': `${3 + Math.random() * 5}px`,
+              '--opacity': Math.random() * 0.3 + 0.1
+            }}
+          />
+        ))}
+      </div>
+    );
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -114,7 +131,7 @@ const Services = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     if (servicesRef.current) {
@@ -124,33 +141,25 @@ const Services = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-cycle exactamente 10 segundos
+  // Auto-cycle testimonials cada 6 segundos
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveService((prev) => (prev + 1) % therapyServices.length);
-    }, 10000); // Exactamente 10 segundos
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
 
-  const handleServiceClick = (index) => {
-    setActiveService(index);
-  };
-
-  // ✅ FUNCIONES DE NAVEGACIÓN CON REACT ROUTER
   const handleAgencyClick = () => {
-    // Analytics tracking
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'agency_button_click', {
         event_category: 'services',
-        event_label: 'join_network'
+        event_label: 'partner_with_us'
       });
     }
     
-    // Navegar a la página de agencias
+    // Navigate to agencies page
     navigate('/agencies/join');
-    
-    // Scroll to top después de navegar
     setTimeout(() => {
       window.scrollTo({
         top: 0,
@@ -161,18 +170,15 @@ const Services = () => {
   };
 
   const handleTherapistClick = () => {
-    // Analytics tracking
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'therapist_button_click', {
         event_category: 'services',
-        event_label: 'apply_today'
+        event_label: 'join_our_community'
       });
     }
     
-    // Navegar a la página de terapeutas
+    // Navigate to therapists page
     navigate('/therapists/apply');
-    
-    // Scroll to top después de navegar
     setTimeout(() => {
       window.scrollTo({
         top: 0,
@@ -183,178 +189,196 @@ const Services = () => {
   };
 
   return (
-    <section className="services" id="services" ref={servicesRef}>
-      <div className="services__container">
+    <section className="humble-services" id="services" ref={servicesRef}>
+      <ElegantParticles />
+      
+      <div className="humble-services__container">
         
-        {/* Header simplificado */}
-        <div className={`services__header ${isVisible ? 'fade-in' : ''}`}>
-          <div className="services__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Professional Healthcare Staffing</span>
-          </div>
-          
-          <h2 className="services__title">
-            Professional Therapy Staffing <br />
-            <span className="services__title-highlight">That Actually Works for Everyone</span>
-          </h2>
-          
-          <p className="services__subtitle">
-            At Motive Home Care, we're committed to enhancing the quality of in-home therapy. 
-            Located in the heart of Los Angeles, we specialize in staffing home health agencies 
-            with the finest physical, occupational and speech therapists. Our dedicated team 
-            prides itself on providing reliable and timely service, ensuring that we connect 
-            you with clinicians who are not only experienced but also deeply passionate about 
-            patient care.
-          </p>
-        </div>
-
-        {/* Servicios principales */}
-        <div className={`services__showcase ${isVisible ? 'fade-in' : ''}`}>
-          <div className="services__showcase-header">
-            <h3 className="services__showcase-title">Our Therapy Specialties</h3>
-            <p className="services__showcase-subtitle">
-              Expert professionals ready to help - because every patient deserves quality care
+        {/* Why Choose Section */}
+        <div className={`humble-services__benefits ${isVisible ? 'fade-in' : ''}`}>
+          <div className="humble-services__benefits-header">
+            <div className="humble-services__badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+              <span>Built on Care & Respect</span>
+            </div>
+            <h2 className="humble-services__benefits-title">
+              Why Healthcare <span className="humble-services__title-highlight">Professionals</span> Choose Motive
+            </h2>
+            <p className="humble-services__benefits-subtitle">
+              We believe in treating everyone with dignity and respect. Our approach is simple: we listen, we care, and we work together to create opportunities that make a real difference in people's lives.
             </p>
           </div>
 
-          {/* Navegación de servicios */}
-          <div className="services__navigation">
-            {therapyServices.map((service, index) => (
-              <button
-                key={index}
-                className={`services__nav-button ${activeService === index ? 'active' : ''}`}
-                onClick={() => handleServiceClick(index)}
-              >
-                <div className="services__nav-icon">
-                  {service.icon}
+          {/* Benefits Grid */}
+          <div className="humble-services__benefits-grid">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="humble-services__benefit-card">
+                <div className="humble-services__benefit-visual">
+                  <div className="humble-services__benefit-image">
+                    <img src={benefit.image} alt={benefit.title} />
+                    <div 
+                      className="humble-services__benefit-overlay" 
+                      style={{ backgroundColor: benefit.accent, opacity: 0.1 }}
+                    />
+                  </div>
                 </div>
-                <div className="services__nav-content">
-                  <span className="services__nav-label">{service.shortName}</span>
-                  <span className="services__nav-title">{service.type}</span>
+                
+                <div className="humble-services__benefit-content">
+                  <div 
+                    className="humble-services__benefit-icon"
+                    style={{ borderColor: benefit.accent }}
+                  >
+                    {benefit.icon}
+                  </div>
+                  <h3 className="humble-services__benefit-title">{benefit.title}</h3>
+                  <p className="humble-services__benefit-subtitle" style={{ color: benefit.accent }}>
+                    {benefit.subtitle}
+                  </p>
+                  <p className="humble-services__benefit-description">{benefit.description}</p>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
 
-          {/* Servicio activo */}
-          <div className="services__active-service">
-            <div className="services__service-card">
-              <div className="services__service-header">
-                <div className="services__service-icon">
-                  {therapyServices[activeService].icon}
-                </div>
-                <div className="services__service-info">
-                  <h4 className="services__service-title">
-                    {therapyServices[activeService].type}
-                  </h4>
+          {/* Testimonials Section */}
+          <div className="humble-services__testimonials">
+            <div className="humble-services__testimonials-header">
+              <h3 className="humble-services__testimonials-title">
+                Stories from Our Community
+              </h3>
+              <p className="humble-services__testimonials-subtitle">
+                Real experiences from real people who are part of the Motive family
+              </p>
+            </div>
+            
+            <div className="humble-services__testimonial-carousel">
+              <div className="humble-services__testimonial-card">
+                <div className="humble-services__testimonial-content">
+                  <div className="humble-services__testimonial-quote">
+                    <svg className="humble-services__quote-icon" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-10zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                    </svg>
+                    <p>"{testimonials[activeTestimonial].quote}"</p>
+                  </div>
+                  
+                  <div className="humble-services__testimonial-author">
+                    <div className="humble-services__author-image">
+                      <img src={testimonials[activeTestimonial].image} alt={testimonials[activeTestimonial].name} />
+                    </div>
+                    <div className="humble-services__author-info">
+                      <h4 className="humble-services__author-name">{testimonials[activeTestimonial].name}</h4>
+                      <p className="humble-services__author-role">{testimonials[activeTestimonial].role}</p>
+                      <p className="humble-services__author-company">{testimonials[activeTestimonial].company}</p>
+                      <p className="humble-services__author-location">{testimonials[activeTestimonial].location}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <p className="services__service-description">
-                {therapyServices[activeService].description}
-              </p>
-
-              {/* Tarjetas mejoradas de puntos clave */}
-              <div className="services__service-features">
-                <h5 className="services__features-title">
-                  <svg viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                  </svg>
-                  Key Specialties
-                </h5>
-                <div className="services__features-grid">
-                  {therapyServices[activeService].keyPoints.map((point, index) => (
-                    <div key={index} className="services__feature-card">
-                      <div className="services__feature-icon">
-                        <svg viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                        </svg>
-                      </div>
-                      <span className="services__feature-text">{point}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="humble-services__testimonial-indicators">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveTestimonial(index)}
+                    className={`humble-services__indicator ${index === activeTestimonial ? 'active' : ''}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Beneficios simplificados */}
-        <div className={`services__benefits ${isVisible ? 'fade-in' : ''}`}>
-          <div className="services__benefits-header">
-            <h3 className="services__benefits-title">Why Choose Motive?</h3>
-            <p className="services__benefits-subtitle">
-              At Motive Home Care, we pride ourselves on connecting you with the most dedicated 
-              and experienced therapists in the Southern California region. Our commitment to 
-              reliability and timely service ensures that you receive the highest quality care 
-              when it matters most.
-            </p>
+        {/* Call to Action Section */}
+        <div className={`humble-services__cta ${isVisible ? 'fade-in' : ''}`}>
+          <div className="humble-services__cta-background">
+            <img 
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+              alt="Healthcare professionals collaborating in modern facility" 
+              className="humble-services__cta-hero-image"
+            />
+            <div className="humble-services__cta-overlay" />
           </div>
           
-          <div className="services__benefits-grid">
-            {serviceBenefits.map((benefit, index) => (
-              <div key={index} className="services__benefit-card">
-                <div className="services__benefit-icon">
-                  {benefit.icon}
-                </div>
-                <div className="services__benefit-content">
-                  <h4 className="services__benefit-title">{benefit.title}</h4>
-                  <p className="services__benefit-description">{benefit.description}</p>
-                </div>
+          <div className="humble-services__cta-content">
+            <div className="humble-services__cta-header">
+              <div className="humble-services__cta-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span id='formlol'>Join Our Community</span>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Call to action rediseñado con navegación React Router */}
-        <div className={`services__cta ${isVisible ? 'fade-in' : ''}`}>
-          <div className="services__cta-content">
-            <h3 className="services__cta-title" id="ready-to-start">
-              Ready to Get Started?
-            </h3>
-            <p className="services__cta-subtitle">
-              Choose your path to connect with quality healthcare staffing solutions.
-            </p>
+              <h2 className="humble-services__cta-title">
+                Ready to Experience the 
+                <span className="humble-services__title-highlight"> Motive Difference</span>?
+              </h2>
+              <p className="humble-services__cta-subtitle">
+                Whether you're a healthcare facility looking for dedicated professionals or a therapist seeking meaningful opportunities, we're here to help you succeed. Let's build something great together.
+              </p>
+            </div>
             
-            <div className="services__cta-options">
-              <div className="services__cta-option">
-                <div className="services__option-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                  </svg>
+            <div className="humble-services__cta-options">
+              <div className="humble-services__cta-option">
+                <div className="humble-services__option-header">
+                  <div className="humble-services__option-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                  </div>
+                  <div className="humble-services__option-badge">For Healthcare Agencies</div>
                 </div>
-                <h4 className="services__option-title">I'm an Agency</h4>
-                <p className="services__option-description">
-                  Looking for qualified therapists to serve your patients
+                
+                <h3 className="humble-services__option-title">Partner With Us</h3>
+                <p className="humble-services__option-description">
+                  Connect with compassionate, skilled therapy professionals who share your commitment to excellent patient care.
                 </p>
+                
+                <div className="humble-services__option-features">
+                  <div className="humble-services__feature">✓ Carefully screened professionals</div>
+                  <div className="humble-services__feature">✓ Responsive, personal service</div>
+                  <div className="humble-services__feature">✓ Ongoing partnership support</div>
+                  <div className="humble-services__feature">✓ Transparent communication</div>
+                </div>
+                
                 <button 
                   onClick={handleAgencyClick}
-                  className="services__option-button"
+                  className="humble-services__option-button primary"
                 >
-                  Join Our Network
+                  Start Partnership
                   <svg viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/>
                   </svg>
                 </button>
               </div>
 
-              <div className="services__cta-option">
-                <div className="services__option-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                  </svg>
+              <div className="humble-services__cta-option">
+                <div className="humble-services__option-header">
+                  <div className="humble-services__option-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                  </div>
+                  <div className="humble-services__option-badge">For Therapy Professionals</div>
                 </div>
-                <h4 className="services__option-title">I'm a Therapist</h4>
-                <p className="services__option-description">
-                  Ready to connect with premium healthcare opportunities
+                
+                <h3 className="humble-services__option-title">Join Our Team</h3>
+                <p className="humble-services__option-description">
+                  Discover opportunities where your skills and compassion can make a real difference in people's lives.
                 </p>
+                
+                <div className="humble-services__option-features">
+                  <div className="humble-services__feature">✓ Meaningful work opportunities</div>
+                  <div className="humble-services__feature">✓ Fair compensation packages</div>
+                  <div className="humble-services__feature">✓ Professional development support</div>
+                  <div className="humble-services__feature">✓ Flexible scheduling options</div>
+                </div>
+                
                 <button 
                   onClick={handleTherapistClick}
-                  className="services__option-button"
+                  className="humble-services__option-button secondary"
                 >
-                  Apply Today
+                  Explore Opportunities
                   <svg viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/>
                   </svg>
@@ -362,21 +386,22 @@ const Services = () => {
               </div>
             </div>
 
-            {/* Información de contacto alternativa */}
-            <div className="services__cta-contact">
-              <p className="services__contact-text">
-                Have questions? Call us directly:
-              </p>
-              <a href="tel:+12134950092" className="services__contact-phone">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
-                <span>(213) 495-0092</span>
-              </a>
+            {/* Contact Section */}
+            <div className="humble-services__cta-contact">
+              <div className="humble-services__contact-info">
+                <p className="humble-services__contact-text">
+                  Have questions? We'd love to hear from you.
+                </p>
+                <a href="tel:+12134950092" className="humble-services__contact-phone">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+                  <span>(213) 495-0092</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
