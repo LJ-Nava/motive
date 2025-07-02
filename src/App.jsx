@@ -3,8 +3,8 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Home/Header/Header.jsx';
 import Hero from './components/Home/Hero/Hero.jsx';
-import Services from './components/Home/Services/Services.jsx';
 import Network from './components/Home/Network/Network.jsx';
+import Services from './components/Home/Services/Services.jsx';
 import Testimonials from './components/Home/Testimonials/Testimonials.jsx';
 import Footer from './components/Home/Footer/Footer.jsx';
 import CoverageAreas from './components/Coverage/CoverageAreas.jsx';
@@ -13,16 +13,15 @@ import TherapistApplicationForm from './components/Form/TherapistApplicationForm
 import AboutUs from './components/AboutUs/AboutUs.jsx';
 import './components/styles/globals.scss';
 
-// Home Page Component
+// Home Page Component - REORDENADO: Network antes que Services
 const HomePage = () => {
   return (
     <div className="App">
       <Header />
       <main>
         <Hero />
-        <Services />
         <Network />
-        <Testimonials />
+        <Services />
       </main>
       <Footer />
     </div>

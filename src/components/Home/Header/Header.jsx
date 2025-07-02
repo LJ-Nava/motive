@@ -94,6 +94,19 @@ const Header = () => {
     }, 100);
   };
 
+  const handleLoginClick = () => {
+    // Analytics tracking
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'login_click', {
+        event_category: 'header',
+        event_label: 'therapysync_portal'
+      });
+    }
+    
+    // Open TherapySync portal in new tab
+    window.open('https://mhc-therapysync.com/', '_blank', 'noopener,noreferrer');
+  };
+
   const handleMobileNavClick = (item) => {
     setIsMobileMenuOpen(false);
     
@@ -176,7 +189,25 @@ const Header = () => {
               </ul>
             </nav>
 
-            
+            {/* Actions */}
+            <div className="header__actions">
+              {/* Login Button */}
+              <button 
+                className="header__login"
+                onClick={handleLoginClick}
+                aria-label="Access TherapySync Portal"
+              >
+                <div className="header__login-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                    <polyline points="10,17 15,12 10,7"/>
+                    <line x1="15" y1="12" x2="3" y2="12"/>
+                  </svg>
+                </div>
+                <span>Login</span>
+              </button>
+
+            </div>
 
             {/* Mobile Toggle */}
             <button 
@@ -253,6 +284,23 @@ const Header = () => {
 
             {/* Mobile Actions */}
             <div className="header__mobile-actions">
+              {/* Mobile Login Button */}
+              <button 
+                className="header__mobile-login"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  handleLoginClick();
+                }}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                  <polyline points="10,17 15,12 10,7"/>
+                  <line x1="15" y1="12" x2="3" y2="12"/>
+                </svg>
+                <span>Access Portal</span>
+              </button>
+              
+              {/* Mobile CTA Button */}
               <button 
                 className="header__mobile-cta"
                 onClick={() => {
