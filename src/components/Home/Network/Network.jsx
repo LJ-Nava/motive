@@ -9,7 +9,7 @@ const Network = () => {
   // Lista de agencias
   const trustedAgencies = [
     { 
-      name: 'Supportive Health Group',
+      name: 'Caring Like Family Home Health',
       logo: 'https://supportivehealthgroup.com/wp-content/uploads/2023/04/qt_q_55-removebg-preview.png',
       patients: '1500+',
       locations: 12,
@@ -23,14 +23,14 @@ const Network = () => {
       specialty: 'Integrated Solutions'
     },
     { 
-      name: 'Intracare Home Health Providers',
+      name: 'Intracare Home Health Providers Inc.',
       logo: 'https://intracareinc.com/images/ICHHPInc.-Logo1248.png',
       patients: '400+',
       locations: 15,
       specialty: 'Home Health Excellence'
     },
     { 
-      name: 'Vast Home Health',
+      name: 'Vast Home Health Agency',
       logo: 'https://vasthh.com/wp-content/uploads/2022/10/logo.png',
       patients: '100+',
       locations: 11,
@@ -44,28 +44,28 @@ const Network = () => {
       specialty: 'Continuous Care'
     },
     { 
-      name: 'Hand in Heart Home Health',
+      name: 'Hand in Heart Home Health Services',
       logo: 'https://www.handinhearthomehealth.com/wp-content/themes/handinheart/images/main_logo.png',
       patients: '100+',
       locations: 7,
       specialty: 'Compassionate Care'
     },
     { 
-      name: 'Equanimity Healthcare',
+      name: 'Equanimity Healthcare Solutions',
       logo: null,
       patients: '100+',
       locations: 5,
       specialty: 'Balanced Healthcare'
     },
     { 
-      name: 'H&R Home Health',
+      name: 'H&R Home Health Agency',
       logo: 'https://static.wixstatic.com/media/8c35f5_872e74e902a3400d9f7c721265ba94c4~mv2.png/v1/fill/w_743,h_753,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/8c35f5_872e74e902a3400d9f7c721265ba94c4~mv2.png',
       patients: '100+',
       locations: 8,
       specialty: 'Quality Care'
     },
     { 
-      name: 'Ivory Home Health',
+      name: 'Ivory Home Health Services Inc.',
       logo: 'https://img1.wsimg.com/isteam/ip/1018b022-77e5-4a0f-9b88-caf951010613/Logo%20of%20IHHSI.PNG/:/rs=h:196/ll',
       patients: '100+',
       locations: 4,
@@ -132,25 +132,12 @@ const Network = () => {
         
         {/* Header Section */}
         <div className={`network-header ${isVisible ? 'animate-in' : ''}`}>
-          <div className="network-badge">
-            <div className="badge-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-                <path d="M16 3.13a4 4 0 010 7.75"/>
-              </svg>
-            </div>
-            <span>Trusted Partners</span>
-          </div>
           
           <h2 className="network-title">
             Home Health Agencies
             <span className="title-accent"> Who Trust Motive</span>
           </h2>
           
-          <p className="network-description">
-            Leading healthcare providers across California choose Motive for their therapy staffing needs
-          </p>
         </div>
 
         {/* Carousel Section */}
@@ -238,17 +225,6 @@ const Network = () => {
           </div>
         </div>
 
-        {/* Carousel Indicators */}
-        <div className="carousel-indicators">
-          {trustedAgencies.map((_, index) => (
-            <button
-              key={index}
-              className={`indicator ${index === activeAgency ? 'active' : ''}`}
-              onClick={() => setActiveAgency(index)}
-              aria-label={`View ${trustedAgencies[index].name}`}
-            />
-          ))}
-        </div>
 
       </div>
     </section>

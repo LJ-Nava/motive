@@ -8,9 +8,9 @@ const Footer = () => {
   const navigate = useNavigate();
 
   const quickLinks = [
-    { label: 'Our Services', href: '/' },
-    { label: 'For Agencies', href: '/agencies/join' },
-    { label: 'For Therapists', href: '/therapists/apply' },
+    { label: 'Services', href: '/' },
+    { label: 'Agencies', href: '/agencies/join' },
+    { label: 'Therapists', href: '/therapists/apply' },
     { label: 'About Us', href: '/about' }
   ];
 
