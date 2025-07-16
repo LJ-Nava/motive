@@ -304,7 +304,7 @@ const handleCTAClick = useCallback((type) => {
     });
   }
 
-  const targetId = type === 'primary' ? '#formlol' : '#services';
+  const targetId = type === 'primary' ? '#motive-difference' : '#services';
   const target = document.querySelector(targetId);
   
   if (target) {
