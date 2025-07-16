@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/motive/static/css/main.a8797f05.css",
+    "main.js": "/motive/static/js/main.3ece66af.js",
+    "static/media/video3.mp4": "/motive/static/media/video3.4e21c080384e298a4533.mp4",
+    "static/media/video5.mp4": "/motive/static/media/video5.d34e83484f9d0cfc897f.mp4",
+    "static/media/video4.mp4": "/motive/static/media/video4.adad84b9bd9cf7a18d2a.mp4",
+    "static/media/video1.mp4": "/motive/static/media/video1.218a4f72ecefdcdc0e3f.mp4",
+    "static/media/video2.mp4": "/motive/static/media/video2.6313f0ecd9bccb673ed2.mp4",
+    "static/media/California-Coverage.png": "/motive/static/media/California-Coverage.c1cbf5fada9a46a8bce4.png",
+    "static/media/Specialized-Therapy-Staffing.png": "/motive/static/media/Specialized-Therapy-Staffing.36a955e23017694e3f63.png",
+    "static/media/Rapid-Response-Staffing.png": "/motive/static/media/Rapid-Response-Staffing.e421feefaab5a4c20b6f.png",
+    "static/media/Home-Health-Expertise.png": "/motive/static/media/Home-Health-Expertise.1b56d9630db548171592.png",
+    "static/media/MapaST.png": "/motive/static/media/MapaST.47c66b965039360f5475.png",
+    "static/media/MapaPT.png": "/motive/static/media/MapaPT.efce3628b2f2c9e898e0.png",
+    "static/media/MapaOT.png": "/motive/static/media/MapaOT.93eb6aa3ef00f802101c.png",
+    "static/media/motive_homecare_transparent.png": "/motive/static/media/motive_homecare_transparent.aea57d957420879408e2.png",
+    "index.html": "/motive/index.html",
+    "main.a8797f05.css.map": "/motive/static/css/main.a8797f05.css.map",
+    "main.3ece66af.js.map": "/motive/static/js/main.3ece66af.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a8797f05.css",
+    "static/js/main.3ece66af.js"
+  ]
+}
