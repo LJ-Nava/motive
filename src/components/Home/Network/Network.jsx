@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/home/Network.scss';
 
 const Network = () => {
-  const [activeAgency, setActiveAgency] = useState(0);
+  const [activeAgency, setActiveAgency] = useState(0); // Empezar con Supportive (índice 0) en el centro
   const [isVisible, setIsVisible] = useState(false);
   const networkRef = useRef(null);
 
   // Lista de agencias
   const trustedAgencies = [
     { 
-      name: 'Caring Like Family Home Health',
+      name: 'Supportive Home Health',
       logo: 'https://supportivehealthgroup.com/wp-content/uploads/2023/04/qt_q_55-removebg-preview.png',
       patients: '1500+',
       locations: 12,
@@ -96,25 +96,20 @@ const Network = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Carrusel de 3 agencias con deslizamiento automático cada 5 segundos
-  const getVisibleAgencies = () => {
-    const visible = [];
-    for (let i = -1; i <= 1; i++) {
-      const index = (activeAgency + i + trustedAgencies.length) % trustedAgencies.length;
-      visible.push({ 
-        ...trustedAgencies[index], 
-        originalIndex: index, 
-        position: i 
-      });
-    }
-    return visible;
+  // Función auxiliar para obtener agencias (ya no se usa pero la mantengo por compatibilidad)
+  const getAgenciesWithPositions = () => {
+    return trustedAgencies.map((agency, index) => ({
+      ...agency,
+      originalIndex: index,
+      position: index
+    }));
   };
 
-  // Auto-navegación del carrusel
+  // Auto-navegación del carrusel con bucle infinito y timing suave
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveAgency((prev) => (prev + 1) % trustedAgencies.length);
-    }, 3000);
+    }, 4000); // Aumentado a 4 segundos para permitir transiciones completas
     
     return () => clearInterval(interval);
   }, [trustedAgencies.length]);
@@ -123,8 +118,6 @@ const Network = () => {
   const handleCardClick = (targetIndex) => {
     setActiveAgency(targetIndex);
   };
-
-  const visibleAgencies = getVisibleAgencies();
 
   return (
     <section className="network-section" ref={networkRef}>
@@ -143,12 +136,38 @@ const Network = () => {
         {/* Carousel Section */}
         <div className={`network-carousel ${isVisible ? 'animate-in' : ''}`}>
           <div className="carousel-track">
-            {visibleAgencies.map((agency, index) => (
-              <div 
-                key={`${agency.originalIndex}-${activeAgency}`}
-                className={`agency-card ${agency.position === 0 ? 'featured' : 'side'} position-${agency.position}`}
-                onClick={() => handleCardClick(agency.originalIndex)}
-              >
+            <div className="carousel-wrapper">
+              {/* Solo 3 tarjetas: izquierda, centro, derecha con deslizamiento */}
+              {[
+                trustedAgencies[(activeAgency - 1 + trustedAgencies.length) % trustedAgencies.length], // Izquierda
+                trustedAgencies[activeAgency], // Centro (destacado por opacidad)
+                trustedAgencies[(activeAgency + 1) % trustedAgencies.length] // Derecha
+              ].map((agency, position) => {
+                const isCenter = position === 1;
+                const scale = 1; // Todas las tarjetas del mismo tamaño
+                const opacity = isCenter ? 1 : 0.7;
+                const zIndex = isCenter ? 10 : 5;
+                
+                return (
+                  <div 
+                    key={`${agency.name}-${activeAgency}-${position}`}
+                    className={`agency-card ${isCenter ? 'featured' : 'side'}`}
+                    onClick={() => {
+                      if (position === 0) {
+                        // Click izquierda - ir a anterior
+                        setActiveAgency((prev) => (prev - 1 + trustedAgencies.length) % trustedAgencies.length);
+                      } else if (position === 2) {
+                        // Click derecha - ir a siguiente
+                        setActiveAgency((prev) => (prev + 1) % trustedAgencies.length);
+                      }
+                    }}
+                    style={{
+                      transform: `scale(${scale})`,
+                      opacity: opacity,
+                      zIndex: zIndex,
+                      transition: 'all 1.2s cubic-bezier(0.4, 0.0, 0.2, 1)',
+                    }}
+                  >
                 {/* Card Background */}
                 <div className="card-background"></div>
                 
@@ -221,7 +240,9 @@ const Network = () => {
                 {/* Hover Effect */}
                 <div className="card-hover-effect"></div>
               </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
         </div>
 
