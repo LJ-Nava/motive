@@ -6,6 +6,7 @@ import LogoMini from '../../../assets/motive_logo_black_text_transparent.png';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
   const headerRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,7 +24,6 @@ const Header = () => {
     };
   }, []);
 
-  // Function to scroll to top of page
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -32,7 +32,6 @@ const Header = () => {
     });
   };
 
-  // Navigation Structure - Updated for React Router
   const navigationItems = [
     {
       label: 'Our Services',
@@ -41,13 +40,13 @@ const Header = () => {
       icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 7.172V5L8 4z'
     },
     {
-      label: 'For Agencies',
+      label: 'Agencies',
       type: 'page',
       link: '/agencies/join',
       icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4'
     },
     {
-      label: 'For Therapists',
+      label: 'Therapists',
       type: 'page', 
       link: '/therapists/apply',
       icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
@@ -66,28 +65,78 @@ const Header = () => {
     }
   ];
 
+  const servicesData = {
+    pt: {
+      name: 'Physical Therapy',
+      icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+      professionals: '150+',
+      response: '<2hrs',
+      specialties: [
+        'Post-surgical rehabilitation',
+        'Neurological recovery', 
+        'Home safety assessments',
+        'Equipment training',
+        'Patient education',
+        'Consistent care continuity'
+      ]
+    },
+    ot: {
+      name: 'Occupational Therapy',
+      icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+      professionals: '75+',
+      response: '<2hrs',
+      specialties: [
+        'Daily living skills training',
+        'Cognitive rehabilitation',
+        'Home modification assessments',
+        'Adaptive equipment training',
+        'Work conditioning programs',
+        'Fall prevention strategies'
+      ]
+    },
+    slp: {
+      name: 'Speech Therapy',
+      icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z',
+      professionals: '50+',
+      response: '<2hrs',
+      specialties: [
+        'Swallowing disorders treatment',
+        'Speech articulation therapy',
+        'Language development support',
+        'Voice rehabilitation',
+        'Cognitive communication therapy',
+        'AAC device training'
+      ]
+    }
+  };
+
+  const handleServiceClick = (serviceKey) => {
+    if (selectedService === serviceKey) {
+      setSelectedService(null);
+    } else {
+      setSelectedService(serviceKey);
+    }
+  };
+
+  const handleBackToServices = () => {
+    setSelectedService(null);
+  };
+
   const handleNavClick = (item, event) => {
     event.preventDefault();
-    
-    // Navigate to the page
     navigate(item.link);
-    
-    // Always scroll to top after navigation
     setTimeout(() => {
       scrollToTop();
     }, 100);
   };
 
   const handleCTAClick = () => {
-    // Analytics tracking
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'cta_click', {
         event_category: 'header',
         event_label: 'get_started_main'
       });
     }
-    
-    // Navigate to home page and scroll to top
     navigate('/');
     setTimeout(() => {
       scrollToTop();
@@ -95,25 +144,18 @@ const Header = () => {
   };
 
   const handleLoginClick = () => {
-    // Analytics tracking
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'login_click', {
         event_category: 'header',
         event_label: 'therapysync_portal'
       });
     }
-    
-    // Open TherapySync portal in new tab
     window.open('https://mhc-therapysync.com/', '_blank', 'noopener,noreferrer');
   };
 
   const handleMobileNavClick = (item) => {
     setIsMobileMenuOpen(false);
-    
-    // Navigate to the page
     navigate(item.link);
-    
-    // Always scroll to top after navigation
     setTimeout(() => {
       scrollToTop();
     }, 100);
@@ -121,7 +163,6 @@ const Header = () => {
 
   const handleLogoClick = () => {
     navigate('/');
-    // Scroll to top when clicking logo
     setTimeout(() => {
       scrollToTop();
     }, 100);
@@ -131,11 +172,9 @@ const Header = () => {
     <>
       <header className={`header ${isScrolled ? 'header--scrolled' : ''}`} ref={headerRef}>
         
-        {/* Main Navigation */}
         <div className="header__main">
           <div className="header__container">
             
-            {/* Logo */}
             <button 
               onClick={handleLogoClick}
               className="header__logo"
@@ -152,7 +191,6 @@ const Header = () => {
               </div>
             </button>
 
-            {/* Navigation */}
             <nav className="header__navigation">
               <ul className="header__nav-list">
                 {navigationItems.map((item, index) => (
@@ -189,9 +227,7 @@ const Header = () => {
               </ul>
             </nav>
 
-            {/* Actions */}
             <div className="header__actions">
-              {/* Login Button */}
               <button 
                 className="header__login"
                 onClick={handleLoginClick}
@@ -206,10 +242,8 @@ const Header = () => {
                 </div>
                 <span>Login</span>
               </button>
-
             </div>
 
-            {/* Mobile Toggle */}
             <button 
               className={`header__mobile-toggle ${isMobileMenuOpen ? 'header__mobile-toggle--active' : ''}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -223,11 +257,9 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div className={`header__mobile ${isMobileMenuOpen ? 'header__mobile--open' : ''}`}>
           <div className="header__mobile-content">
             
-            {/* Mobile Header */}
             <div className="header__mobile-header">
               <div className="header__mobile-logo-container">
                 <img src={LogoMini} alt="Motive Home Care" className="header__mobile-logo" />
@@ -246,7 +278,6 @@ const Header = () => {
               </button>
             </div>
 
-            {/* Mobile Navigation */}
             <nav className="header__mobile-nav">
               {navigationItems.map((item, index) => (
                 <div key={index} className="header__mobile-group">
@@ -282,9 +313,77 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* Mobile Actions */}
+            {/* SECCIÓN DE SERVICIOS OPTIMIZADA */}
+            <div className="header__mobile-services">
+              <div className="header__mobile-services-header">
+                <h3>Our Specialties</h3>
+                <p>Expert professionals ready to help - click to learn more</p>
+              </div>
+
+              <div className="header__mobile-services-container">
+                {/* Servicios visibles */}
+                <div className="header__mobile-services-grid">
+                  {Object.entries(servicesData).map(([key, service]) => (
+                    <button
+                      key={key}
+                      className={`header__mobile-service-card ${
+                        selectedService && selectedService !== key ? 'header__mobile-service-card--hidden' : ''
+                      } ${
+                        selectedService === key ? 'header__mobile-service-card--selected' : ''
+                      }`}
+                      onClick={() => handleServiceClick(key)}
+                    >
+                      <div className="header__mobile-service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path d={service.icon} strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                      <div className="header__mobile-service-content">
+                        <h4>{service.name}</h4>
+                        <div className="header__mobile-service-stats">
+                          <span>{service.professionals} Professionals</span>
+                          <span>{service.response} Response</span>
+                        </div>
+                      </div>
+                      <div className="header__mobile-service-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Especialidades - aparecen en el espacio de las tarjetas ocultas */}
+                {selectedService && (
+                  <div className="header__mobile-specialties">
+                    <button 
+                      className="header__mobile-back-button"
+                      onClick={handleBackToServices}
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                      </svg>
+                      <span>Back to Services</span>
+                    </button>
+
+                    <h5>{servicesData[selectedService].name} Key Specialties</h5>
+                    <ul className="header__mobile-specialties-list">
+                      {servicesData[selectedService].specialties.map((specialty, index) => (
+                        <li key={index} className="header__mobile-specialty-item">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M5 13l4 4L19 7"/>
+                          </svg>
+                          <span>{specialty}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+
             <div className="header__mobile-actions">
-              {/* Mobile Login Button */}
               <button 
                 className="header__mobile-login"
                 onClick={() => {
@@ -300,7 +399,6 @@ const Header = () => {
                 <span>Access Portal</span>
               </button>
               
-              {/* Mobile CTA Button */}
               <button 
                 className="header__mobile-cta"
                 onClick={() => {
@@ -326,7 +424,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Overlay - Solo para mobile menu */}
         {isMobileMenuOpen && (
           <div 
             className="header__overlay"
@@ -336,7 +433,6 @@ const Header = () => {
 
       </header>
       
-      {/* Header Spacer */}
       <div className="header__spacer" />
     </>
   );
