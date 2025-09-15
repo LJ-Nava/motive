@@ -1,11 +1,6 @@
 {
   "permissions": {
     "allow": [
-      "Bash(curl:*)",
-      "Bash(mkdir:*)",
-      "Bash(npm run dev:*)",
-      "Bash(npm start)",
-      "Bash(npm run start:*)",
       "Bash(git add:*)"
     ],
     "deny": [],
