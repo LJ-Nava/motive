@@ -104,10 +104,8 @@ const Services = () => {
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="8" r="6"/>
-          <path d="m9 8 2 2 4-4"/>
-          <path d="M8 14l4-1 4 1"/>
-          <path d="M8 14v9l4-2 4 2v-9"/>
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
       ),
       title: "Home Health Expertise",
@@ -210,7 +208,10 @@ const Services = () => {
         event_label: 'partner_with_us'
       });
     }
-    
+
+    // Scroll to top first
+    window.scrollTo(0, 0);
+
     // Navigate to agencies page
     window.location.href = '#/agencies/join';
   };
@@ -222,7 +223,10 @@ const Services = () => {
         event_label: 'join_our_community'
       });
     }
-    
+
+    // Scroll to top first
+    window.scrollTo(0, 0);
+
     // Navigate to therapists page
     window.location.href = '#/therapists/apply';
   };
@@ -249,7 +253,7 @@ const Services = () => {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
               </svg>
-              <span>Built on Care & Respect</span>
+              <span>Your Trusted Healthcare Partner</span>
               <div className="badge-shimmer"></div>
             </div>
             
@@ -381,12 +385,13 @@ const Services = () => {
           <div className="premium-services__cta-content">
             <div className="premium-services__cta-header">
               <div className="premium-services__cta-badge">
-                <div className="badge-constellation"></div>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                 </svg>
-                <span>Join Our Community</span>
-                <div className="badge-energy"></div>
+                <span>Start Your Journey</span>
               </div>
               
               <h2 className="premium-services__cta-title">

@@ -21,6 +21,9 @@ const AgenciesJoin = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+
     setIsVisible(true);
     const timer = setTimeout(() => setAnimationStep(1), 500);
     return () => clearTimeout(timer);

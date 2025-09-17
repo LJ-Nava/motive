@@ -15,6 +15,11 @@ const TherapistApplicationForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const disciplines = [
     { value: 'physical-therapy', label: 'Physical Therapy (PT)', icon: '🏃‍♂️' },
     { value: 'occupational-therapy', label: 'Occupational Therapy (OT)', icon: '🖐️' },
