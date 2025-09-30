@@ -432,31 +432,31 @@ const TherapistApplicationForm = () => {
       <h4>Why Choose Motive?</h4>
       <ul className="motive-benefits-list">
         <li>
-          <span className="motive-benefit-icon">⚡</span>
+          <span className="motive-benefit-icon">🏥</span>
           <div>
-            <strong>Fast Placement</strong>
+            <strong>Efficient Placement</strong>
             <p>Get matched within 48 hours</p>
           </div>
         </li>
         <li>
-          <span className="motive-benefit-icon">💎</span>
+          <span className="motive-benefit-icon">🏆</span>
           <div>
-            <strong>Premium Agencies</strong>
-            <p>Top-rated healthcare providers</p>
+            <strong>Quality Healthcare Facilities</strong>
+            <p>Accredited healthcare providers</p>
           </div>
         </li>
         <li>
-          <span className="motive-benefit-icon">💰</span>
+          <span className="motive-benefit-icon">📊</span>
           <div>
-            <strong>Competitive Rates</strong>
-            <p>Best compensation packages</p>
+            <strong>Fair Compensation</strong>
+            <p>Market-aligned compensation packages</p>
           </div>
         </li>
         <li>
-          <span className="motive-benefit-icon">🤝</span>
+          <span className="motive-benefit-icon">👤</span>
           <div>
-            <strong>Personal Support</strong>
-            <p>Dedicated account manager</p>
+            <strong>Professional Support</strong>
+            <p>Dedicated account coordinator</p>
           </div>
         </li>
       </ul>

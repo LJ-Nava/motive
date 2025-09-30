@@ -12,6 +12,7 @@ import CoverageAreas from './components/Coverage/CoverageAreas';
 import AgenciesJoin from './components/Form/AgenciesJoin';
 import TherapistApplicationForm from './components/Form/TherapistApplicationForm';
 import AboutUs from './components/AboutUs/AboutUs';
+import ReferralForm from './components/Referrals/ReferralForm';
 import './components/styles/globals.scss';
 
 // Home Page Component
@@ -92,6 +93,15 @@ function App() {
             }
           />
 
+          {/* Referrals Route */}
+          <Route
+            path="/referrals"
+            element={
+              <PageLayout>
+                <ReferralForm />
+              </PageLayout>
+            }
+          />
 
         </Routes>
       </div>

@@ -543,98 +543,6 @@ ${formData.additionalInfo || 'No additional information provided'}
               )}
             </div>
 
-            {/* Benefits Sidebar */}
-            <div className={`benefits-sidebar ${animationStep ? 'benefits-sidebar--visible' : ''}`}>
-              <div className="benefits-card">
-                <div className="benefits-header">
-                  <h3>Partnership Benefits</h3>
-                  <p>Professional support for healthcare excellence</p>
-                </div>
-                
-                <div className="benefits-list">
-                  <div className="benefit-item">
-                    <div className="benefit-icon benefit-icon--speed">
-                      <span>⏱️</span>
-                      <div className="icon-pulse"></div>
-                    </div>
-                    <div className="benefit-content">
-                      <h4>Prompt Response</h4>
-                      <p>We respond within 2 hours because we understand the importance of healthcare staffing and timing in patient care.</p>
-                      <div className="benefit-badge">Professional, timely communication</div>
-                    </div>
-                  </div>
-
-                  <div className="benefit-item">
-                    <div className="benefit-icon benefit-icon--heart">
-                      <span>🤝</span>
-                      <div className="icon-pulse"></div>
-                    </div>
-                    <div className="benefit-content">
-                      <h4>Collaborative Approach</h4>
-                      <p>We work as your partners, understanding your agency's unique culture and patient care standards to provide appropriate support.</p>
-                      <div className="benefit-badge">98% of partners continue working with us</div>
-                    </div>
-                  </div>
-
-                  <div className="benefit-item">
-                    <div className="benefit-icon benefit-icon--quality">
-                      <span>✓</span>
-                      <div className="icon-pulse"></div>
-                    </div>
-                    <div className="benefit-content">
-                      <h4>Qualified Professionals</h4>
-                      <p>Our network consists of thoroughly vetted healthcare professionals who meet high standards of clinical competence and professionalism.</p>
-                      <div className="benefit-badge">300+ qualified professionals available</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="trust-indicators">
-                  <div className="trust-item">
-                    <span className="trust-icon">🔒</span>
-                    <span>HIPAA Compliant</span>
-                  </div>
-                  <div className="trust-item">
-                    <span className="trust-icon">✅</span>
-                    <span>Licensed & Insured</span>
-                  </div>
-                  <div className="trust-item">
-                    <span className="trust-icon">🛡️</span>
-                    <span>Background Verified</span>
-                  </div>
-                </div>
-
-                <div className="testimonial-preview">
-                  <div className="testimonial-content">
-                    <div className="quote-mark">"</div>
-                    <p>Wherever the art of medicine is loved, there is also a love of humanity.</p>
-                    <div className="testimonial-author">
-                      <span className="author-name">Hippocrates</span>
-                      <span className="author-title">Father of Medicine</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="contact-section">
-                  <div className="contact-header">
-                    <h4>💬 Questions? Contact Us</h4>
-                    <p>Speak with our partnership team</p>
-                  </div>
-
-                  <a href="tel:+12134950092" className="contact-button">
-                    <div className="contact-icon">
-                      <span>📞</span>
-                      <div className="contact-pulse"></div>
-                    </div>
-                    <div className="contact-info">
-                      <span className="contact-phone">(213) 495-0092</span>
-                      <span className="contact-hours">Mon-Fri, 9AM-6PM PST</span>
-                    </div>
-                    <div className="contact-arrow">→</div>
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -649,45 +557,51 @@ ${formData.additionalInfo || 'No additional information provided'}
             <div className="impact-metrics">
               <div className="impact-card">
                 <div className="impact-visual">
-                  <div className="impact-icon">🏢</div>
+                  <svg className="impact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
                 </div>
-                <div className="impact-number">400+</div>
-                <div className="impact-label">Partner Agencies</div>
-                <div className="impact-description">Healthcare organizations we support across California</div>
+                <div className="impact-label">Specialized Therapy Staffing</div>
+                <div className="impact-description">Licensed PT, OT & ST professionals across California</div>
               </div>
-              
+
               <div className="impact-card">
                 <div className="impact-visual">
-                  <div className="impact-icon">👥</div>
+                  <svg className="impact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
                 </div>
-                <div className="impact-number">8,000+</div>
-                <div className="impact-label">Patients Served</div>
-                <div className="impact-description">Patients who have received care through our partnerships</div>
+                <div className="impact-label">Rapid Response Staffing</div>
+                <div className="impact-description">&lt;2 hour response time guaranteed</div>
               </div>
-              
+
               <div className="impact-card">
                 <div className="impact-visual">
-                  <div className="impact-icon">🩺</div>
+                  <svg className="impact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                 </div>
-                <div className="impact-number">300+</div>
-                <div className="impact-label">Healthcare Professionals</div>
-                <div className="impact-description">Qualified team members in our network</div>
+                <div className="impact-label">California Coverage</div>
+                <div className="impact-description">Statewide therapy network across major counties</div>
+              </div>
+
+              <div className="impact-card">
+                <div className="impact-visual">
+                  <svg className="impact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                </div>
+                <div className="impact-label">Home Health Expertise</div>
+                <div className="impact-description">Specialized in geriatric care services</div>
               </div>
             </div>
 
-            <div className="community-quote">
-              <div className="quote-content">
-                <div className="quote-icon">💭</div>
-                <blockquote>
-                  "When healthcare organizations collaborate with shared commitment to excellence, 
-                  we strengthen the foundation of care that supports entire communities 
-                  and ensures quality healthcare remains accessible to all."
-                </blockquote>
-                <div className="quote-author">
-                  <span>— Healthcare Partnership Team</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
