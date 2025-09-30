@@ -302,21 +302,15 @@ ${formData.additionalInfo || 'No additional information provided'}
         
         <div className="container">
           <div className="hero-content">
-            <div className="hero-badge">
-              <span className="badge-icon">🤝</span>
-              <span>Partnership in Care</span>
-              <span className="badge-sparkle">✨</span>
-            </div>
-            
             <h1 className="hero-title hero-title--enhanced">
-              Together, We Strengthen 
+              Together, We Strengthen
               <span className="gradient-text"> Healthcare Communities</span>
             </h1>
-            
+
             <p className="hero-subtitle">
               Every healthcare agency contributes to the well-being of our communities. We invite you to explore how our partnership can help you continue delivering exceptional care while expanding your reach and capabilities.
             </p>
-            
+
             <div className="journey-steps">
               <div className={`step ${currentStep >= 1 ? 'step--active' : ''} ${currentStep > 1 ? 'step--completed' : ''}`}>
                 <div className="step-indicator">
@@ -392,7 +386,6 @@ ${formData.additionalInfo || 'No additional information provided'}
               {currentStep === 1 ? (
                 <div className="form-card">
                   <div className="form-header">
-                    <div className="header-icon">🏥</div>
                     <h2>Let's Connect</h2>
                     <p>We'd like to learn more about your healthcare agency and how we might work together to better serve your community. Please share some basic information to get started.</p>
                   </div>
@@ -554,7 +547,6 @@ ${formData.additionalInfo || 'No additional information provided'}
             <div className={`benefits-sidebar ${animationStep ? 'benefits-sidebar--visible' : ''}`}>
               <div className="benefits-card">
                 <div className="benefits-header">
-                  <div className="header-icon">🤝</div>
                   <h3>Partnership Benefits</h3>
                   <p>Professional support for healthcare excellence</p>
                 </div>
@@ -562,7 +554,7 @@ ${formData.additionalInfo || 'No additional information provided'}
                 <div className="benefits-list">
                   <div className="benefit-item">
                     <div className="benefit-icon benefit-icon--speed">
-                      <span>⚡</span>
+                      <span>⏱️</span>
                       <div className="icon-pulse"></div>
                     </div>
                     <div className="benefit-content">
@@ -574,7 +566,7 @@ ${formData.additionalInfo || 'No additional information provided'}
 
                   <div className="benefit-item">
                     <div className="benefit-icon benefit-icon--heart">
-                      <span>🎯</span>
+                      <span>🤝</span>
                       <div className="icon-pulse"></div>
                     </div>
                     <div className="benefit-content">
@@ -586,7 +578,7 @@ ${formData.additionalInfo || 'No additional information provided'}
 
                   <div className="benefit-item">
                     <div className="benefit-icon benefit-icon--quality">
-                      <span>⭐</span>
+                      <span>✓</span>
                       <div className="icon-pulse"></div>
                     </div>
                     <div className="benefit-content">
@@ -595,25 +587,6 @@ ${formData.additionalInfo || 'No additional information provided'}
                       <div className="benefit-badge">300+ qualified professionals available</div>
                     </div>
                   </div>
-                </div>
-
-                <div className="contact-section">
-                  <div className="contact-header">
-                    <h4>💬 Questions? Contact Us</h4>
-                    <p>Speak with our partnership team</p>
-                  </div>
-                  
-                  <a href="tel:+12134950092" className="contact-button">
-                    <div className="contact-icon">
-                      <span>📞</span>
-                      <div className="contact-pulse"></div>
-                    </div>
-                    <div className="contact-info">
-                      <span className="contact-phone">(213) 495-0092</span>
-                      <span className="contact-hours">Mon-Fri, 9AM-6PM PST</span>
-                    </div>
-                    <div className="contact-arrow">→</div>
-                  </a>
                 </div>
 
                 <div className="trust-indicators">
@@ -641,6 +614,25 @@ ${formData.additionalInfo || 'No additional information provided'}
                     </div>
                   </div>
                 </div>
+
+                <div className="contact-section">
+                  <div className="contact-header">
+                    <h4>💬 Questions? Contact Us</h4>
+                    <p>Speak with our partnership team</p>
+                  </div>
+
+                  <a href="tel:+12134950092" className="contact-button">
+                    <div className="contact-icon">
+                      <span>📞</span>
+                      <div className="contact-pulse"></div>
+                    </div>
+                    <div className="contact-info">
+                      <span className="contact-phone">(213) 495-0092</span>
+                      <span className="contact-hours">Mon-Fri, 9AM-6PM PST</span>
+                    </div>
+                    <div className="contact-arrow">→</div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -651,22 +643,13 @@ ${formData.additionalInfo || 'No additional information provided'}
       <section className="community-section">
         <div className="container">
           <div className="community-content">
-            <div className="section-badge">
-              <span>🌍</span>
-              Our Collective Impact
-            </div>
             <h2>Supporting Healthcare Excellence in California</h2>
             <p>Through strategic partnerships with healthcare agencies across California, we contribute to a stronger healthcare system that serves communities with professionalism and care.</p>
             
             <div className="impact-metrics">
               <div className="impact-card">
                 <div className="impact-visual">
-                  <div className="impact-icon">🏥</div>
-                  <div className="impact-particles">
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                  </div>
+                  <div className="impact-icon">🏢</div>
                 </div>
                 <div className="impact-number">400+</div>
                 <div className="impact-label">Partner Agencies</div>
@@ -675,12 +658,7 @@ ${formData.additionalInfo || 'No additional information provided'}
               
               <div className="impact-card">
                 <div className="impact-visual">
-                  <div className="impact-icon">❤️</div>
-                  <div className="impact-particles">
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                  </div>
+                  <div className="impact-icon">👥</div>
                 </div>
                 <div className="impact-number">8,000+</div>
                 <div className="impact-label">Patients Served</div>
@@ -689,12 +667,7 @@ ${formData.additionalInfo || 'No additional information provided'}
               
               <div className="impact-card">
                 <div className="impact-visual">
-                  <div className="impact-icon">👩‍⚕️</div>
-                  <div className="impact-particles">
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                  </div>
+                  <div className="impact-icon">🩺</div>
                 </div>
                 <div className="impact-number">300+</div>
                 <div className="impact-label">Healthcare Professionals</div>
@@ -723,10 +696,6 @@ ${formData.additionalInfo || 'No additional information provided'}
       <section className="cta-section">
         <div className="container">
           <div className="cta-content">
-            <div className="cta-badge">
-              <span>🌟</span>
-              Ready to Connect?
-            </div>
             <h2 className='ColorBack'>Your Community Deserves Excellence</h2>
             <p className='ColorBack'>Every healthcare agency plays a vital role in community well-being. Let's explore how we can work together to enhance the care you provide.</p>
             

@@ -86,7 +86,7 @@ const Services = () => {
       subtitle: "<2 hour response time guaranteed",
       description: "Our streamlined process ensures your therapy staffing needs are met quickly. We provide qualified PT, OT, and ST professionals when you need them most.",
       image: rapidResponseImg,
-      accent: "#8b5cf6"
+      accent: "#10b981"
     },
     {
       icon: (
@@ -251,9 +251,9 @@ const Services = () => {
             <div className="premium-services__badge">
               <div className="badge-glow"></div>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
               </svg>
-              <span>Your Trusted Healthcare Partner</span>
+              <span>YOUR TRUSTED HEALTHCARE PARTNER</span>
               <div className="badge-shimmer"></div>
             </div>
             
@@ -386,12 +386,9 @@ const Services = () => {
             <div className="premium-services__cta-header">
               <div className="premium-services__cta-badge">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                 </svg>
-                <span>Start Your Journey</span>
+                <span>START YOUR JOURNEY</span>
               </div>
               
               <h2 className="premium-services__cta-title">

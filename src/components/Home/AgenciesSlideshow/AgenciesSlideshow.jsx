@@ -90,19 +90,13 @@ const AgenciesSlideshow = () => {
     }
   ];
 
-  // Dividir las agencias en dos grupos
-  const midPoint = Math.ceil(agencies.length / 2);
-  const firstRow = agencies.slice(0, midPoint);
-  const secondRow = agencies.slice(midPoint);
-
   // Duplicar para crear el efecto loop infinito
-  const duplicatedFirstRow = [...firstRow, ...firstRow];
-  const duplicatedSecondRow = [...secondRow, ...secondRow];
+  const duplicatedAgencies = [...agencies, ...agencies];
 
   return (
     <section className="agencies-slideshow">
       <div className="agencies-slideshow__wrapper">
-        
+
         {/* Título */}
         <div className="agencies-slideshow__header">
           <h2 className="agencies-slideshow__title">
@@ -110,39 +104,15 @@ const AgenciesSlideshow = () => {
           </h2>
         </div>
 
-        {/* Slideshow Container - Dos líneas con movimientos opuestos */}
+        {/* Slideshow Container - Una sola línea */}
         <div className="agencies-slideshow__container">
-          {/* Primera línea - movimiento de derecha a izquierda */}
           <div className="agencies-slideshow__row">
-            <div className="agencies-slideshow__track agencies-slideshow__track--left">
-              {duplicatedFirstRow.map((agency, index) => (
-                <div key={`first-${index}`} className="agencies-slideshow__item">
+            <div className="agencies-slideshow__track agencies-slideshow__track--single">
+              {duplicatedAgencies.map((agency, index) => (
+                <div key={`agency-${index}`} className="agencies-slideshow__item">
                   <div className="agencies-slideshow__card">
-                    <img 
-                      src={agency.logo} 
-                      alt={`${agency.name} logo`}
-                      className="agencies-slideshow__logo"
-                      onLoad={(e) => {
-                        e.target.parentElement.parentElement.style.display = 'block';
-                      }}
-                      onError={(e) => {
-                        e.target.parentElement.parentElement.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Segunda línea - movimiento de izquierda a derecha */}
-          <div className="agencies-slideshow__row">
-            <div className="agencies-slideshow__track agencies-slideshow__track--right">
-              {duplicatedSecondRow.map((agency, index) => (
-                <div key={`second-${index}`} className="agencies-slideshow__item">
-                  <div className="agencies-slideshow__card">
-                    <img 
-                      src={agency.logo} 
+                    <img
+                      src={agency.logo}
                       alt={`${agency.name} logo`}
                       className="agencies-slideshow__logo"
                       onLoad={(e) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import motiveLogo from '../../assets/motive_logo_black_text_transparent.png';
 import './MaintenanceScreen.scss';
 
-const AboutUs = () => {
+const ReferralForm = () => {
   return (
     <div className="maintenance-screen">
       <div className="maintenance-content">
@@ -99,4 +99,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default ReferralForm;

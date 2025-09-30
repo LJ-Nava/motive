@@ -387,37 +387,13 @@
   margin-bottom: var(--premium-space-10);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--premium-shadow-premium);
   
   .badge-glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-      circle, 
-      rgba(59, 130, 246, 0.1) 0%, 
-      transparent 70%
-    );
-    animation: premiumPulse 3s infinite ease-in-out;
+    display: none;
   }
-  
+
   .badge-shimmer {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg, 
-      transparent, 
-      rgba(59, 130, 246, 0.2), 
-      transparent
-    );
-    animation: shimmerWave 3s infinite;
+    display: none;
   }
   
   .badge-constellation {
@@ -471,7 +447,7 @@
     position: relative;
     z-index: 2;
   }
-  
+
   span {
     font-size: 0.875rem;
     font-weight: 700;
@@ -526,19 +502,6 @@
   color: #d06a2b;
   position: relative;
   display: inline-block;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(135deg, var(--premium-primary) 0%, var(--premium-accent) 50%, var(--premium-purple) 100%);
-    border-radius: 2px;
-    opacity: 0.6;
-    animation: shimmerWave 2s infinite;
-  }
 }
 
 .premium-services__benefits-subtitle,
@@ -614,7 +577,7 @@
       transform: scale(1.1);
       background: var(--accent-color, var(--premium-primary));
       border-color: var(--accent-color, var(--premium-primary));
-      
+
       svg {
         color: var(--premium-white);
       }
@@ -693,8 +656,8 @@
   border: 3px solid var(--premium-gray-200);
   position: relative;
   overflow: hidden;
-  
-  
+
+
   svg {
     width: 36px;
     height: 36px;
@@ -1167,22 +1130,20 @@
    }
    
    .premium-services__option-icon {
-     transform: scale(1.15) rotateY(360deg);
-     background: linear-gradient(135deg, var(--premium-primary), var(--premium-accent));
+     transform: scale(1.1);
+     background: var(--premium-primary);
      border-color: var(--premium-primary);
-     
+
      svg {
        color: var(--premium-white);
      }
-     
+
      .icon-orbit {
-       opacity: 1;
-       animation: iconOrbit 2s linear infinite;
+       opacity: 0;
      }
-     
+
      .icon-spark {
-       opacity: 1;
-       animation: premiumPulse 1s infinite ease-in-out;
+       opacity: 0;
      }
    }
  }

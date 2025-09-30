@@ -21,12 +21,12 @@ const TherapistApplicationForm = () => {
   }, []);
 
   const disciplines = [
-    { value: 'physical-therapy', label: 'Physical Therapy (PT)', icon: '🏃‍♂️' },
-    { value: 'occupational-therapy', label: 'Occupational Therapy (OT)', icon: '🖐️' },
-    { value: 'speech-therapy', label: 'Speech-Language Pathology (SLP)', icon: '💬' },
-    { value: 'pta', label: 'Physical Therapist Assistant (PTA)', icon: '🤝' },
-    { value: 'cota', label: ' Occupational Therapy Assistant (COTA)', icon: '✋' },
-    { value: 'slpa', label: 'Speech-Language Pathology Assistant (SLPA)', icon: '🗣️' }
+    { value: 'physical-therapy', label: 'Physical Therapy (PT)' },
+    { value: 'occupational-therapy', label: 'Occupational Therapy (OT)' },
+    { value: 'speech-therapy', label: 'Speech-Language Pathology (SLP)' },
+    { value: 'pta', label: 'Physical Therapist Assistant (PTA)' },
+    { value: 'cota', label: 'Occupational Therapy Assistant (COTA)' },
+    { value: 'slpa', label: 'Speech-Language Pathology Assistant (SLPA)' }
   ];
 
   const coverageAreas = [
@@ -265,9 +265,6 @@ const TherapistApplicationForm = () => {
     <div className="motive-simplified-therapist-form-container">
       <div className="motive-form-hero-section">
         <div className="motive-hero-content">
-          <div className="motive-hero-badge">
-            🌟 Join Our Network
-          </div>
           <h1>Connect with Premium Healthcare Opportunities</h1>
           <p>Join California's leading therapy professionals. Quick application, fast placement, competitive opportunities.</p>
           <div className="motive-hero-stats">
@@ -355,7 +352,6 @@ const TherapistApplicationForm = () => {
                 className={`motive-discipline-card ${formData.discipline === disc.value ? 'motive-discipline-selected' : ''}`}
                 onClick={() => handleInputChange('discipline', disc.value)}
               >
-                <span className="motive-discipline-icon">{disc.icon}</span>
                 <span className="motive-discipline-label">{disc.label}</span>
               </div>
             ))}
