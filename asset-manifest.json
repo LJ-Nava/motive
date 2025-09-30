@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/motive/static/css/main.76978740.css",
-    "main.js": "/motive/static/js/main.cac6dbbd.js",
+    "main.css": "/motive/static/css/main.5627690c.css",
+    "main.js": "/motive/static/js/main.59bfd194.js",
     "static/media/video6.mp4": "/motive/static/media/video6.db7bbeb87615f3c2caab.mp4",
     "static/media/video4.mp4": "/motive/static/media/video4.9292ed2725f8db5aec45.mp4",
     "static/media/video8.mp4": "/motive/static/media/video8.5a10d45b0ea5c663a286.mp4",
@@ -16,11 +16,11 @@
     "static/media/MapaBack.png": "/motive/static/media/MapaBack.bc1cad403e37e4c75afa.png",
     "static/media/Home-Health-Expertise.png": "/motive/static/media/Home-Health-Expertise.80d946513c96dc7862c3.png",
     "index.html": "/motive/index.html",
-    "main.76978740.css.map": "/motive/static/css/main.76978740.css.map",
-    "main.cac6dbbd.js.map": "/motive/static/js/main.cac6dbbd.js.map"
+    "main.5627690c.css.map": "/motive/static/css/main.5627690c.css.map",
+    "main.59bfd194.js.map": "/motive/static/js/main.59bfd194.js.map"
   },
   "entrypoints": [
-    "static/css/main.76978740.css",
-    "static/js/main.cac6dbbd.js"
+    "static/css/main.5627690c.css",
+    "static/js/main.59bfd194.js"
   ]
 }
