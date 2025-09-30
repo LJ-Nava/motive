@@ -1,17 +1,17 @@
 import React from 'react';
 // ✅ CAMBIO PRINCIPAL: HashRouter en lugar de BrowserRouter
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Home/Header/Header.jsx';
-import Hero from './components/Home/Hero/Hero.jsx';
-import CoverageSection from './components/Home/CoverageSection/CoverageSection.jsx';
-import AgenciesSlideshow from './components/Home/AgenciesSlideshow/AgenciesSlideshow.jsx';
-import Services from './components/Home/Services/Services.jsx';
-import Testimonials from './components/Home/Testimonials/Testimonials.jsx';
-import Footer from './components/Home/Footer/Footer.jsx';
-import CoverageAreas from './components/Coverage/CoverageAreas.jsx';
-import AgenciesJoin from './components/Form/AgenciesJoin.jsx';
-import TherapistApplicationForm from './components/Form/TherapistApplicationForm.jsx';
-import AboutUs from './components/AboutUs/AboutUs.jsx';
+import Header from './components/Home/Header/Header';
+import Hero from './components/Home/Hero/Hero';
+import CoverageSection from './components/Home/CoverageSection/CoverageSection';
+import AgenciesSlideshow from './components/Home/AgenciesSlideshow/AgenciesSlideshow';
+import Services from './components/Home/Services/Services';
+import Testimonials from './components/Home/Testimonials/Testimonials';
+import Footer from './components/Home/Footer/Footer';
+import CoverageAreas from './components/Coverage/CoverageAreas';
+import AgenciesJoin from './components/Form/AgenciesJoin';
+import TherapistApplicationForm from './components/Form/TherapistApplicationForm';
+import AboutUs from './components/AboutUs/AboutUs';
 import './components/styles/globals.scss';
 
 // Home Page Component
