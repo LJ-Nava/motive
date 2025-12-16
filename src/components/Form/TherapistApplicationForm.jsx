@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/form/TherapistApplicationForm.scss';
 
 const TherapistApplicationForm = () => {
