@@ -11,23 +11,13 @@
 
 // Hero Section
 .motive-form-hero-section {
-  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  background: #2c3e50;
   color: white;
   padding: 4rem 1.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-    opacity: 0.3;
-  }
 
   .motive-hero-content {
     max-width: 800px;
@@ -55,10 +45,12 @@
     line-height: 1.1;
     margin-bottom: 1.5rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
   }
 
   p {
     font-size: 1.25rem;
+    color: white;
     opacity: 0.95;
     margin-bottom: 3rem;
     max-width: 600px;
@@ -134,16 +126,6 @@
   border: 1px solid #e5e7eb;
   overflow: hidden;
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #4A90E2 0%, #357ABD 100%);
-  }
 }
 
 .motive-form-header {
@@ -234,6 +216,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1.5rem;
 
   label {
     font-weight: 600;
@@ -573,17 +556,6 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border: 1px solid #e5e7eb;
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #4A90E2 0%, #357ABD 100%);
-    border-radius: 1.5rem 1.5rem 0 0;
-  }
 }
 
 .motive-benefits-card {

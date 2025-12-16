@@ -33,7 +33,7 @@ const Header = () => {
 
   const navigationItems = [
     {
-      label: 'Our Services',
+      label: 'Home',
       type: 'page',
       link: '/',
       icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 7.172V5L8 4z'
@@ -61,6 +61,12 @@ const Header = () => {
       type: 'page',
       link: '/about',
       icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+    },
+    {
+      label: 'Referrals & Patients',
+      type: 'page',
+      link: '/referrals',
+      icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75 M9 7a4 4 0 1 1 8 0 4 4 0 0 1-8 0'
     },
     {
       label: 'Access Portal',
@@ -166,11 +172,8 @@ const Header = () => {
             <div className="header__mobile-header">
               <div className="header__mobile-logo-container">
                 <img src={LogoMini} alt="Motive Home Care" className="header__mobile-logo" />
-                <div className="header__mobile-brand">
-                  <span className="header__mobile-brand-tag">Connecting Care. Building Trust.</span>
-                </div>
               </div>
-              <button 
+              <button
                 className="header__mobile-close"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Close mobile menu"

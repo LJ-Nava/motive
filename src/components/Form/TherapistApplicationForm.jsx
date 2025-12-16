@@ -15,13 +15,18 @@ const TherapistApplicationForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const disciplines = [
-    { value: 'physical-therapy', label: 'Physical Therapy (PT)', icon: '🏃‍♂️' },
-    { value: 'occupational-therapy', label: 'Occupational Therapy (OT)', icon: '🖐️' },
-    { value: 'speech-therapy', label: 'Speech-Language Pathology (SLP)', icon: '💬' },
-    { value: 'pta', label: 'Physical Therapist Assistant (PTA)', icon: '🤝' },
-    { value: 'cota', label: ' Occupational Therapy Assistant (COTA)', icon: '✋' },
-    { value: 'slpa', label: 'Speech-Language Pathology Assistant (SLPA)', icon: '🗣️' }
+    { value: 'physical-therapy', label: 'Physical Therapy (PT)' },
+    { value: 'occupational-therapy', label: 'Occupational Therapy (OT)' },
+    { value: 'speech-therapy', label: 'Speech-Language Pathology (SLP)' },
+    { value: 'pta', label: 'Physical Therapist Assistant (PTA)' },
+    { value: 'cota', label: 'Occupational Therapy Assistant (COTA)' },
+    { value: 'slpa', label: 'Speech-Language Pathology Assistant (SLPA)' }
   ];
 
   const coverageAreas = [
@@ -260,9 +265,6 @@ const TherapistApplicationForm = () => {
     <div className="motive-simplified-therapist-form-container">
       <div className="motive-form-hero-section">
         <div className="motive-hero-content">
-          <div className="motive-hero-badge">
-            🌟 Join Our Network
-          </div>
           <h1>Connect with Premium Healthcare Opportunities</h1>
           <p>Join California's leading therapy professionals. Quick application, fast placement, competitive opportunities.</p>
           <div className="motive-hero-stats">
@@ -350,7 +352,6 @@ const TherapistApplicationForm = () => {
                 className={`motive-discipline-card ${formData.discipline === disc.value ? 'motive-discipline-selected' : ''}`}
                 onClick={() => handleInputChange('discipline', disc.value)}
               >
-                <span className="motive-discipline-icon">{disc.icon}</span>
                 <span className="motive-discipline-label">{disc.label}</span>
               </div>
             ))}
@@ -431,31 +432,31 @@ const TherapistApplicationForm = () => {
       <h4>Why Choose Motive?</h4>
       <ul className="motive-benefits-list">
         <li>
-          <span className="motive-benefit-icon">⚡</span>
+          <span className="motive-benefit-icon">🏥</span>
           <div>
-            <strong>Fast Placement</strong>
+            <strong>Efficient Placement</strong>
             <p>Get matched within 48 hours</p>
           </div>
         </li>
         <li>
-          <span className="motive-benefit-icon">💎</span>
+          <span className="motive-benefit-icon">🏆</span>
           <div>
-            <strong>Premium Agencies</strong>
-            <p>Top-rated healthcare providers</p>
+            <strong>Quality Healthcare Facilities</strong>
+            <p>Accredited healthcare providers</p>
           </div>
         </li>
         <li>
-          <span className="motive-benefit-icon">💰</span>
+          <span className="motive-benefit-icon">📊</span>
           <div>
-            <strong>Competitive Rates</strong>
-            <p>Best compensation packages</p>
+            <strong>Fair Compensation</strong>
+            <p>Market-aligned compensation packages</p>
           </div>
         </li>
         <li>
-          <span className="motive-benefit-icon">🤝</span>
+          <span className="motive-benefit-icon">👤</span>
           <div>
-            <strong>Personal Support</strong>
-            <p>Dedicated account manager</p>
+            <strong>Professional Support</strong>
+            <p>Dedicated account coordinator</p>
           </div>
         </li>
       </ul>

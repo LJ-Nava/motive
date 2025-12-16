@@ -44,19 +44,16 @@ const CoverageSection = () => {
     {
       id: 'pt',
       name: 'Physical Therapy',
-      professionals: '150+',
       responseTime: '<2hrs Response'
     },
     {
-      id: 'ot', 
+      id: 'ot',
       name: 'Occupational Therapy',
-      professionals: '75+',
       responseTime: '<2hrs Response'
     },
     {
       id: 'slp',
-      name: 'Speech Therapy', 
-      professionals: '50+',
+      name: 'Speech Therapy',
       responseTime: '<2hrs Response'
     }
   ];
@@ -157,13 +154,9 @@ const CoverageSection = () => {
                 {/* Contenido principal */}
                 <div className="coverage-section__specialty-content">
                   <h4 className="coverage-section__specialty-name">{specialty.name}</h4>
-                  
+
                   {/* Stats como en el PDF */}
                   <div className="coverage-section__specialty-stats">
-                    <div className="coverage-section__specialty-stat">
-                      <span className="coverage-section__specialty-number">{specialty.professionals}</span>
-                      <span className="coverage-section__specialty-label">Professionals</span>
-                    </div>
                     <div className="coverage-section__specialty-stat">
                       <span className="coverage-section__specialty-number">{specialty.responseTime}</span>
                     </div>

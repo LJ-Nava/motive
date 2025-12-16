@@ -33,7 +33,7 @@ const AboutUs = () => {
   const handleCallNow = () => {
     // Direct call functionality
     window.location.href = 'tel:+12134950092';
-    
+
     // Analytics tracking
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'call_initiated', {
@@ -60,36 +60,33 @@ const AboutUs = () => {
         <div className="about-us__container">
           <div className="about-us__hero-content">
             <div className="about-us__hero-text">
-              <div className="about-us__hero-badge">
-                <span>PREMIUM HEALTHCARE STAFFING</span>
-              </div>
               <h1 className="about-us__hero-title">
                 About <span className="about-us__hero-title--accent">Motive Home Care</span>
               </h1>
               <h2 className="about-us__hero-subtitle">
                 Professional Healthcare Staffing Excellence for California Agencies
               </h2>
-              
+
               {/* ✅ CONTENIDO MOVIDO DESDE SERVICES */}
               <div className="about-us__hero-description-section">
                 <p className="about-us__hero-description">
-                  At Motive Home Care, we're committed to enhancing the quality of in-home therapy. 
-                  Located in the heart of Los Angeles, we specialize in staffing home health agencies 
-                  with the finest physical, occupational and speech therapists. Our dedicated team 
-                  prides itself on providing reliable and timely service, ensuring that we connect 
-                  you with clinicians who are not only experienced but also deeply passionate about 
+                  At Motive Home Care, we're committed to enhancing the quality of in-home therapy.
+                  Located in the heart of Los Angeles, we specialize in staffing home health agencies
+                  with the finest physical, occupational and speech therapists. Our dedicated team
+                  prides itself on providing reliable and timely service, ensuring that we connect
+                  you with clinicians who are not only experienced but also deeply passionate about
                   patient care.
                 </p>
-                
+
                 <p className="about-us__hero-description">
-                  Founded by a Physical Therapist who understood that patients deserved better. 
-                  Today, we connect healthcare agencies with California's most dedicated therapy professionals. 
+                  Founded by a Physical Therapist who understood that patients deserved better.
+                  Today, we connect healthcare agencies with California's most dedicated therapy professionals.
                   Exceptional response times, quality outcomes, and genuine partnership—accessible to every agency.
                 </p>
               </div>
-              
+
               <div className="about-us__hero-actions">
-                <button 
+                <button
                   className="about-us__cta about-us__cta--primary"
                   onClick={handleCallNow}
                 >
@@ -112,7 +109,7 @@ const AboutUs = () => {
                   </div>
                 </div>
                 <blockquote className="about-us__hero-quote">
-                  "At Motive Home Care, we're committed to enhancing the quality of in-home therapy. 
+                  "At Motive Home Care, we're committed to enhancing the quality of in-home therapy.
                   We connect you with clinicians who are not only experienced but also deeply passionate about patient care."
                 </blockquote>
               </div>
@@ -133,7 +130,7 @@ const AboutUs = () => {
             </div>
             <h2>Real Numbers, Real Results</h2>
           </div>
-          
+
           <div className="about-us__stats-grid">
             <div className="about-us__stat">
               <div className="about-us__stat-icon about-us__stat-icon--placements">
@@ -215,14 +212,14 @@ const AboutUs = () => {
                 <div className="about-us__timeline-content">
                   <h3>The Beginning</h3>
                   <p>
-                    Alex Martinez, a licensed Physical Therapist, witnessed the struggles 
-                    of home health agencies across California. Patients waiting weeks for 
-                    therapy, agencies desperate for qualified professionals, and a system 
+                    Alex Martinez, a licensed Physical Therapist, witnessed the struggles
+                    of home health agencies across California. Patients waiting weeks for
+                    therapy, agencies desperate for qualified professionals, and a system
                     that simply wasn't working efficiently.
                   </p>
                   <blockquote>
-                    "I remember working with agencies that would take days just to confirm 
-                    a therapist placement. Meanwhile, patients who needed immediate care 
+                    "I remember working with agencies that would take days just to confirm
+                    a therapist placement. Meanwhile, patients who needed immediate care
                     were waiting. That's when I knew we could do better."
                   </blockquote>
                 </div>
@@ -235,8 +232,8 @@ const AboutUs = () => {
                 <div className="about-us__timeline-content">
                   <h3>California's Most Responsive Staffing Solution</h3>
                   <p>
-                    What started as one conversation in Los Angeles has grown into 
-                    California's most responsive therapy staffing solution. We've revolutionized 
+                    What started as one conversation in Los Angeles has grown into
+                    California's most responsive therapy staffing solution. We've revolutionized
                     how agencies connect with therapists, making quality care accessible when it matters most.
                   </p>
                   <div className="about-us__story-highlights">
@@ -269,31 +266,52 @@ const AboutUs = () => {
                 What Makes Us Different
               </h2>
               <p className="about-us__mission-text">
-                We're not just another staffing agency. We're a technology-driven solution 
-                built by clinicians, for clinicians. Our mission is simple: ensure every 
+                We're not just another staffing agency. We're a technology-driven solution
+                built by clinicians, for clinicians. Our mission is simple: ensure every
                 patient gets exceptional care, exactly when they need it.
               </p>
-              
+
               <div className="about-us__differentiators">
                 <div className="about-us__differentiator">
-                  <div className="about-us__differentiator-icon">⚡</div>
-                  <h4>Lightning-Fast Response</h4>
-                  <p>While others take days, we respond in under 2 hours. Because recovery can't wait.</p>
+                  <div className="about-us__differentiator-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  </div>
+                  <h4>Rapid Response</h4>
+                  <p>While others take days, we respond in under 2 hours. Because patient care can't wait.</p>
                 </div>
                 <div className="about-us__differentiator">
-                  <div className="about-us__differentiator-icon">🎯</div>
-                  <h4>Quality-First Matching</h4>
-                  <p>We don't just fill positions—we match the right therapist to the right patient need.</p>
+                  <div className="about-us__differentiator-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                  </div>
+                  <h4>Clinical Excellence</h4>
+                  <p>We carefully match qualified therapists to patient needs, ensuring optimal care outcomes.</p>
                 </div>
                 <div className="about-us__differentiator">
-                  <div className="about-us__differentiator-icon">🤝</div>
+                  <div className="about-us__differentiator-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                  </div>
                   <h4>True Partnership</h4>
-                  <p>Your success is our success. We invest in long-term relationships, not quick transactions.</p>
+                  <p>Your success is our success. We build lasting relationships with agencies and therapists.</p>
                 </div>
                 <div className="about-us__differentiator">
-                  <div className="about-us__differentiator-icon">💻</div>
-                  <h4>Technology Integration</h4>
-                  <p>TherapySync compatibility means zero training time and seamless workflow integration.</p>
+                  <div className="about-us__differentiator-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                      <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                  </div>
+                  <h4>Seamless Integration</h4>
+                  <p>TherapySync compatibility ensures your team can start immediately with zero training time.</p>
                 </div>
               </div>
             </div>
@@ -344,8 +362,8 @@ const AboutUs = () => {
                   <p className="about-us__leader-title">CEO & Founder</p>
                   <p className="about-us__leader-subtitle">Licensed Physical Therapist</p>
                   <p className="about-us__leader-description">
-                    Combines deep clinical expertise with entrepreneurial vision. 
-                    With years of hands-on experience in home health therapy, Alex founded 
+                    Combines deep clinical expertise with entrepreneurial vision.
+                    With years of hands-on experience in home health therapy, Alex founded
                     Motive to solve the industry's most pressing challenges: speed, quality, and reliability.
                     Under his leadership, Motive has built a technology-driven platform with an in-house development team.
                   </p>
@@ -354,20 +372,54 @@ const AboutUs = () => {
             </div>
 
             <div className="about-us__team-highlight">
-              <h3>Our Operations Excellence</h3>
-              <p>Dedicated professionals ensuring every placement exceeds expectations</p>
-              <div className="about-us__team-stats">
-                <div className="about-us__team-stat">
-                  <span className="about-us__team-number">2</span>
-                  <span className="about-us__team-label">In-House Developers</span>
+              <div className="about-us__team-highlight-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <div>
+                  <h3>Our Operations Excellence</h3>
+                  <p>Dedicated professionals ensuring every placement exceeds expectations</p>
                 </div>
-                <div className="about-us__team-stat">
-                  <span className="about-us__team-number">10+</span>
-                  <span className="about-us__team-label">Clinical Administrators</span>
+              </div>
+              <div className="about-us__team-stats-grid">
+                <div className="about-us__team-stat-card">
+                  <div className="about-us__team-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  </div>
+                  <div className="about-us__team-stat-content">
+                    <span className="about-us__team-number">10+</span>
+                    <span className="about-us__team-label">Clinical Administrators</span>
+                  </div>
                 </div>
-                <div className="about-us__team-stat">
-                  <span className="about-us__team-number">24/7</span>
-                  <span className="about-us__team-label">Support Available</span>
+                <div className="about-us__team-stat-card">
+                  <div className="about-us__team-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="16 18 22 12 16 6"/>
+                      <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                  </div>
+                  <div className="about-us__team-stat-content">
+                    <span className="about-us__team-number">2</span>
+                    <span className="about-us__team-label">In-House Developers</span>
+                  </div>
+                </div>
+                <div className="about-us__team-stat-card about-us__team-stat-card--full">
+                  <div className="about-us__team-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  </div>
+                  <div className="about-us__team-stat-content">
+                    <span className="about-us__team-number">24/7</span>
+                    <span className="about-us__team-label">Support Available</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -386,22 +438,46 @@ const AboutUs = () => {
 
             <div className="about-us__vision-grid">
               <div className="about-us__vision-item">
-                <div className="about-us__vision-icon">🏛️</div>
+                <div className="about-us__vision-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
                 <h3>Statewide Excellence</h3>
                 <p>Expanding our proven model to serve agencies throughout California</p>
               </div>
               <div className="about-us__vision-item">
-                <div className="about-us__vision-icon">🚀</div>
-                <h3>Technology Leadership</h3>
-                <p>Pioneering new solutions that make therapy staffing effortless</p>
+                <div className="about-us__vision-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2v20M2 12h20"/>
+                    <circle cx="12" cy="12" r="4"/>
+                  </svg>
+                </div>
+                <h3>Innovative Solutions</h3>
+                <p>Streamlined processes that connect therapists with agencies efficiently</p>
               </div>
               <div className="about-us__vision-item">
-                <div className="about-us__vision-icon">💼</div>
+                <div className="about-us__vision-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
                 <h3>Industry Standards</h3>
                 <p>Setting new benchmarks for response time and service quality</p>
               </div>
               <div className="about-us__vision-item">
-                <div className="about-us__vision-icon">🎓</div>
+                <div className="about-us__vision-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    <polyline points="17 11 19 13 23 9"/>
+                  </svg>
+                </div>
                 <h3>Professional Development</h3>
                 <p>Supporting continuous education and career advancement</p>
               </div>
@@ -416,11 +492,11 @@ const AboutUs = () => {
           <div className="about-us__cta-content">
             <h2>Ready to Experience the Motive Difference?</h2>
             <p>
-              Join hundreds of agencies who've discovered what makes us different. 
+              Join hundreds of agencies who've discovered what makes us different.
               We're not the biggest, but we're the most dedicated to getting it right.
             </p>
             <div className="about-us__cta-actions">
-              <button 
+              <button
                 className="about-us__cta about-us__cta--primary"
                 onClick={handleCallNow}
               >

@@ -24,23 +24,13 @@ $color-light-gray: #f8f9fa;
   }
 }
 
-/* Animación de izquierda a derecha (primera línea) */
-@keyframes slideLeftToRight {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Animación de derecha a izquierda (segunda línea) */
+/* Animación de derecha a izquierda (línea única) */
 @keyframes slideRightToLeft {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 }
 
@@ -50,7 +40,7 @@ $color-light-gray: #f8f9fa;
 .agencies-slideshow {
   width: 100%;
   background: $color-white;
-  padding: 4rem 0;
+  padding: 2.5rem 0;
   overflow: hidden;
 }
 
@@ -65,7 +55,7 @@ $color-light-gray: #f8f9fa;
 /* ========================================== */
 .agencies-slideshow__header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   animation: slideIn 0.8s ease-out;
 }
 
@@ -91,58 +81,49 @@ $color-light-gray: #f8f9fa;
 }
 
 /* ========================================== */
-/* SLIDESHOW CONTAINER - DOS LÍNEAS */
+/* SLIDESHOW CONTAINER - UNA LÍNEA */
 /* ========================================== */
 .agencies-slideshow__container {
   position: relative;
   width: 100%;
   overflow: hidden;
   background: $color-white;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
-/* Fila individual */
+/* Fila única */
 .agencies-slideshow__row {
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin-bottom: 2rem;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
+  margin: 0;
 }
 
 /* Track con animación */
 .agencies-slideshow__track {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   width: max-content;
-  
-  /* Primera línea - movimiento de derecha a izquierda */
-  &--left {
-    animation: slideLeftToRight 60s linear infinite; /* Más lento: 60s */
+
+  /* Línea única - movimiento de derecha a izquierda */
+  &--single {
+    animation: slideRightToLeft 80s linear infinite; /* Más lento para todos los logos */
   }
-  
-  /* Segunda línea - movimiento de izquierda a derecha */
-  &--right {
-    animation: slideRightToLeft 60s linear infinite; /* Más lento: 60s */
-  }
-  
+
   @media (max-width: 768px) {
-    gap: 2rem;
-    
-    &--left, &--right {
-      animation-duration: 50s;
+    gap: 1.5rem;
+
+    &--single {
+      animation-duration: 70s;
     }
   }
-  
+
   @media (max-width: 480px) {
-    gap: 1.5rem;
-    
-    &--left, &--right {
-      animation-duration: 40s;
+    gap: 1rem;
+
+    &--single {
+      animation-duration: 60s;
     }
   }
 }
@@ -159,38 +140,38 @@ $color-light-gray: #f8f9fa;
 
 /* Tarjeta estándar para todos los logos */
 .agencies-slideshow__card {
-  width: 200px;
-  height: 100px;
+  width: 180px;
+  height: 90px;
   background: #e9ecef;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 2px solid #dee2e6;
-  padding: 1rem;
+  padding: 0.875rem;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
-  
+
   &:hover {
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 
+    box-shadow:
       0 6px 20px rgba(0, 0, 0, 0.1),
       0 10px 25px rgba(0, 0, 0, 0.06);
     border-color: rgba(23, 70, 134, 0.2);
     background: #f8f9fa;
   }
-  
+
   @media (max-width: 768px) {
-    width: 170px;
-    height: 85px;
+    width: 160px;
+    height: 80px;
     padding: 0.75rem;
   }
-  
+
   @media (max-width: 480px) {
-    width: 140px;
-    height: 70px;
+    width: 130px;
+    height: 65px;
     padding: 0.5rem;
   }
 }
@@ -239,44 +220,36 @@ $color-light-gray: #f8f9fa;
 /* ========================================== */
 @media (max-width: 768px) {
   .agencies-slideshow {
-    padding: 3rem 0;
+    padding: 2rem 0;
   }
-  
+
   .agencies-slideshow__wrapper {
     padding: 0 1.5rem;
   }
-  
+
   .agencies-slideshow__header {
-    margin-bottom: 2rem;
-  }
-  
-  .agencies-slideshow__container {
-    padding: 1.5rem 0;
-  }
-  
-  .agencies-slideshow__row {
     margin-bottom: 1.5rem;
+  }
+
+  .agencies-slideshow__container {
+    padding: 0.75rem 0;
   }
 }
 
 @media (max-width: 480px) {
   .agencies-slideshow {
-    padding: 2.5rem 0;
+    padding: 1.5rem 0;
   }
-  
+
   .agencies-slideshow__wrapper {
     padding: 0 1rem;
   }
-  
+
   .agencies-slideshow__header {
-    margin-bottom: 1.5rem;
-  }
-  
-  .agencies-slideshow__container {
-    padding: 1rem 0;
-  }
-  
-  .agencies-slideshow__row {
     margin-bottom: 1rem;
+  }
+
+  .agencies-slideshow__container {
+    padding: 0.5rem 0;
   }
 }
