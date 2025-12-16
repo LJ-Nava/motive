@@ -75,37 +75,6 @@ const Header = () => {
     }
   ];
 
-  const handleNavClick = (item, event) => {
-    event.preventDefault();
-    navigate(item.link);
-    setTimeout(() => {
-      scrollToTop();
-    }, 100);
-  };
-
-  const handleCTAClick = () => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'cta_click', {
-        event_category: 'header',
-        event_label: 'get_started_main'
-      });
-    }
-    navigate('/');
-    setTimeout(() => {
-      scrollToTop();
-    }, 100);
-  };
-
-  const handleLoginClick = () => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'login_click', {
-        event_category: 'header',
-        event_label: 'therapysync_portal'
-      });
-    }
-    window.open('https://mhc-therapysync.com/', '_blank', 'noopener,noreferrer');
-  };
-
   const handleMobileNavClick = (item) => {
     setIsMobileMenuOpen(false);
     
