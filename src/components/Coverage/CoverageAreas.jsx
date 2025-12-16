@@ -3,27 +3,25 @@ import { useLocation } from 'react-router-dom';
 import Header from '../Home/Header/Header.jsx';
 import '../styles/coverage/CoverageAreas.scss';
 import MapaPT from '../../assets/MapaPT.png';
-import MapaOT from '../../assets/MapaOT.png';
 import MapaST from '../../assets/MapaST.png';
 
 const CoverageAreas = () => {
   const location = useLocation();
-  const [activeService, setActiveService] = useState('PT');
-  const [showDetails, setShowDetails] = useState(false);
-  
+  const [activeService, setActiveService] = useState('PT_OT');
+
   // Obtener el servicio de los parámetros de búsqueda de la URL
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const service = searchParams.get('service');
-    
+
     // Mapear los IDs de servicio a los códigos esperados
     const serviceMap = {
-      'pt': 'PT',
-      'ot': 'OT',
-      'slp': 'ST',  // slp (Speech Language Pathology) se mapea a ST
+      'pt': 'PT_OT',
+      'ot': 'PT_OT',
+      'slp': 'ST',
       'st': 'ST'
     };
-    
+
     if (service && serviceMap[service.toLowerCase()]) {
       setActiveService(serviceMap[service.toLowerCase()]);
     }
@@ -31,10 +29,10 @@ const CoverageAreas = () => {
 
   // REAL coverage data organized by service - Updated with actual Motive Home Care areas
 const coverageByService = {
-  PT: {
-    title: "Physical Therapy",
-    subtitle: "Licensed PTs & PTAs",
-    stats: { therapists: "120+", counties: "4 counties", response: "<2hrs" },
+  PT_OT: {
+    title: "Physical & Occupational Therapy",
+    subtitle: "Licensed PTs/OTs & PTAs/COTAs",
+    stats: null, // No stats for combined service
     color: "#3B82F6", // Blue
     mapImage: MapaPT,
     counties: {
@@ -43,17 +41,17 @@ const coverageByService = {
         { name: "West LA & Westside", cities: ["West Hollywood", "Beverly Hills", "Culver City", "Santa Monica", "Westwood", "Brentwood", "Century City", "Sherman Oaks", "Marina del Rey", "Venice", "Playa Vista", "Miracle Mile", "Mid Wilshire"] },
         { name: "South Bay", cities: ["Inglewood", "Torrance", "Redondo Beach", "Manhattan Beach", "Hermosa Beach", "Gardena", "Hawthorne", "El Segundo", "Carson", "Lomita", "Harbor City", "Wilmington", "San Pedro", "Palos Verdes", "Rolling Hills", "Lawndale", "Lennox"] },
         { name: "South & Southeast LA", cities: ["Compton", "Long Beach", "Lynwood", "South Gate", "Cudahy", "Huntington Park", "Watts", "South LA", "Westmont", "Paramount"] },
-        { name: "East LA & San Gabriel Valley", cities: ["Pasadena", "Alhambra", "Monterey Park", "Arcadia", "San Marino", "Temple City", "Monrovia", "Montebello", "Pico Rivera", "Downey", "Highland Park", "Eagle Rock", "La Crescenta", "Sunland", "Tujunga", "Altadena", "San Gabriel", "Rosemead"] },
+        { name: "East LA & San Gabriel Valley", cities: ["Pasadena", "Alhambra", "Monterey Park", "Arcadia", "San Marino", "Temple City", "Monrovia", "Montebello", "Pico Rivera", "Downey", "Highland Park", "Eagle Rock", "La Crescenta", "Sunland", "Tujunga", "Altadena", "San Gabriel", "Rosemead", "El Monte", "Baldwin Park", "Whittier", "La Puente", "Duarte"] },
         { name: "San Fernando Valley", cities: ["Burbank", "North Hollywood", "Studio City", "Sherman Oaks", "Van Nuys", "Northridge", "North Hills", "Reseda", "Lake Balboa", "Panorama City", "Chatsworth", "Granada Hills", "Porter Ranch", "Mission Hills", "Sylmar", "Pacoima", "San Fernando", "Sun Valley", "Valley Village", "Valley Glen", "Woodland Hills", "West Hills", "Canoga Park", "Winnetka", "Tarzana", "Encino"] },
         { name: "Glendale Area", cities: ["Glendale", "Burbank", "Eagle Rock", "Highland Park", "La Cañada Flintridge"] }
       ],
       "Orange County": [
-        { name: "North Orange County", cities: ["Anaheim", "Fullerton", "Garden Grove", "Buena Park", "La Habra", "Placentia", "Yorba Linda", "La Mirada", "Cypress", "Stanton", "Westminster", "Huntington Beach", "Los Alamitos", "Artesia", "Cerritos", "Bellflower", "Lakewood", "Norwalk"] },
+        { name: "North Orange County", cities: ["Anaheim", "Fullerton", "Garden Grove", "Buena Park", "La Habra", "Placentia", "Yorba Linda", "La Mirada", "Cypress", "Stanton", "Westminster", "Huntington Beach", "Los Alamitos", "Artesia", "Cerritos", "Bellflower", "Lakewood", "Norwalk", "Brea", "Fountain Valley", "Seal Beach"] },
         { name: "Central Orange County", cities: ["Santa Ana", "Tustin", "Orange", "Irvine", "Costa Mesa", "Newport Beach"] },
-        { name: "South Orange County", cities: ["Mission Viejo", "Aliso Viejo", "Lake Forest", "Laguna Hills", "Ladera Ranch", "San Juan Capistrano", "Dana Point", "Laguna Niguel", "Trabuco Canyon"] }
+        { name: "South Orange County", cities: ["Mission Viejo", "Aliso Viejo", "Lake Forest", "Laguna Hills", "Ladera Ranch", "San Juan Capistrano", "Dana Point", "Laguna Niguel", "Trabuco Canyon", "Foothill Ranch", "Rancho Mission Viejo", "Coto de Caza", "Laguna Woods", "Rancho Santa Margarita"] }
       ],
       "San Bernardino County": [
-        { name: "West San Bernardino", cities: ["Rancho Cucamonga", "Ontario", "Fontana", "Upland", "Chino", "Montclair", "Claremont", "Pomona", "Covina", "West Covina", "La Verne", "San Dimas", "Glendora", "Diamond Bar", "Rowland Heights", "La Puente", "Avocado Heights"] },
+        { name: "West San Bernardino", cities: ["Rancho Cucamonga", "Ontario", "Fontana", "Upland", "Chino", "Montclair", "Claremont", "Pomona", "Covina", "West Covina", "La Verne", "San Dimas", "Glendora", "Diamond Bar", "Rowland Heights", "La Puente", "Avocado Heights", "Azusa", "Santa Fe Springs"] },
         { name: "Central San Bernardino", cities: ["San Bernardino", "Highland", "Loma Linda", "Redlands", "Colton", "Rialto", "Bloomington", "Grand Terrace"] }
       ],
       "Riverside County": [
@@ -66,37 +64,10 @@ const coverageByService = {
       ]
     }
   },
-  OT: {
-    title: "Occupational Therapy",
-    subtitle: "Licensed OTs & COTAs",
-    stats: { therapists: "85+", counties: "4 counties", response: "<2hrs" },
-    color: "#F97316", // Orange
-    mapImage: MapaOT,
-    counties: {
-      "Los Angeles County": [
-        { name: "Central & West LA", cities: ["Hollywood", "Koreatown", "Central LA", "Mid-City", "Mid-Wilshire", "Baldwin Hills", "Culver City", "Palms", "West LA", "West Hollywood", "Leimert Park", "Inglewood", "Cheviot Hills", "Santa Monica", "Beverly Hills", "Brentwood", "Westwood", "Beverlywood", "Studio City", "Marina del Rey", "Venice", "Century City", "Westchester", "Playa del Rey", "Playa Vista", "Ladera Heights", "Windsor Hills"] },
-        { name: "South Bay & Harbor Area", cities: ["Long Beach", "Carson", "San Pedro", "Harbor City", "Lomita", "Torrance", "Gardena", "Redondo Beach", "Rolling Hills", "Manhattan Beach", "West Torrance", "Hawthorne", "Lawndale", "Hermosa Beach", "Compton", "Lynwood", "Wilmington", "Palos Verdes"] },
-        { name: "San Gabriel Valley", cities: ["Pasadena", "Glendale", "La Cañada", "Alhambra", "Arcadia", "El Monte", "Rosemead", "Temple City", "San Marino", "Baldwin Park", "Monterey Park", "Montebello", "Monrovia", "Duarte", "La Puente", "Whittier", "Pico Rivera"] },
-        { name: "San Fernando Valley", cities: ["Burbank", "North Hollywood", "Sherman Oaks", "Los Feliz", "Silver Lake", "Atwater Village", "Echo Park", "Eagle Rock", "Silverlake", "Glassell Park", "Woodland Hills", "West Hills", "Canoga Park", "Reseda", "Tarzana", "Winnetka", "Northridge", "Granada Hills", "Porter Ranch", "Chatsworth", "Encino", "Sylmar", "San Fernando"] },
-        { name: "East LA", cities: ["East Lakewood", "Highland Park", "Greater Los Angeles", "East LA", "South LA", "Huntington Park", "Chinatown LA"] }
-      ],
-      "Orange County": [
-        { name: "North Orange County", cities: ["Anaheim", "Fullerton", "Brea", "La Habra", "Yorba Linda", "Placentia", "Garden Grove", "Westminster", "Huntington Beach", "Fountain Valley", "Long Beach", "Lakewood", "Cerritos", "Bellflower", "Artesia", "Cypress", "Los Alamitos", "Seal Beach", "Stanton"] },
-        { name: "Central Orange County", cities: ["Santa Ana", "Irvine", "Tustin", "Orange", "Costa Mesa", "Newport Beach"] },
-        { name: "South Orange County", cities: ["Mission Viejo", "Aliso Viejo", "Irvine", "Laguna Hills", "Lake Forest", "Foothill Ranch", "Rancho Mission Viejo", "Trabuco Canyon", "San Juan Capistrano", "Coto de Caza", "Laguna Niguel", "Laguna Woods", "Rancho Santa Margarita", "Ladera Ranch"] }
-      ],
-      "San Bernardino County": [
-        { name: "West San Bernardino", cities: ["Rancho Cucamonga", "Ontario", "Fontana", "Upland", "Claremont", "Montclair", "La Verne", "West Covina", "Santa Fe Springs", "San Dimas", "Covina", "Azusa", "Rowland Heights", "Diamond Bar", "La Puente", "El Monte", "Whittier", "Norwalk", "Downey", "Montebello", "Pico Rivera", "Rosemead", "Arcadia", "San Marino"] }
-      ],
-      "Riverside County": [
-        { name: "West Riverside", cities: ["Riverside", "Corona", "Eastvale", "Colton", "Redlands", "Moreno Valley", "Menifee", "Norco"] }
-      ]
-    }
-  },
   ST: {
     title: "Speech Therapy",
     subtitle: "Licensed SLPs",
-    stats: { therapists: "12+", counties: "2 counties", response: "<3hrs" },
+    stats: null,
     color: "#10B981", // Green
     mapImage: MapaST,
     counties: {
@@ -108,16 +79,11 @@ const coverageByService = {
   }
 };
 
-  const serviceOrder = ['PT', 'OT', 'ST'];
+  const serviceOrder = ['PT_OT', 'ST'];
   const currentService = coverageByService[activeService];
 
   const handleServiceChange = (service) => {
     setActiveService(service);
-    setShowDetails(false); // Reset details when changing service
-  };
-
-  const toggleDetails = () => {
-    setShowDetails(!showDetails);
   };
 
   return (
@@ -183,11 +149,13 @@ const coverageByService = {
                     <h3>{serviceData.title}</h3>
                     <p>{serviceData.subtitle}</p>
                   </div>
-                  <div className="tab-stats">
-                    <span className="stat">{serviceData.stats.therapists}</span>
-                    <span className="stat">{serviceData.stats.counties}</span>
-                    <span className="stat">{serviceData.stats.response}</span>
-                  </div>
+                  {serviceData.stats && (
+                    <div className="tab-stats">
+                      <span className="stat">{serviceData.stats.therapists}</span>
+                      <span className="stat">{serviceData.stats.counties}</span>
+                      <span className="stat">{serviceData.stats.response}</span>
+                    </div>
+                  )}
                 </button>
               );
             })}
@@ -201,24 +169,6 @@ const coverageByService = {
                   <h3>{currentService.title} Coverage Map</h3>
                   <p>Areas where we have {currentService.subtitle.toLowerCase()} available</p>
                 </div>
-                <button 
-                  className="details-toggle"
-                  onClick={toggleDetails}
-                  style={{ '--service-color': currentService.color }}
-                >
-                  <span>
-                    {showDetails ? 'Hide' : 'View'} Coverage Details
-                  </span>
-                  <svg 
-                    className={`toggle-icon ${showDetails ? 'rotated' : ''}`}
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2"
-                  >
-                    <path d="M6 9l6 6 6-6"/>
-                  </svg>
-                </button>
               </div>
               
               <div className="large-map">
@@ -233,68 +183,22 @@ const coverageByService = {
                 ></div>
                 
                 {/* Map Stats Overlay */}
-                <div className="map-stats">
-                  <div className="stat-pill">
-                    <span className="value">{currentService.stats.therapists}</span>
-                    <span className="label">Available</span>
+                {currentService.stats && (
+                  <div className="map-stats">
+                    <div className="stat-pill">
+                      <span className="value">{currentService.stats.therapists}</span>
+                      <span className="label">Available</span>
+                    </div>
+                    <div className="stat-pill">
+                      <span className="value">{currentService.stats.response}</span>
+                      <span className="label">Response</span>
+                    </div>
                   </div>
-                  <div className="stat-pill">
-                    <span className="value">{currentService.stats.response}</span>
-                    <span className="label">Response</span>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
 
-          {/* Expandable Coverage Details */}
-          <div className={`coverage-details ${showDetails ? 'expanded' : ''}`}>
-            <div className="details-content">
-              <div className="details-header">
-                <h4>Detailed Coverage for {currentService.title}</h4>
-                <p>
-                  We serve {Object.keys(currentService.counties).length} counties with {
-                    Object.values(currentService.counties).reduce((acc, areas) => acc + areas.length, 0)
-                  } coverage areas
-                </p>
-              </div>
-
-              <div className="counties-grid">
-                {Object.entries(currentService.counties).map(([county, areas]) => (
-                  <div key={county} className="county-section">
-                    <div className="county-header">
-                      <div 
-                        className="county-indicator"
-                        style={{ backgroundColor: currentService.color }}
-                      ></div>
-                      <h5>{county}</h5>
-                      <span className="area-count">{areas.length} areas</span>
-                    </div>
-                    
-                    <div className="areas-list">
-                      {areas.map((area, index) => (
-                        <div key={index} className="area-item">
-                          <div className="area-name">{area.name}</div>
-                          <div className="cities-list">
-                            {area.cities.slice(0, 8).map((city, cityIndex) => (
-                              <span key={cityIndex} className="city-chip">
-                                {city}
-                              </span>
-                            ))}
-                            {area.cities.length > 8 && (
-                              <span className="city-chip more">
-                                +{area.cities.length - 8} more
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
