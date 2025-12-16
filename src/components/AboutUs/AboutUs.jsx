@@ -43,16 +43,6 @@ const AboutUs = () => {
     }
   };
 
-  const handleCTAClick = (action) => {
-    // Analytics tracking
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'cta_click', {
-        event_category: 'about_us',
-        event_label: action
-      });
-    }
-  };
-
   return (
     <div className="about-us">
       {/* Hero Section */}

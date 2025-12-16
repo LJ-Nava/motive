@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../Home/Header/Header.jsx';
-import Footer from '../Home/Footer/Footer.jsx';
 import '../styles/coverage/CoverageAreas.scss';
 import MapaPT from '../../assets/MapaPT.png';
 import MapaOT from '../../assets/MapaOT.png';

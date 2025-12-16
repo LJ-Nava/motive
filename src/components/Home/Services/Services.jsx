@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../../styles/home/Services.scss';
 
 // Import choose motive images
@@ -13,7 +12,6 @@ const Services = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [hoveredCard, setHoveredCard] = useState(null);
   const servicesRef = useRef(null);
 
   // Testimonials más diversos y humildes
@@ -199,7 +197,7 @@ const Services = () => {
     }, 7000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [testimonials.length]);
 
   const handleAgencyClick = () => {
     if (typeof window !== 'undefined' && window.gtag) {
@@ -276,8 +274,6 @@ const Services = () => {
               <div 
                 key={index} 
                 className="premium-services__benefit-card"
-                onMouseEnter={() => setHoveredCard(index)}
-                onMouseLeave={() => setHoveredCard(null)}
                 style={{
                   '--delay': `${index * 0.15}s`,
                   '--accent-color': benefit.accent

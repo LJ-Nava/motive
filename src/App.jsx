@@ -6,7 +6,6 @@ import Hero from './components/Home/Hero/Hero';
 import CoverageSection from './components/Home/CoverageSection/CoverageSection';
 import AgenciesSlideshow from './components/Home/AgenciesSlideshow/AgenciesSlideshow';
 import Services from './components/Home/Services/Services';
-import Testimonials from './components/Home/Testimonials/Testimonials';
 import Footer from './components/Home/Footer/Footer';
 import CoverageAreas from './components/Coverage/CoverageAreas';
 import AgenciesJoin from './components/Form/AgenciesJoin';
