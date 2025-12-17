@@ -491,35 +491,18 @@ $policy-border: #e2e8f0;
   }
 
   // ==========================================
-  // ANIMATIONS
+  // ANIMATIONS - Content visible by default for SEO/bots
   // ==========================================
 
   &__hero,
   &__content {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-
-    &.animate-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  &__content {
-    transition-delay: 0.2s;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   &__section {
-    opacity: 0;
-    transform: translateY(15px);
-    animation: fadeInSection 0.6s ease forwards;
-
-    @for $i from 1 through 15 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{$i * 0.05}s;
-      }
-    }
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

@@ -1,35 +1,11 @@
 // components/Policies/PrivacyPolicy.jsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import '../styles/policies/PrivacyPolicy.scss';
 
 const PrivacyPolicy = () => {
-  const heroRef = useRef(null);
-  const contentRef = useRef(null);
-
   useEffect(() => {
     // Scroll to top on mount
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
-      });
-    }, observerOptions);
-
-    const sections = [heroRef.current, contentRef.current];
-    sections.forEach(section => {
-      if (section) observer.observe(section);
-    });
-
-    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -42,7 +18,7 @@ const PrivacyPolicy = () => {
   return (
     <div className="privacy-policy">
       {/* Hero Section */}
-      <section ref={heroRef} className="privacy-policy__hero">
+      <section className="privacy-policy__hero">
         <div className="privacy-policy__container">
           <div className="privacy-policy__hero-content">
             <h1 className="privacy-policy__title">
@@ -57,7 +33,7 @@ const PrivacyPolicy = () => {
       </section>
 
       {/* Content Section */}
-      <section ref={contentRef} className="privacy-policy__content">
+      <section className="privacy-policy__content">
         <div className="privacy-policy__container">
           <div className="privacy-policy__intro">
             <p>
