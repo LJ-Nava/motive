@@ -442,6 +442,35 @@
     color: #374151;
     font-size: 0.875rem;
   }
+
+  // SMS Consent specific styles
+  &.motive-sms-checkbox {
+    align-items: flex-start;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #e2e8f0;
+    padding: 1.25rem;
+
+    .motive-sms-label {
+      line-height: 1.6;
+      color: #475569;
+
+      a {
+        color: #174686;
+        text-decoration: underline;
+        font-weight: 600;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #d06a2b;
+        }
+      }
+    }
+  }
+}
+
+// SMS Consent Section
+.motive-sms-consent {
+  margin-top: 0.5rem;
 }
 
 // Submit Section

@@ -557,6 +557,85 @@
     resize: vertical;
     min-height: 120px;
   }
+
+  // SMS Consent Checkbox Styles
+  &--checkbox {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    position: relative;
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .checkmark {
+      flex-shrink: 0;
+      height: 22px;
+      width: 22px;
+      background-color: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+
+      &::after {
+        content: '';
+        display: none;
+        width: 6px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    input[type="checkbox"]:checked ~ .checkmark {
+      background-color: #174686;
+      border-color: #174686;
+
+      &::after {
+        display: block;
+      }
+    }
+
+    input[type="checkbox"]:focus ~ .checkmark {
+      box-shadow: 0 0 0 3px rgba(23, 70, 134, 0.2);
+    }
+
+    .checkbox-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #475569;
+
+      a {
+        color: #174686;
+        text-decoration: underline;
+        font-weight: 500;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #d06a2b;
+        }
+      }
+    }
+  }
 }
 
 @keyframes shake {
