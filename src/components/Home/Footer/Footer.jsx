@@ -177,8 +177,32 @@ const Footer = () => {
                 © {currentYear} Motive Home Care. All rights reserved.
               </p>
               <div className="footer__legal">
-                <a href="#privacy" className="footer__legal-link">Privacy Policy</a>
-                <a href="#terms" className="footer__legal-link">Terms of Service</a>
+                <button
+                  onClick={(e) => handleNavClick('/privacy-policy', e)}
+                  className="footer__legal-link"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    font: 'inherit',
+                    padding: 0
+                  }}
+                >
+                  Privacy Policy
+                </button>
+                <button
+                  onClick={(e) => handleNavClick('/privacy-policy', e)}
+                  className="footer__legal-link"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    font: 'inherit',
+                    padding: 0
+                  }}
+                >
+                  Terms of Service
+                </button>
               </div>
             </div>
             <div className="footer__bottom-right">
