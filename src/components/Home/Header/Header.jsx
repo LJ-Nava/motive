@@ -121,7 +121,7 @@ const Header = () => {
             >
               <img 
                 src={LogoMini} 
-                alt="Motive Home Care - Professional Healthcare Staffing" 
+                alt="Motive Home Care - Professional Home health Staffing" 
                 className="header__logo-image"
                 loading="eager"
               />

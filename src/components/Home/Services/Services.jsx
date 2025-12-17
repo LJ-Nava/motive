@@ -251,13 +251,13 @@ const Services = () => {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
               </svg>
-              <span>YOUR TRUSTED HEALTHCARE PARTNER</span>
+              <span>YOUR TRUSTED HOME HEALTH PARTNER</span>
               <div className="badge-shimmer"></div>
             </div>
             
             <h2 className="premium-services__benefits-title">
               <span className="title-word">Why</span>{' '}
-              <span className="title-word">Healthcare</span>{' '}
+              <span className="title-word">Home health</span>{' '}
               <span className="title-highlight">Professionals</span>{' '}
               <span className="title-word">Choose</span>{' '}
               <span className="title-word">Motive</span>
@@ -371,7 +371,7 @@ const Services = () => {
           <div className="premium-services__cta-background">
             <img 
               src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-              alt="Healthcare therapy professionals collaborating in modern American facility" 
+              alt="Home health therapy professionals collaborating in modern American facility" 
               className="premium-services__cta-hero-image"
             />
             <div className="premium-services__cta-overlay" />
@@ -397,7 +397,7 @@ const Services = () => {
               </h2>
               
               <p className="premium-services__cta-subtitle">
-                Whether you're a healthcare facility looking for dedicated professionals or a therapist seeking meaningful opportunities, we're here to help you succeed. Let's build something great together.
+                Whether you're a home health facility looking for dedicated professionals or a therapist seeking meaningful opportunities, we're here to help you succeed. Let's build something great together.
               </p>
             </div>
             
@@ -413,7 +413,7 @@ const Services = () => {
                     </svg>
                     <div className="icon-spark"></div>
                   </div>
-                  <div className="premium-services__option-badge">For Healthcare Agencies</div>
+                  <div className="premium-services__option-badge">For Home Health Agencies</div>
                 </div>
                 
                 <h3 className="premium-services__option-title">Partner With Us</h3>

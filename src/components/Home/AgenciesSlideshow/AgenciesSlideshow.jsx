@@ -37,7 +37,7 @@ const AgenciesSlideshow = () => {
       logo: 'https://www.alaphiacare.com/wp-content/themes/alaphiacare/images/main_logo.png'
     },
     {
-      name: 'Prime Healthcare Services',
+      name: 'Prime Home health Services',
       logo: 'https://www.primehsinc.com/wp-content/themes/primecarebe588/images/main-logo.png'
     },
     {
@@ -45,7 +45,7 @@ const AgenciesSlideshow = () => {
       logo: 'https://www.allcitizenshh.com/wp-content/uploads/2024/09/allcitizenslogo.png'
     },
     {
-      name: 'Bright Home Healthcare',
+      name: 'Bright Home Home health',
       logo: 'https://www.brighthhc.com/wp-content/themes/brighthomean290/images/main-logo.png'
     },
     {
@@ -61,7 +61,7 @@ const AgenciesSlideshow = () => {
       logo: 'https://images.squarespace-cdn.com/content/v1/67c3acc1d7b07669d3b919a2/cdaaf1ad-3f6c-46a3-aeec-5cb7031b7656/Website+Header.png?format=1500w'
     },
     {
-      name: 'Healthcare Services',
+      name: 'Home health Services',
       logo: 'https://s3-media0.fl.yelpcdn.com/bphoto/smdSYtSM3TpXGxurLA0Uhg/348s.jpg'
     },
     {

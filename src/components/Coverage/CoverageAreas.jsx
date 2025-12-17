@@ -27,57 +27,21 @@ const CoverageAreas = () => {
     }
   }, [location]);
 
-  // REAL coverage data organized by service - Updated with actual Motive Home Care areas
-const coverageByService = {
-  PT_OT: {
-    title: "Physical & Occupational Therapy",
-    subtitle: "Licensed PTs/OTs & PTAs/COTAs",
-    stats: null, // No stats for combined service
-    color: "#3B82F6", // Blue
-    mapImage: MapaPT,
-    counties: {
-      "Los Angeles County": [
-        { name: "Central LA", cities: ["Los Angeles", "Mid-City", "Koreatown", "Westlake", "Echo Park", "Silver Lake", "Hollywood", "Los Feliz", "Silverlake", "Atwater Village", "West Hollywood", "Central LA", "Downtown"] },
-        { name: "West LA & Westside", cities: ["West Hollywood", "Beverly Hills", "Culver City", "Santa Monica", "Westwood", "Brentwood", "Century City", "Sherman Oaks", "Marina del Rey", "Venice", "Playa Vista", "Miracle Mile", "Mid Wilshire"] },
-        { name: "South Bay", cities: ["Inglewood", "Torrance", "Redondo Beach", "Manhattan Beach", "Hermosa Beach", "Gardena", "Hawthorne", "El Segundo", "Carson", "Lomita", "Harbor City", "Wilmington", "San Pedro", "Palos Verdes", "Rolling Hills", "Lawndale", "Lennox"] },
-        { name: "South & Southeast LA", cities: ["Compton", "Long Beach", "Lynwood", "South Gate", "Cudahy", "Huntington Park", "Watts", "South LA", "Westmont", "Paramount"] },
-        { name: "East LA & San Gabriel Valley", cities: ["Pasadena", "Alhambra", "Monterey Park", "Arcadia", "San Marino", "Temple City", "Monrovia", "Montebello", "Pico Rivera", "Downey", "Highland Park", "Eagle Rock", "La Crescenta", "Sunland", "Tujunga", "Altadena", "San Gabriel", "Rosemead", "El Monte", "Baldwin Park", "Whittier", "La Puente", "Duarte"] },
-        { name: "San Fernando Valley", cities: ["Burbank", "North Hollywood", "Studio City", "Sherman Oaks", "Van Nuys", "Northridge", "North Hills", "Reseda", "Lake Balboa", "Panorama City", "Chatsworth", "Granada Hills", "Porter Ranch", "Mission Hills", "Sylmar", "Pacoima", "San Fernando", "Sun Valley", "Valley Village", "Valley Glen", "Woodland Hills", "West Hills", "Canoga Park", "Winnetka", "Tarzana", "Encino"] },
-        { name: "Glendale Area", cities: ["Glendale", "Burbank", "Eagle Rock", "Highland Park", "La Cañada Flintridge"] }
-      ],
-      "Orange County": [
-        { name: "North Orange County", cities: ["Anaheim", "Fullerton", "Garden Grove", "Buena Park", "La Habra", "Placentia", "Yorba Linda", "La Mirada", "Cypress", "Stanton", "Westminster", "Huntington Beach", "Los Alamitos", "Artesia", "Cerritos", "Bellflower", "Lakewood", "Norwalk", "Brea", "Fountain Valley", "Seal Beach"] },
-        { name: "Central Orange County", cities: ["Santa Ana", "Tustin", "Orange", "Irvine", "Costa Mesa", "Newport Beach"] },
-        { name: "South Orange County", cities: ["Mission Viejo", "Aliso Viejo", "Lake Forest", "Laguna Hills", "Ladera Ranch", "San Juan Capistrano", "Dana Point", "Laguna Niguel", "Trabuco Canyon", "Foothill Ranch", "Rancho Mission Viejo", "Coto de Caza", "Laguna Woods", "Rancho Santa Margarita"] }
-      ],
-      "San Bernardino County": [
-        { name: "West San Bernardino", cities: ["Rancho Cucamonga", "Ontario", "Fontana", "Upland", "Chino", "Montclair", "Claremont", "Pomona", "Covina", "West Covina", "La Verne", "San Dimas", "Glendora", "Diamond Bar", "Rowland Heights", "La Puente", "Avocado Heights", "Azusa", "Santa Fe Springs"] },
-        { name: "Central San Bernardino", cities: ["San Bernardino", "Highland", "Loma Linda", "Redlands", "Colton", "Rialto", "Bloomington", "Grand Terrace"] }
-      ],
-      "Riverside County": [
-        { name: "West Riverside", cities: ["Riverside", "Corona", "Jurupa Valley", "Eastvale", "Norco", "Moreno Valley", "Perris", "Temescal Valley"] },
-        { name: "Southwest Riverside", cities: ["Menifee", "Murrieta", "Temecula", "Hemet", "San Jacinto", "Lake Elsinore", "Wildomar", "Sun City", "Winchester"] },
-        { name: "Desert Areas", cities: ["Beaumont", "Banning", "Calimesa"] }
-      ],
-      "Ventura County": [
-        { name: "Ventura County", cities: ["Thousand Oaks", "Westlake", "Newbury Park", "Simi Valley", "Moorpark", "Ventura", "Oxnard", "Port Hueneme", "Camarillo", "Santa Paula", "Agoura Hills", "Calabasas", "Bell Canyon", "Oak Park"] }
-      ]
+  // Coverage data organized by service
+  const coverageByService = {
+    PT_OT: {
+      title: "Physical & Occupational Therapy",
+      subtitle: "Licensed PTs/OTs & PTAs/COTAs",
+      color: "#3B82F6",
+      mapImage: MapaPT
+    },
+    ST: {
+      title: "Speech Therapy",
+      subtitle: "Licensed SLPs",
+      color: "#10B981",
+      mapImage: MapaST
     }
-  },
-  ST: {
-    title: "Speech Therapy",
-    subtitle: "Licensed SLPs",
-    stats: null,
-    color: "#10B981", // Green
-    mapImage: MapaST,
-    counties: {
-      "Los Angeles County": [
-        { name: "West LA Premium Areas", cities: ["Brentwood", "Bel Air", "Beverly Hills", "Westwood", "Pico-Robertson"] },
-        { name: "South Bay Coastal", cities: ["Torrance", "Redondo Beach", "Manhattan Beach", "Hermosa Beach", "El Segundo", "Lomita", "Palos Verdes"] }
-      ]
-    }
-  }
-};
+  };
 
   const serviceOrder = ['PT_OT', 'ST'];
   const currentService = coverageByService[activeService];
@@ -242,7 +206,7 @@ const coverageByService = {
                   </div>
                   <div className="feature-content">
                     <h4>Quick Response</h4>
-                    <p>We typically respond within 2 hours during business hours</p>
+                    <p>Our staffing team will have a response within minutes</p>
                   </div>
                 </div>
                 
@@ -269,7 +233,7 @@ const coverageByService = {
                   </div>
                   <div className="feature-content">
                     <h4>Reliable Service</h4>
-                    <p>We're committed to finding solutions that work for everyone</p>
+                    <p>We help home health agencies stay compliant, avoid missed visits and accept more referrals</p>
                   </div>
                 </div>
               </div>
@@ -293,7 +257,10 @@ const coverageByService = {
               
               <div className="availability">
                 <div className="availability-dot"></div>
-                <span>Available Monday-Friday, 9AM-5:30PM PST</span>
+                <div className="availability-times">
+                  <span>Available Monday-Friday, 9AM-5:30PM PST</span>
+                  <span>Saturday, 9AM-12nn PST</span>
+                </div>
               </div>
               
               <div className="alternative-contact">
@@ -302,27 +269,6 @@ const coverageByService = {
                   info@motivehomecare.com
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="bottom-cta">
-        <div className="cta-container">
-          <div className="cta-content">
-            <h2>Ready to Work Together?</h2>
-            <p>
-              We're here to support healthcare agencies with reliable, compassionate therapy staffing. 
-              Let's talk about how we can help serve your community.
-            </p>
-            <div className="cta-actions">
-              <a href="tel:+12134950092" className="cta-primary">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
-                Call (213) 495-0092
-              </a>
             </div>
           </div>
         </div>
