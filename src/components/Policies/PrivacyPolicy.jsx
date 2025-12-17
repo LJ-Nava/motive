@@ -47,7 +47,7 @@ const PrivacyPolicy = () => {
           <div className="privacy-policy__hero-content">
             <h1 className="privacy-policy__title">
               Motive Home Care
-              <span className="privacy-policy__title--accent">Privacy Policy</span>
+              <span className="privacy-policy__title--accent">Privacy Policy & Terms of Service</span>
             </h1>
             <p className="privacy-policy__last-updated">
               <strong>Last Updated:</strong> December 2024
