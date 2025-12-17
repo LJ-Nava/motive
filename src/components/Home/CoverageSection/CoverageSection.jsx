@@ -15,26 +15,20 @@ const CoverageSection = () => {
     navigate(`/coverage-areas?service=${specialtyId}`);
   };
 
-
   const metrics = [
     {
-      value: "8,000+",
-      label: "Successful Placements",
+      value: "3,000+",
+      label: "Visits Completed Monthly",
       icon: "👥"
     },
     {
-      value: "<2hrs",
+      value: "<5min",
       label: "Response Time",
       icon: "⚡"
     },
     {
-      value: "98.5%",
-      label: "Client Satisfaction",
-      icon: "⭐"
-    },
-    {
-      value: "550+",
-      label: "Active Professionals",
+      value: "300+",
+      label: "Home Health Clinicians",
       icon: "🏥"
     }
   ];
@@ -96,12 +90,8 @@ const CoverageSection = () => {
           </div>
         </div>
 
-        {/* Métricas - Trusted by Agencies - Alineado a la izquierda con tarjetas */}
+        {/* Métricas */}
         <div className="coverage-section__metrics">
-          <h3 className="coverage-section__metrics-title">
-            TRUSTED BY AGENCIES ACROSS CALIFORNIA
-          </h3>
-          
           <div className="coverage-section__metrics-grid">
             {metrics.map((metric, index) => (
               <div key={index} className="coverage-section__metric-card">

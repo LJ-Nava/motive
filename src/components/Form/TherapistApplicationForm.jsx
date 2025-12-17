@@ -265,7 +265,7 @@ const TherapistApplicationForm = () => {
     <div className="motive-simplified-therapist-form-container">
       <div className="motive-form-hero-section">
         <div className="motive-hero-content">
-          <h1>Connect with Premium Healthcare Opportunities</h1>
+          <h1>Connect with Premium Home health Opportunities</h1>
           <p>Join California's leading therapy professionals. Quick application, fast placement, competitive opportunities.</p>
           <div className="motive-hero-stats">
             <div className="motive-stat-item">
@@ -441,8 +441,8 @@ const TherapistApplicationForm = () => {
         <li>
           <span className="motive-benefit-icon">🏆</span>
           <div>
-            <strong>Quality Healthcare Facilities</strong>
-            <p>Accredited healthcare providers</p>
+            <strong>Quality Home health Facilities</strong>
+            <p>Accredited Home health providers</p>
           </div>
         </li>
         <li>

@@ -146,7 +146,7 @@ const Hero = () => {
           </h1>
           
           <p className="hero__subtitle">
-            We help healthcare agencies find qualified therapists quickly and
+            We help home health agencies find qualified therapists quickly and
             efficiently. <span className="hero__highlight">Same-day response</span>, verified professionals, and dedicated
             support for your agency's success.
           </p>

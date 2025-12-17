@@ -39,7 +39,7 @@ const AgenciesJoin = () => {
     { value: 'Assisted Living', icon: '🏘️', description: 'Independent living support' },
     { value: 'Memory Care Facility', icon: '🧠', description: 'Specialized dementia care' },
     { value: 'Long Term Care', icon: '⏳', description: 'Extended care services' },
-    { value: 'Other Healthcare Facility', icon: '🔧', description: 'Tell us about your specialty' }
+    { value: 'Other Homehealth Facility', icon: '🔧', description: 'Tell us about your specialty' }
   ];
 
   const validateEmail = (email) => {
@@ -304,11 +304,11 @@ ${formData.additionalInfo || 'No additional information provided'}
           <div className="hero-content">
             <h1 className="hero-title hero-title--enhanced">
               Together, We Strengthen
-              <span className="gradient-text"> Healthcare Communities</span>
+              <span className="gradient-text"> Home health Communities</span>
             </h1>
 
             <p className="hero-subtitle">
-              Every healthcare agency contributes to the well-being of our communities. We invite you to explore how our partnership can help you continue delivering exceptional care while expanding your reach and capabilities.
+              Every home health agency contributes to the well-being of our communities. We invite you to explore how our partnership can help you continue delivering exceptional care while expanding your reach and capabilities.
             </p>
 
             <div className="journey-steps">
@@ -387,7 +387,7 @@ ${formData.additionalInfo || 'No additional information provided'}
                 <div className="form-card">
                   <div className="form-header">
                     <h2>Let's Connect</h2>
-                    <p>We'd like to learn more about your healthcare agency and how we might work together to better serve your community. Please share some basic information to get started.</p>
+                    <p>We'd like to learn more about your home health agency and how we might work together to better serve your community. Please share some basic information to get started.</p>
                   </div>
 
                   <div className="form-body">
@@ -402,7 +402,7 @@ ${formData.additionalInfo || 'No additional information provided'}
                           id="agencyName"
                           value={formData.agencyName}
                           onChange={(e) => handleInputChange('agencyName', e.target.value)}
-                          placeholder="Your healthcare agency name"
+                          placeholder="Your home health agency name"
                           className={errors.agencyName ? 'input--error' : ''}
                         />
                         {errors.agencyName && <span className="error-message">{errors.agencyName}</span>}
@@ -411,7 +411,7 @@ ${formData.additionalInfo || 'No additional information provided'}
                       <div className="form-group">
                         <label htmlFor="agencyType">
                           <span className="label-icon">🏥</span>
-                          Type of Healthcare Facility
+                          Type of Home health Facility
                         </label>
                         <select
                           id="agencyType"
@@ -553,7 +553,7 @@ ${formData.additionalInfo || 'No additional information provided'}
         <div className="container">
           <div className="cta-content">
             <h2 className='ColorBack'>Your Community Deserves Excellence</h2>
-            <p className='ColorBack'>Every healthcare agency plays a vital role in community well-being. Let's explore how we can work together to enhance the care you provide.</p>
+            <p className='ColorBack'>Every home health agency plays a vital role in community well-being. Let's explore how we can work together to enhance the care you provide.</p>
             
             <div className="cta-actions">
               <button 

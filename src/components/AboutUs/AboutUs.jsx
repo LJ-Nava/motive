@@ -54,7 +54,7 @@ const AboutUs = () => {
                 About <span className="about-us__hero-title--accent">Motive Home Care</span>
               </h1>
               <h2 className="about-us__hero-subtitle">
-                Professional Healthcare Staffing Excellence for California Agencies
+                Professional Home health Staffing Excellence for California Agencies
               </h2>
 
               {/* ✅ CONTENIDO MOVIDO DESDE SERVICES */}
@@ -70,7 +70,7 @@ const AboutUs = () => {
 
                 <p className="about-us__hero-description">
                   Founded by a Physical Therapist who understood that patients deserved better.
-                  Today, we connect healthcare agencies with California's most dedicated therapy professionals.
+                  Today, we connect home health agencies with California's most dedicated therapy professionals.
                   Exceptional response times, quality outcomes, and genuine partnership—accessible to every agency.
                 </p>
               </div>
@@ -338,7 +338,7 @@ const AboutUs = () => {
         <div className="about-us__container">
           <div className="about-us__leadership-header">
             <h2>Leadership Built on Clinical Excellence</h2>
-            <p>Founded and led by healthcare professionals who understand the industry from the inside</p>
+            <p>Founded and led by home health professionals who understand the industry from the inside</p>
           </div>
 
           <div className="about-us__leadership-grid">
@@ -421,7 +421,7 @@ const AboutUs = () => {
       <section className="about-us__vision">
         <div className="about-us__container">
           <div className="about-us__vision-content">
-            <h2 className="about-us__vision-title">Building the Future of Healthcare Staffing</h2>
+            <h2 className="about-us__vision-title">Building the Future of Home health Staffing</h2>
             <p className="about-us__vision-subtitle">
               Our commitment to innovation and excellence drives everything we do
             </p>
@@ -497,7 +497,7 @@ const AboutUs = () => {
               </button>
             </div>
             <p className="about-us__cta-subtitle">
-              <em>Founded in 2023 • Based in Los Angeles • Serving Healthcare Agencies Statewide</em>
+              <em>Founded in 2023 • Based in Los Angeles • Serving Home Health Agencies Statewide</em>
             </p>
           </div>
         </div>
