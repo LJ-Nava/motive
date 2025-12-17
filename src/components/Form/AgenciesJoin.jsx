@@ -9,9 +9,10 @@ const AgenciesJoin = () => {
     agencyType: '',
     contactEmail: '',
     phone: '',
-    
+
     // Step 2: Details - simplified
-    additionalInfo: ''
+    additionalInfo: '',
+    smsConsent: false
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -139,6 +140,8 @@ const AgenciesJoin = () => {
 • Facility Type: ${formData.agencyType}
 • Contact Email: ${formData.contactEmail}
 • Phone Number: ${formData.phone}
+
+📱 SMS CONSENT: ${formData.smsConsent ? 'YES - Agreed to receive SMS messages' : 'NO'}
 
 💬 ADDITIONAL DETAILS:
 ${formData.additionalInfo || 'No additional information provided'}
@@ -506,6 +509,23 @@ ${formData.additionalInfo || 'No additional information provided'}
                           minHeight: '120px'
                         }}
                       />
+                    </div>
+
+                    {/* SMS Consent Checkbox */}
+                    <div className="form-group form-group--checkbox">
+                      <label className="checkbox-container">
+                        <input
+                          type="checkbox"
+                          checked={formData.smsConsent}
+                          onChange={(e) => handleInputChange('smsConsent', e.target.checked)}
+                        />
+                        <span className="checkmark"></span>
+                        <span className="checkbox-text">
+                          I agree to receive SMS messages from Motive Home Care. Message frequency varies.
+                          Message & data rates may apply. Reply STOP to opt out at any time.
+                          View our <a href="/#/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+                        </span>
+                      </label>
                     </div>
                   </div>
 

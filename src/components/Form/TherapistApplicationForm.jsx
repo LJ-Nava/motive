@@ -8,7 +8,8 @@ const TherapistApplicationForm = () => {
     phone: '',
     discipline: '',
     yearsExperience: '',
-    coverageAreas: []
+    coverageAreas: [],
+    smsConsent: false
   });
 
   const [errors, setErrors] = useState({});
@@ -163,6 +164,8 @@ const TherapistApplicationForm = () => {
 • Primary Discipline: ${disciplineLabel}
 • Years of Experience: ${formData.yearsExperience}
 • Coverage Areas: ${formData.coverageAreas.join(', ')}
+
+📱 SMS CONSENT: ${formData.smsConsent ? 'YES - Agreed to receive SMS messages' : 'NO'}
 
 📅 APPLICATION DATE: ${new Date().toLocaleString('en-US', {
   weekday: 'long',
@@ -396,6 +399,25 @@ const TherapistApplicationForm = () => {
           ))}
         </div>
         {errors.coverageAreas && <span className="motive-error-message">{errors.coverageAreas}</span>}
+      </div>
+
+      {/* SMS Consent */}
+      <div className="motive-form-section">
+        <div className="motive-sms-consent">
+          <label className="motive-checkbox-item motive-sms-checkbox">
+            <input
+              type="checkbox"
+              checked={formData.smsConsent}
+              onChange={(e) => handleInputChange('smsConsent', e.target.checked)}
+            />
+            <span className="motive-checkmark"></span>
+            <span className="motive-checkbox-label motive-sms-label">
+              I agree to receive SMS messages from Motive Home Care. Message frequency varies.
+              Message & data rates may apply. Reply STOP to opt out at any time.
+              View our <a href="/#/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+            </span>
+          </label>
+        </div>
       </div>
 
       {/* Submit Button */}
