@@ -95,11 +95,8 @@ const AgenciesSlideshow = () => {
                       src={agency.logo}
                       alt={`${agency.name} logo`}
                       className="agencies-slideshow__logo"
-                      onLoad={(e) => {
-                        e.target.parentElement.parentElement.style.display = 'block';
-                      }}
                       onError={(e) => {
-                        e.target.parentElement.parentElement.style.display = 'none';
+                        e.target.style.opacity = '0';
                       }}
                     />
                   </div>
