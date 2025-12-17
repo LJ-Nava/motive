@@ -12,6 +12,7 @@ import AgenciesJoin from './components/Form/AgenciesJoin';
 import TherapistApplicationForm from './components/Form/TherapistApplicationForm';
 import AboutUs from './components/AboutUs/AboutUs';
 import ReferralForm from './components/Referrals/ReferralForm';
+import PrivacyPolicy from './components/Policies/PrivacyPolicy';
 import './components/styles/globals.scss';
 
 // Home Page Component
@@ -98,6 +99,16 @@ function App() {
             element={
               <PageLayout>
                 <ReferralForm />
+              </PageLayout>
+            }
+          />
+
+          {/* Privacy Policy Route */}
+          <Route
+            path="/privacy-policy"
+            element={
+              <PageLayout>
+                <PrivacyPolicy />
               </PageLayout>
             }
           />
