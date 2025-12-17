@@ -68,7 +68,7 @@ const Header = () => {
       icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75 M9 7a4 4 0 1 1 8 0 4 4 0 0 1-8 0'
     },
     {
-      label: 'Privacy Policy',
+      label: 'Policies & Terms',
       type: 'page',
       link: '/privacy-policy',
       icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
