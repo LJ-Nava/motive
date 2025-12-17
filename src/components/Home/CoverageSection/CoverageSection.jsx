@@ -38,17 +38,17 @@ const CoverageSection = () => {
     {
       id: 'pt',
       name: 'Physical Therapy',
-      responseTime: '<2hrs Response'
+      responseTime: '<5min Response'
     },
     {
       id: 'ot',
       name: 'Occupational Therapy',
-      responseTime: '<2hrs Response'
+      responseTime: '<5min Response'
     },
     {
       id: 'slp',
       name: 'Speech Therapy',
-      responseTime: '<2hrs Response'
+      responseTime: '<5min Response'
     }
   ];
 

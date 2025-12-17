@@ -14,7 +14,8 @@
   .coverage-hero {
     background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
     color: white;
-    padding: 6rem 0 4rem;
+    padding-top: calc(80px + 3rem); // Header height (80px) + espacio
+    padding-bottom: 4rem;
     position: relative;
     overflow: hidden;
 
