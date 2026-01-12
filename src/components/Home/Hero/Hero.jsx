@@ -17,22 +17,26 @@ const Hero = () => {
 
   const videos = [video1, video2, video3, video4, video5];
 
-  // Función para verificar si estamos en horario de oficina (9AM - 5:30PM CA)
+  // Función para verificar si estamos en horario de oficina
+  // Mon-Fri: 9AM - 5PM, Sat: 9AM - 12PM
   const checkBusinessHours = useCallback(() => {
     const now = new Date();
     const caTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}));
     const currentHour = caTime.getHours();
     const currentMinutes = caTime.getMinutes();
     const currentDay = caTime.getDay(); // 0 = Sunday, 6 = Saturday
-    
+
     // Verificar si es día laborable (lunes a viernes)
     const isWeekday = currentDay >= 1 && currentDay <= 5;
-    
-    // Verificar si está en horario (9:00 AM - 5:30 PM)
-    const isBusinessHours = (currentHour > 9 || (currentHour === 9 && currentMinutes >= 0)) && 
-                           (currentHour < 17 || (currentHour === 17 && currentMinutes <= 30));
-    
-    return isWeekday && isBusinessHours;
+    const isSaturday = currentDay === 6;
+
+    // Verificar horario según el día
+    // Lunes a Viernes: 9:00 AM - 5:00 PM
+    const isWeekdayHours = (currentHour >= 9 && currentHour < 17);
+    // Sábado: 9:00 AM - 12:00 PM
+    const isSaturdayHours = (currentHour >= 9 && currentHour < 12);
+
+    return (isWeekday && isWeekdayHours) || (isSaturday && isSaturdayHours);
   }, []);
 
   // Actualizar estado online/offline
@@ -176,13 +180,12 @@ const Hero = () => {
                   <div className={`hero__btn-status-dot ${isOnline ? 'online' : 'offline'}`}></div>
                 </div>
                 <div className="hero__btn-call-text">
-                  <span className="hero__btn-call-number">Call (213)495-0092</span>
+                  <span className="hero__btn-call-number">Call (213) 495-0092</span>
                   <span className="hero__btn-call-status">
                     {isOnline ? 'Online Now' : 'Offline'}
                   </span>
-                  <span className="hero__btn-call-hours">
-                    Available 9:00 AM - 5:30 PM PST
-                  </span>
+                  <span className="hero__btn-call-hours">Our main office is open:</span>
+                  <span className="hero__btn-call-hours">Mon-Fri 9AM-5PM | Sat 9AM-12PM PST</span>
                 </div>
               </div>
             </button>

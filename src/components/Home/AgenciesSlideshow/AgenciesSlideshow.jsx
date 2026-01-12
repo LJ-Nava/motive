@@ -1,6 +1,8 @@
 import React from 'react';
 import '../../styles/home/AgenciesSlideshow.scss';
 
+/*
+// Comentado temporalmente - Confirming approval de las agencias
 // Importar logos locales
 import unisonLogo from '../../../assets/logos/unison.png';
 import intracareLogo from '../../../assets/logos/intracare.png';
@@ -9,8 +11,11 @@ import dignitonicLogo from '../../../assets/logos/dignitonic.png';
 import alaphiaLogo from '../../../assets/logos/alaphia.png';
 import allcitizensLogo from '../../../assets/logos/allcitizens.png';
 import supportiveLogo from '../../../assets/logos/supportive.png';
+*/
 
 const AgenciesSlideshow = () => {
+  /*
+  // Comentado temporalmente - Confirming approval de las agencias
   const agencies = [
     { name: 'Unison Health Services', logo: unisonLogo },
     { name: 'Intracare Home Health', logo: intracareLogo },
@@ -20,7 +25,13 @@ const AgenciesSlideshow = () => {
     { name: 'All Citizens Home Health', logo: allcitizensLogo },
     { name: 'Supportive Health Group', logo: supportiveLogo }
   ];
+  */
 
+  // Retornar null temporalmente mientras se confirma aprobación de las agencias
+  return null;
+
+  /*
+  // Comentado temporalmente - Confirming approval de las agencias
   return (
     <section className="agencies-carousel">
       <h2 className="agencies-carousel__title">
@@ -29,13 +40,11 @@ const AgenciesSlideshow = () => {
 
       <div className="agencies-carousel__track-wrapper">
         <div className="agencies-carousel__track">
-          {/* Primera copia */}
           {agencies.map((agency, index) => (
             <div key={`a-${index}`} className="agencies-carousel__item">
               <img src={agency.logo} alt={agency.name} />
             </div>
           ))}
-          {/* Segunda copia para loop infinito */}
           {agencies.map((agency, index) => (
             <div key={`b-${index}`} className="agencies-carousel__item">
               <img src={agency.logo} alt={agency.name} />
@@ -45,6 +54,7 @@ const AgenciesSlideshow = () => {
       </div>
     </section>
   );
+  */
 };
 
 export default AgenciesSlideshow;

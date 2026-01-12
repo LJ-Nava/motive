@@ -376,6 +376,59 @@
   }
 }
 
+// Other Area Input
+.motive-other-area-input {
+  margin-top: 1rem;
+
+  input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease-in-out;
+    background: white;
+    color: #1f2937;
+
+    &:focus {
+      outline: none;
+      border-color: #4A90E2;
+      box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.1);
+    }
+
+    &:hover:not(:focus) {
+      border-color: #d1d5db;
+    }
+
+    &.motive-input-error {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+      background: #fef2f2;
+    }
+
+    &::placeholder {
+      color: #9ca3af;
+      font-style: italic;
+    }
+  }
+
+  .motive-error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+
+    &::before {
+      content: '⚠️';
+      font-size: 0.75rem;
+    }
+  }
+}
+
 .motive-checkbox-item {
   display: flex;
   align-items: center;
