@@ -23,7 +23,6 @@ const Hero = () => {
     const now = new Date();
     const caTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}));
     const currentHour = caTime.getHours();
-    const currentMinutes = caTime.getMinutes();
     const currentDay = caTime.getDay(); // 0 = Sunday, 6 = Saturday
 
     // Verificar si es día laborable (lunes a viernes)
