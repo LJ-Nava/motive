@@ -215,7 +215,7 @@ const Services = () => {
   };
 
   return (
-    <section className="premium-services" id="services" ref={servicesRef}>
+    <section className={`premium-services ${isVisible ? 'visible' : ''}`} id="services" ref={servicesRef}>
       <PremiumParticles />
       
       {/* Cursor premium effect */}
