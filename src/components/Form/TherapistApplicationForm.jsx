@@ -9,6 +9,7 @@ const TherapistApplicationForm = () => {
     discipline: '',
     yearsExperience: '',
     coverageAreas: [],
+    otherArea: '',
     smsConsent: false
   });
 
@@ -126,7 +127,11 @@ const TherapistApplicationForm = () => {
     if (formData.coverageAreas.length === 0) {
       newErrors.coverageAreas = 'Please select at least one coverage area';
     }
-    
+
+    if (formData.coverageAreas.includes('Other') && !formData.otherArea.trim()) {
+      newErrors.otherArea = 'Please specify your coverage area';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -146,7 +151,13 @@ const TherapistApplicationForm = () => {
       formDataToSend.append('Phone_Number', formData.phone);
       formDataToSend.append('Primary_Discipline', formData.discipline);
       formDataToSend.append('Years_of_Experience', formData.yearsExperience);
-      formDataToSend.append('Coverage_Areas', formData.coverageAreas.join(', '));
+      // Construir lista de áreas incluyendo "Other" con su especificación
+      const areasToSend = formData.coverageAreas.map(area =>
+        area === 'Other' && formData.otherArea.trim()
+          ? `Other: ${formData.otherArea.trim()}`
+          : area
+      );
+      formDataToSend.append('Coverage_Areas', areasToSend.join(', '));
       
       const disciplineLabel = disciplines.find(d => d.value === formData.discipline)?.label || formData.discipline;
       
@@ -163,7 +174,7 @@ const TherapistApplicationForm = () => {
 💼 PROFESSIONAL DETAILS:
 • Primary Discipline: ${disciplineLabel}
 • Years of Experience: ${formData.yearsExperience}
-• Coverage Areas: ${formData.coverageAreas.join(', ')}
+• Coverage Areas: ${areasToSend.join(', ')}
 
 📱 SMS CONSENT: ${formData.smsConsent ? 'YES - Agreed to receive SMS messages' : 'NO'}
 
@@ -397,7 +408,28 @@ const TherapistApplicationForm = () => {
               <span className="motive-checkbox-label">{area}</span>
             </label>
           ))}
+          <label className="motive-checkbox-item">
+            <input
+              type="checkbox"
+              checked={formData.coverageAreas.includes('Other')}
+              onChange={() => handleAreaChange('Other')}
+            />
+            <span className="motive-checkmark"></span>
+            <span className="motive-checkbox-label">Other</span>
+          </label>
         </div>
+        {formData.coverageAreas.includes('Other') && (
+          <div className="motive-other-area-input">
+            <input
+              type="text"
+              placeholder="Please specify your coverage area"
+              value={formData.otherArea}
+              onChange={(e) => handleInputChange('otherArea', e.target.value)}
+              className={errors.otherArea ? 'motive-input-error' : ''}
+            />
+            {errors.otherArea && <span className="motive-error-message">{errors.otherArea}</span>}
+          </div>
+        )}
         {errors.coverageAreas && <span className="motive-error-message">{errors.coverageAreas}</span>}
       </div>
 

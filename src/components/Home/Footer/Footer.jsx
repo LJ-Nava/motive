@@ -49,7 +49,7 @@ const Footer = () => {
               </p>
               <div className="footer__social">
                 <a 
-                  href="https://www.linkedin.com/posts/motive-home-care-inc_hiring-activity-6947022243461742592-fxMT" 
+                  href="https://www.linkedin.com/company/motive-home-care-inc" 
                   className="footer__social-link"
                   target="_blank" 
                   rel="noopener noreferrer"

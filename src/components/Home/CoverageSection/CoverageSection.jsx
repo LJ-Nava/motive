@@ -19,6 +19,7 @@ const CoverageSection = () => {
     {
       value: "3,000+",
       label: "Visits Completed Monthly",
+      subtext: "Consistent referral flow for clinicians",
       icon: "👥"
     },
     {
@@ -28,7 +29,7 @@ const CoverageSection = () => {
     },
     {
       value: "300+",
-      label: "Home Health Clinicians",
+      label: "Licensed Clinicians",
       icon: "🏥"
     }
   ];
@@ -38,17 +39,17 @@ const CoverageSection = () => {
     {
       id: 'pt',
       name: 'Physical Therapy',
-      responseTime: '<5min Response'
+      differentiator: 'OASIS-experienced clinicians'
     },
     {
       id: 'ot',
       name: 'Occupational Therapy',
-      responseTime: '<5min Response'
+      differentiator: 'ADL & safety-focused care'
     },
     {
       id: 'slp',
       name: 'Speech Therapy',
-      responseTime: '<5min Response'
+      differentiator: 'Cognition, swallowing & communication'
     }
   ];
 
@@ -71,6 +72,7 @@ const CoverageSection = () => {
           }}
         >
           <div className="coverage-section__map-content">
+            <span className="coverage-section__map-caption">Local clinicians. Regional reach.</span>
             <h3 className="coverage-section__map-title">COVERAGE AREAS</h3>
             <p className="coverage-section__map-subtitle">Serving 60+ cities across Southern California</p>
             
@@ -99,6 +101,9 @@ const CoverageSection = () => {
                 <div className="coverage-section__metric-content">
                   <div className="coverage-section__metric-value">{metric.value}</div>
                   <div className="coverage-section__metric-label">{metric.label}</div>
+                  {metric.subtext && (
+                    <div className="coverage-section__metric-subtext">{metric.subtext}</div>
+                  )}
                 </div>
               </div>
             ))}
@@ -109,8 +114,11 @@ const CoverageSection = () => {
         <div className="coverage-section__specialties">
           <div className="coverage-section__specialties-header">
             <h3 className="coverage-section__specialties-title">Our Specialties</h3>
+            <p className="coverage-section__specialties-tagline">
+              Flexible schedules. Fast onboarding. Local referrals.
+            </p>
             <p className="coverage-section__specialties-subtitle">
-              Expert professionals ready to help - click to learn more
+              Expert professionals ready to help
             </p>
           </div>
           
@@ -145,10 +153,10 @@ const CoverageSection = () => {
                 <div className="coverage-section__specialty-content">
                   <h4 className="coverage-section__specialty-name">{specialty.name}</h4>
 
-                  {/* Stats como en el PDF */}
+                  {/* Diferenciador específico */}
                   <div className="coverage-section__specialty-stats">
                     <div className="coverage-section__specialty-stat">
-                      <span className="coverage-section__specialty-number">{specialty.responseTime}</span>
+                      <span className="coverage-section__specialty-differentiator">{specialty.differentiator}</span>
                     </div>
                   </div>
                 </div>

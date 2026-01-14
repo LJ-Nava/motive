@@ -137,6 +137,30 @@ $color-gray: #6b7280;
 }
 
 /* ========================================== */
+/* SEGMENTATION HINT */
+/* ========================================== */
+.hero__segment-hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $color-orange;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: -1.5rem; /* Reducir espacio con el título */
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ========================================== */
 /* TÍTULO PRINCIPAL */
 /* ========================================== */
 .hero__title {
@@ -171,12 +195,13 @@ $color-gray: #6b7280;
 .hero__subtitle {
   font-family: 'Inter', sans-serif;
   font-size: 1.125rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.8; /* Más espaciado en el line-height */
-  color: $color-gray;
+  color: #374151; /* Gris más oscuro para mejor contraste */
   max-width: 750px; /* Ancho ligeramente mayor */
   margin: 0 auto;
-  
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+
   @media (max-width: 768px) {
     font-size: 1rem;
     max-width: 600px;
