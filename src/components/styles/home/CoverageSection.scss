@@ -104,6 +104,34 @@ $color-white: #ffffff;
   max-width: 600px;
 }
 
+/* Micro-caption elegante */
+.coverage-section__map-caption {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+}
+
 .coverage-section__map-title {
   font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
@@ -381,6 +409,15 @@ $color-white: #ffffff;
   font-weight: 500;
 }
 
+.coverage-section__metric-subtext {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: 400;
+  margin-top: 0.375rem;
+  font-style: italic;
+}
+
 /* ========================================== */
 /* SPECIALTIES SECTION - ALINEADO A LA IZQUIERDA */
 /* ========================================== */
@@ -401,12 +438,22 @@ $color-white: #ffffff;
   text-align: left; /* Alineado a la izquierda */
 }
 
+.coverage-section__specialties-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: $color-blue;
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+  letter-spacing: 0.25px;
+}
+
 .coverage-section__specialties-subtitle {
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   color: $color-gray;
   margin: 0;
-  text-align: left; /* Alineado a la izquierda */
+  text-align: left;
 }
 
 .coverage-section__specialties-grid {
@@ -492,12 +539,21 @@ $color-white: #ffffff;
 }
 
 .coverage-section__specialty-number {
-  font-family: 'Inter', sans-serif; /* Inter para consistencia */
-  font-size: 0.875rem; /* Tamaño más pequeño */
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: #6b7280; /* Color gris más suave */
+  color: #6b7280;
   line-height: 1;
   margin-bottom: 0.125rem;
+  display: block;
+}
+
+.coverage-section__specialty-differentiator {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1.4;
   display: block;
 }
 

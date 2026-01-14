@@ -14,47 +14,32 @@ const Services = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const servicesRef = useRef(null);
 
-  // Testimonials más diversos y humildes
+  // Testimonials anónimos - solo rol y región
   const testimonials = [
     {
-      name: "Maria Gonzalez",
-      role: "Physical Therapist",
-      company: "Community Health Center",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      quote: "Motive connected me with amazing home health agencies where I can provide quality PT services to elderly patients. Their <2 hour response time is incredible.",
-      location: "Los Angeles, CA"
+      role: "PTA",
+      region: "Southern California",
+      quote: "Motive communicates clearly, respects schedules, and pays on time."
     },
     {
-      name: "David Kim",
-      role: "Occupational Therapist", 
-      company: "Senior Care Facility",
-      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      quote: "As an OT, I love working with Motive's partner agencies. The patients I serve in their homes get the specialized occupational therapy they need.",
-      location: "San Diego, CA"
+      role: "Home Health PT",
+      region: "Southern California",
+      quote: "Fast responses and realistic expectations compared to other staffing companies."
     },
     {
-      name: "Jennifer Torres",
-      role: "Speech Language Pathologist",
-      company: "Pediatric Therapy Center",
-      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      quote: "Motive understands speech therapy needs in home health. They match me with agencies that value SLP services for elderly patients with communication disorders.",
-      location: "Orange County, CA"
-    },
-    {
-      name: "Michael Johnson",
-      role: "Physical Therapist Assistant",
-      company: "Rehabilitation Hospital",
-      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      quote: "As a PTA, I appreciate how Motive specializes in therapy staffing. They understand the unique needs of physical therapy assistants in home care settings.",
-      location: "Riverside, CA"
-    },
-    {
-      name: "Sarah Chen",
       role: "Occupational Therapist",
-      company: "Home Health Agency",
-      image: "https://images.unsplash.com/photo-1594824804732-ca8d76052d6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      quote: "Motive's focus on therapy staffing sets them apart. They truly understand what OTs need and connect us with agencies that value our expertise in home health.",
-      location: "Bakersfield, CA"
+      region: "Los Angeles Area",
+      quote: "Consistent referrals and respectful communication. They understand home health."
+    },
+    {
+      role: "Speech Therapist",
+      region: "Southern California",
+      quote: "Finally a staffing partner that values work-life balance and responds quickly."
+    },
+    {
+      role: "Home Health OT",
+      region: "Southern California",
+      quote: "Professional team that matches me with the right cases for my expertise."
     }
   ];
 
@@ -81,7 +66,7 @@ const Services = () => {
         </svg>
       ),
       title: "Rapid Response Staffing",
-      subtitle: "<2 hour response time guaranteed",
+      subtitle: "Fast Same-Day Staffing Support",
       description: "Our streamlined process ensures your therapy staffing needs are met quickly. We provide qualified PT, OT, and ST professionals when you need them most.",
       image: rapidResponseImg,
       accent: "#10b981"
@@ -94,7 +79,7 @@ const Services = () => {
         </svg>
       ),
       title: "California Coverage",
-      subtitle: "Statewide therapy network",
+      subtitle: "Southern California Regional Coverage",
       description: "Comprehensive coverage across Los Angeles, Orange, San Bernardino, Riverside, and Ventura counties with local therapy professionals ready to serve.",
       image: californiaCoverageImg,
       accent: "#06b6d4"
@@ -107,7 +92,7 @@ const Services = () => {
         </svg>
       ),
       title: "Home Health Expertise",
-      subtitle: "Specialized in geriatric care",
+      subtitle: "Home Health–Focused Care Teams",
       description: "Our therapists are experienced in home health settings, providing quality PT, OT, and ST services specifically for elderly patients in their homes.",
       image: homeHealthExpertiseImg,
       accent: "#f59e0b"
@@ -266,7 +251,24 @@ const Services = () => {
             <p className="premium-services__benefits-subtitle">
               We believe in treating everyone with dignity and respect. Our approach is simple: we listen, we care, and we work together to create opportunities that make a real difference in people's lives.
             </p>
+
+            <div className="premium-services__values-list">
+              <p className="premium-services__values-title">What clinicians actually value:</p>
+              <ul className="premium-services__values-items">
+                <li>Flexible schedules</li>
+                <li>Fast, responsive support</li>
+                <li>Consistent local referrals</li>
+              </ul>
+              <p className="premium-services__values-bridge">
+                When clinicians feel supported, agencies receive better outcomes and faster coverage.
+              </p>
+            </div>
           </div>
+
+          {/* Therapist-facing line */}
+          <p className="premium-services__therapist-line">
+            Built to support clinicians with flexible schedules, fair pay, and fast communication.
+          </p>
 
           {/* Benefits Grid Premium */}
           <div className="premium-services__benefits-grid">
@@ -332,19 +334,11 @@ const Services = () => {
                     </svg>
                     <p className="quote-text">"{testimonials[activeTestimonial].quote}"</p>
                   </div>
-                  
-                  <div className="premium-services__testimonial-author">
-                    <div className="premium-services__author-image">
-                      <div className="image-ring"></div>
-                      <img src={testimonials[activeTestimonial].image} alt={testimonials[activeTestimonial].name} />
-                      <div className="image-pulse"></div>
-                    </div>
-                    <div className="premium-services__author-info">
-                      <h4 className="premium-services__author-name">{testimonials[activeTestimonial].name}</h4>
-                      <p className="premium-services__author-role">{testimonials[activeTestimonial].role}</p>
-                      <p className="premium-services__author-company">{testimonials[activeTestimonial].company}</p>
-                      <p className="premium-services__author-location">{testimonials[activeTestimonial].location}</p>
-                    </div>
+
+                  <div className="premium-services__testimonial-attribution">
+                    <span className="premium-services__attribution-text">
+                      — {testimonials[activeTestimonial].role}, {testimonials[activeTestimonial].region}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -424,7 +418,7 @@ const Services = () => {
                 <div className="premium-services__option-features">
                   <div className="premium-services__feature">
                     <span className="feature-check">✓</span>
-                    Carefully screened professionals
+                    Licensed & background-verified professionals
                   </div>
                   <div className="premium-services__feature">
                     <span className="feature-check">✓</span>
@@ -471,7 +465,10 @@ const Services = () => {
                 <p className="premium-services__option-description">
                   Discover opportunities where your skills and compassion can make a real difference in people's lives.
                 </p>
-                
+                <p className="premium-services__option-tagline">
+                  Local referrals. Predictable scheduling. Responsive support.
+                </p>
+
                 <div className="premium-services__option-features">
                   <div className="premium-services__feature">
                     <span className="feature-check">✓</span>

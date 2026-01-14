@@ -144,14 +144,16 @@ const Hero = () => {
       {/* Hero Content - Centered */}
       <div className="hero__content">
         <div className="hero__container">
+          <span className="hero__segment-hint">
+            For Home Health Agencies and Therapy Professionals
+          </span>
+
           <h1 className="hero__title">
             Connecting Care & Building Trust
           </h1>
           
           <p className="hero__subtitle">
-            We help home health agencies find qualified therapists quickly and
-            efficiently. <span className="hero__highlight">Same-day response</span>, verified professionals, and dedicated
-            support for your agency's success.
+            Same-day staffing support for PT, OT, and ST across Southern California.
           </p>
 
           <div className="hero__actions">
@@ -181,7 +183,7 @@ const Hero = () => {
                 <div className="hero__btn-call-text">
                   <span className="hero__btn-call-number">Call (213) 495-0092</span>
                   <span className="hero__btn-call-status">
-                    {isOnline ? 'Online Now' : 'Offline'}
+                    {isOnline ? 'Online Now' : 'Speak With Our Team'}
                   </span>
                   <span className="hero__btn-call-hours">Our main office is open:</span>
                   <span className="hero__btn-call-hours">Mon-Fri 9AM-5PM | Sat 9AM-12PM PST</span>
