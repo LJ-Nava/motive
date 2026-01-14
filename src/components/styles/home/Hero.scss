@@ -193,19 +193,57 @@ $color-gray: #6b7280;
 /* SUBTÍTULO */
 /* ========================================== */
 .hero__subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 1.8; /* Más espaciado en el line-height */
-  color: #374151; /* Gris más oscuro para mejor contraste */
-  max-width: 750px; /* Ancho ligeramente mayor */
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #5a6a7a;
+  max-width: 750px;
   margin: 0 auto;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
+  position: relative;
+  font-style: italic;
+
+  /* Línea decorativa inferior sutil */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, $color-blue, $color-orange);
+    border-radius: 2px;
+    opacity: 0.6;
+  }
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.05rem;
     max-width: 600px;
+
+    &::after {
+      bottom: -12px;
+      width: 45px;
+    }
   }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+
+    &::after {
+      bottom: -10px;
+      width: 35px;
+    }
+  }
+}
+
+/* Abreviaturas destacadas (PT, OT, ST) */
+.hero__abbrev {
+  color: $color-blue;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.03em;
 }
 
 .hero__highlight {
@@ -317,54 +355,72 @@ $color-gray: #6b7280;
 /* BOTÓN DE LLAMADA CON ESTADO ONLINE/OFFLINE */
 /* ========================================== */
 .hero__btn--call {
-  background: linear-gradient(135deg, $color-white 0%, #f8f9fa 100%);
-  color: $color-gray;
-  border: 2px solid #e5e7eb;
-  box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.08),
-    0 2px 5px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  min-width: 240px; /* Ancho más generoso */
-  padding: 1.25rem 1.75rem; /* Padding más elegante */
-  border-radius: 14px; /* Bordes ligeramente más redondeados */
-  
-  /* Efecto de resplandor sutil */
-  &::after {
+  background: linear-gradient(135deg, $color-white 0%, rgba(23, 70, 134, 0.02) 100%);
+  color: $color-blue;
+  border: 1px solid rgba(23, 70, 134, 0.15);
+  box-shadow:
+    0 4px 20px rgba(23, 70, 134, 0.12),
+    0 2px 8px rgba(23, 70, 134, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  min-width: 240px;
+  padding: 1.25rem 1.75rem;
+  border-radius: 16px;
+
+  /* Efecto de resplandor elegante con colores de marca */
+  &::before {
     content: '';
     position: absolute;
     top: -2px;
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, transparent, rgba(107, 114, 128, 0.1), transparent);
-    border-radius: 14px;
+    background: linear-gradient(135deg,
+      rgba(23, 70, 134, 0.15) 0%,
+      rgba(208, 106, 43, 0.08) 50%,
+      rgba(23, 70, 134, 0.15) 100%);
+    border-radius: 18px;
     z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    opacity: 0.6;
+    filter: blur(4px);
+    transition: all 0.4s ease;
   }
-  
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, $color-white 0%, rgba(23, 70, 134, 0.02) 100%);
+    border-radius: 16px;
+    z-index: -1;
+  }
+
   &:hover {
-    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-    border-color: #d1d5db;
+    background: linear-gradient(135deg, $color-white 0%, rgba(23, 70, 134, 0.04) 100%);
+    border-color: rgba(23, 70, 134, 0.25);
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 
-      0 8px 25px rgba(0, 0, 0, 0.12),
-      0 15px 35px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    
-    &::after {
-      opacity: 1;
+    box-shadow:
+      0 8px 30px rgba(23, 70, 134, 0.18),
+      0 4px 15px rgba(208, 106, 43, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+
+    &::before {
+      opacity: 0.9;
+      filter: blur(6px);
     }
-    
+
     .hero__btn-call-icon {
       transform: scale(1.1) rotate(5deg);
+      color: $color-blue;
     }
-    
+
     .hero__btn-status-dot {
       transform: scale(1.2);
     }
   }
-  
+
   &:active {
     transform: translateY(-1px) scale(0.98);
     transition: all 0.1s ease;
@@ -429,33 +485,32 @@ $color-gray: #6b7280;
 /* Estado online/offline - Primera línea (más prominente) */
 .hero__btn-call-status {
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   line-height: 1.2;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   transition: color 0.3s ease;
-  order: 1; /* Primer elemento */
+  order: 1;
 }
 
 /* Número de teléfono - Segunda línea (elemento principal) */
 .hero__btn-call-number {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.3;
-  color: inherit;
-  margin: 2px 0 1px 0;
-  letter-spacing: 0.5px;
-  order: 2; /* Segundo elemento */
+  color: $color-blue;
+  margin: 3px 0 2px 0;
+  letter-spacing: 0.3px;
+  order: 2;
 }
 
 /* Horarios - Tercera línea (información secundaria) */
 .hero__btn-call-hours {
   font-weight: 400;
   font-size: 0.7rem;
-  line-height: 1.2;
-  color: #6b7280; /* Color más integrado con el diseño */
-  opacity: 0.85;
-  order: 3; /* Tercer elemento */
+  line-height: 1.3;
+  color: rgba(23, 70, 134, 0.6);
+  order: 3;
 }
 
 /* Estados online/offline del botón */

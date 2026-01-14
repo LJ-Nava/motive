@@ -229,7 +229,7 @@ const Services = () => {
       <div className="premium-services__container">
         
         {/* Benefits Section */}
-        <div className={`premium-services__benefits ${isVisible ? 'fade-in-spectacular' : ''}`}>
+        <div className="premium-services__benefits">
           <div className="premium-services__benefits-header">
             <div className="premium-services__badge">
               <div className="badge-glow"></div>
@@ -325,14 +325,13 @@ const Services = () => {
               <div className="testimonial-background-glow"></div>
               
               <div className="premium-services__testimonial-card">
-                <div className="testimonial-aurora"></div>
-                
                 <div className="premium-services__testimonial-content">
+                  <svg className="premium-services__quote-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-10zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                  </svg>
+
                   <div className="premium-services__testimonial-quote">
-                    <svg className="premium-services__quote-icon" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-10zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-                    </svg>
-                    <p className="quote-text">"{testimonials[activeTestimonial].quote}"</p>
+                    <p className="quote-text">{testimonials[activeTestimonial].quote}</p>
                   </div>
 
                   <div className="premium-services__testimonial-attribution">
@@ -359,7 +358,7 @@ const Services = () => {
         </div>
 
         {/* Call to Action Section Premium */}
-        <div id="motive-difference" className={`premium-services__cta ${isVisible ? 'fade-in-spectacular' : ''}`}>
+        <div id="motive-difference" className="premium-services__cta">
           <div className="cta-cosmic-bg"></div>
           
           <div className="premium-services__cta-background">

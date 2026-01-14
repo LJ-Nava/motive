@@ -153,7 +153,7 @@ const Hero = () => {
           </h1>
           
           <p className="hero__subtitle">
-            Same-day staffing support for PT, OT, and ST across Southern California.
+            Same-day staffing support for <span className="hero__abbrev">PT</span>, <span className="hero__abbrev">OT</span>, and <span className="hero__abbrev">ST</span> across Southern California.
           </p>
 
           <div className="hero__actions">

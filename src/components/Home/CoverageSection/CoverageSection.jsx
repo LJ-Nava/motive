@@ -20,17 +20,17 @@ const CoverageSection = () => {
       value: "3,000+",
       label: "Visits Completed Monthly",
       subtext: "Consistent referral flow for clinicians",
-      icon: "👥"
+      iconType: "visits"
     },
     {
       value: "<5min",
       label: "Response Time",
-      icon: "⚡"
+      iconType: "response"
     },
     {
       value: "300+",
       label: "Licensed Clinicians",
-      icon: "🏥"
+      iconType: "clinicians"
     }
   ];
 
@@ -97,7 +97,27 @@ const CoverageSection = () => {
           <div className="coverage-section__metrics-grid">
             {metrics.map((metric, index) => (
               <div key={index} className="coverage-section__metric-card">
-                <div className="coverage-section__metric-icon">{metric.icon}</div>
+                <div className="coverage-section__metric-icon">
+                  {metric.iconType === "visits" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                  )}
+                  {metric.iconType === "response" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  )}
+                  {metric.iconType === "clinicians" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                  )}
+                </div>
                 <div className="coverage-section__metric-content">
                   <div className="coverage-section__metric-value">{metric.value}</div>
                   <div className="coverage-section__metric-label">{metric.label}</div>

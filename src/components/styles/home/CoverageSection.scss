@@ -336,57 +336,95 @@ $color-white: #ffffff;
 }
 
 /* ========================================== */
-/* METRICS SECTION - ALINEADO A LA IZQUIERDA CON TARJETAS */
+/* METRICS SECTION - DISEÑO ELEGANTE */
 /* ========================================== */
 .coverage-section__metrics {
   margin-bottom: 4rem;
 }
 
-.coverage-section__metrics-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #94a3b8;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-align: left; /* Alineado a la izquierda */
-  margin: 0 0 2rem 0;
-}
-
 .coverage-section__metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
   margin: 0 auto;
 
+  @media (max-width: 900px) {
+    gap: 1.5rem;
+  }
+
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    max-width: 400px;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
   }
 }
 
-/* Tarjetas para las métricas como en el PDF */
+/* Tarjetas para las métricas - diseño elegante */
 .coverage-section__metric-card {
   background: $color-white;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(23, 70, 134, 0.1);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow:
+    0 4px 20px rgba(23, 70, 134, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  
+  gap: 1.5rem;
+  flex: 1;
+
   &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+    box-shadow:
+      0 8px 30px rgba(23, 70, 134, 0.12),
+      0 2px 6px rgba(0, 0, 0, 0.06);
+    transform: translateY(-3px);
+    border-color: rgba(23, 70, 134, 0.18);
+
+    .coverage-section__metric-icon svg {
+      transform: scale(1.1);
+      filter: drop-shadow(0 3px 6px rgba(23, 70, 134, 0.25));
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 400px;
+    padding: 1.5rem 2rem;
   }
 }
 
 .coverage-section__metric-icon {
-  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    color: $color-blue;
+    stroke-width: 1.5;
+    filter: drop-shadow(0 2px 4px rgba(23, 70, 134, 0.15));
+    transition: all 0.3s ease;
+  }
+}
+
+/* Estilos individuales para cada icono */
+.coverage-section__metric-card:nth-child(1) .coverage-section__metric-icon svg {
+  color: $color-blue;
+}
+
+.coverage-section__metric-card:nth-child(2) .coverage-section__metric-icon svg {
+  color: $color-orange;
+}
+
+.coverage-section__metric-card:nth-child(3) .coverage-section__metric-icon svg {
+  color: #10b981;
 }
 
 .coverage-section__metric-content {
@@ -395,27 +433,29 @@ $color-white: #ffffff;
 
 .coverage-section__metric-value {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: #1e293b;
+  color: $color-blue;
   line-height: 1;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.375rem;
+  letter-spacing: -0.02em;
 }
 
 .coverage-section__metric-label {
   font-family: 'Inter', sans-serif;
-  font-size: 0.875rem;
-  color: $color-gray;
+  font-size: 0.9rem;
+  color: #4a5568;
   font-weight: 500;
+  line-height: 1.3;
 }
 
 .coverage-section__metric-subtext {
   font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  color: #9ca3af;
-  font-weight: 400;
-  margin-top: 0.375rem;
-  font-style: italic;
+  font-size: 0.8rem;
+  color: $color-orange;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  font-style: normal;
 }
 
 /* ========================================== */
@@ -431,29 +471,33 @@ $color-white: #ffffff;
 
 .coverage-section__specialties-title {
   font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 600;
-  color: #1e293b;
-  margin: 0 0 0.5rem 0;
-  text-align: left; /* Alineado a la izquierda */
+  color: $color-blue;
+  margin: 0 0 1rem 0;
+  text-align: left;
+  letter-spacing: -0.02em;
 }
 
 .coverage-section__specialties-tagline {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.0625rem;
-  font-weight: 500;
-  color: $color-blue;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: $color-orange;
   margin: 0 0 0.5rem 0;
   text-align: left;
-  letter-spacing: 0.25px;
+  letter-spacing: 0.01em;
+  font-style: italic;
 }
 
 .coverage-section__specialties-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  color: $color-gray;
+  font-size: 0.95rem;
+  color: #64748b;
   margin: 0;
   text-align: left;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .coverage-section__specialties-grid {
