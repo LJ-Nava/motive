@@ -311,8 +311,24 @@ ${formData.additionalInfo || 'No additional information provided'}
             </h1>
 
             <p className="hero-subtitle">
-              Every home health agency contributes to the well-being of our communities. We invite you to explore how our partnership can help you continue delivering exceptional care while expanding your reach and capabilities.
+              Same-day access to licensed PT, OT & ST professionals across Southern California.
             </p>
+
+            <div className="hero-cta-container">
+              <button
+                onClick={() => {
+                  const formSection = document.querySelector('.form-section');
+                  formSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn btn-primary btn-hero-cta"
+              >
+                Start Partnership Application
+              </button>
+
+              <a href="/#/therapists/apply" className="therapist-link">
+                Are you a therapist? <span className="therapist-link-arrow">→</span> Join our team
+              </a>
+            </div>
 
             <div className="journey-steps">
               <div className={`step ${currentStep >= 1 ? 'step--active' : ''} ${currentStep > 1 ? 'step--completed' : ''}`}>
