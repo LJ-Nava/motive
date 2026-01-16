@@ -405,13 +405,14 @@ ${formData.additionalInfo || 'No additional information provided'}
               {currentStep === 1 ? (
                 <div className="form-card">
                   <div className="form-header">
+                    <div className="step-microcopy">Step 1 to 3 • Takes about 2 minutes</div>
                     <h2>Let's Connect</h2>
                     <p>We'd like to learn more about your home health agency and how we might work together to better serve your community. Please share some basic information to get started.</p>
                   </div>
 
                   <div className="form-body">
                     <div className="form-row">
-                      <div className="form-group">
+                      <div className="form-group agency-name-group">
                         <label htmlFor="agencyName">
                           <span className="label-icon">🏢</span>
                           Agency Name
@@ -430,7 +431,7 @@ ${formData.additionalInfo || 'No additional information provided'}
                       <div className="form-group">
                         <label htmlFor="agencyType">
                           <span className="label-icon">🏥</span>
-                          Type of Home health Facility
+                          Select your facility type (Home Health, SNF, Outpatient, Other)
                         </label>
                         <select
                           id="agencyType"
@@ -438,7 +439,7 @@ ${formData.additionalInfo || 'No additional information provided'}
                           onChange={(e) => handleInputChange('agencyType', e.target.value)}
                           className={errors.agencyType ? 'input--error' : ''}
                         >
-                          <option value="">Select your facility type</option>
+                          <option value="">Facility type</option>
                           {agencyTypes.map(type => (
                             <option key={type.value} value={type.value}>
                               {type.icon} {type.value} - {type.description}
@@ -490,7 +491,7 @@ ${formData.additionalInfo || 'No additional information provided'}
                       className="btn btn-primary btn-large"
                     >
                       <span className="btn-icon">➡️</span>
-                      Continue to Next Step
+                      Continue to Step 2
                       <div className="btn-shine"></div>
                     </button>
                     
@@ -592,7 +593,7 @@ ${formData.additionalInfo || 'No additional information provided'}
             <p className='ColorBack'>Every home health agency plays a vital role in community well-being. Let's explore how we can work together to enhance the care you provide.</p>
             
             <div className="cta-actions">
-              <button 
+              <button
                 onClick={() => {
                   const formSection = document.querySelector('.form-section');
                   formSection?.scrollIntoView({ behavior: 'smooth' });
@@ -600,23 +601,36 @@ ${formData.additionalInfo || 'No additional information provided'}
                 className="btn btn-primary btn-hero"
               >
                 <span className="btn-icon">📝</span>
-                Start Partnership Application
+                Start Partnership Application – Connect with Licensed Clinicians
                 <div className="btn-shine"></div>
               </button>
-              
+
               <a href="tel:+12134950092" className="btn btn-secondary">
                 <span className="btn-icon">📞</span>
-                Call: (213) 495-0092
+                Call Our Partnership Team
               </a>
+            </div>
+
+            <div className="cta-social-proof">
+              Trusted by home health agencies across Southern California
             </div>
 
             <div className="cta-promise">
               <div className="promise-icon">🤝</div>
               <p className='ColorBack'>We are committed to supporting your agency's mission with the same professionalism and dedication you bring to patient care.</p>
             </div>
+
+            <a href="/#/therapists/apply" className="therapist-redirect-link">
+              Therapist looking for work? <span>→</span> Join our team
+            </a>
           </div>
         </div>
       </section>
+
+      {/* Pre-Footer Agency Banner */}
+      <div className="agency-footer-banner">
+        Proudly partnering with home health agencies throughout Southern California
+      </div>
     </div>
   );
 };

@@ -14,22 +14,25 @@ const Services = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const servicesRef = useRef(null);
 
-  // Testimonials anónimos - solo rol y región
+  // Testimonials - mezcla de comentarios reales y anónimos
   const testimonials = [
     {
-      role: "PTA",
+      name: "Celeste E.",
+      role: "Physical Therapist",
       region: "Southern California",
-      quote: "Motive communicates clearly, respects schedules, and pays on time."
+      quote: "I've had such a positive experience with this PT staffing agency. They're responsive, easy to talk to, and genuinely understanding of therapists' needs. The team is supportive and always advocates for their clinicians, which I truly appreciate."
     },
     {
-      role: "Home Health PT",
+      name: "Jordyn F.",
+      role: "Physical Therapist Assistant",
       region: "Southern California",
-      quote: "Fast responses and realistic expectations compared to other staffing companies."
+      quote: "I work with several home health agencies, and Motive Home Care truly stands out. They genuinely care about their therapists, are highly responsive, and consistently go above and beyond to provide support and timely answers."
     },
     {
-      role: "Occupational Therapist",
-      region: "Los Angeles Area",
-      quote: "Consistent referrals and respectful communication. They understand home health."
+      name: "Dominik A.",
+      role: "Physical Therapist Assistant",
+      region: "Southern California",
+      quote: "Motive Home Care has been a great company to work for, always responsive and very understanding with my needs as a PTA. I greatly appreciate all they do for me as a company and look forward to working with them more in the future."
     },
     {
       role: "Speech Therapist",
@@ -336,7 +339,7 @@ const Services = () => {
 
                   <div className="premium-services__testimonial-attribution">
                     <span className="premium-services__attribution-text">
-                      — {testimonials[activeTestimonial].role}, {testimonials[activeTestimonial].region}
+                      — {testimonials[activeTestimonial].name ? `${testimonials[activeTestimonial].name}, ` : ''}{testimonials[activeTestimonial].role}
                     </span>
                   </div>
                 </div>
