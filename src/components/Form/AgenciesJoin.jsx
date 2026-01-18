@@ -629,7 +629,7 @@ ${formData.additionalInfo || 'No additional information provided'}
 
       {/* Pre-Footer Agency Banner */}
       <div className="agency-footer-banner">
-        Proudly partnering with home health agencies throughout Southern California
+        Partnering with home health agencies throughout Southern California
       </div>
     </div>
   );
