@@ -16,6 +16,7 @@ const TherapistApplicationForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [countyFilter, setCountyFilter] = useState('');
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -23,32 +24,32 @@ const TherapistApplicationForm = () => {
   }, []);
 
   const disciplines = [
-    { value: 'physical-therapy', label: 'Physical Therapy (PT)' },
-    { value: 'occupational-therapy', label: 'Occupational Therapy (OT)' },
-    { value: 'speech-therapy', label: 'Speech-Language Pathology (SLP)' },
-    { value: 'pta', label: 'Physical Therapist Assistant (PTA)' },
-    { value: 'cota', label: 'Occupational Therapy Assistant (COTA)' },
-    { value: 'slpa', label: 'Speech-Language Pathology Assistant (SLPA)' }
+    { value: 'physical-therapy', label: 'Physical Therapy (PT)', tooltip: 'Licensed Physical Therapist providing rehabilitation services' },
+    { value: 'occupational-therapy', label: 'Occupational Therapy (OT)', tooltip: 'Licensed Occupational Therapist helping patients with daily activities' },
+    { value: 'speech-therapy', label: 'Speech Therapy (ST)', tooltip: 'Licensed Speech Therapist treating communication and swallowing disorders' },
+    { value: 'pta', label: 'Physical Therapist Assistant (PTA)', tooltip: 'Assists Physical Therapists in providing treatment' },
+    { value: 'cota', label: 'Occupational Therapy Assistant (COTA)', tooltip: 'Certified assistant working under OT supervision' },
+    { value: 'sta', label: 'Speech Therapy Assistant (STA)', tooltip: 'Assists Speech Therapists in therapy sessions' }
   ];
 
+  // Southern California Counties
   const coverageAreas = [
     'Los Angeles County',
-    'Orange County', 
+    'Orange County',
     'Riverside County',
     'San Bernardino County',
     'Ventura County',
+    'San Diego County',
     'Imperial County',
     'Kern County',
-    'Kings County',
-    'Tulare County'
+    'Santa Barbara County',
+    'San Luis Obispo County'
   ];
 
   const experienceOptions = [
-    { value: '0-1', label: '0-1 years' },
-    { value: '2-5', label: '2-5 years' },
-    { value: '6-10', label: '6-10 years' },
-    { value: '11-15', label: '11-15 years' },
-    { value: '16+', label: '16+ years' }
+    { value: '0-1', label: '0–1 yr' },
+    { value: '2-4', label: '2–4 yrs' },
+    { value: '5+', label: '5+ yrs' }
   ];
 
   const formatPhoneNumber = (value) => {
@@ -99,21 +100,23 @@ const TherapistApplicationForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
+      newErrors.fullName = 'Please enter your full name';
+    } else if (formData.fullName.trim().split(' ').length < 2) {
+      newErrors.fullName = 'Please include both first and last name';
     }
-    
+
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = 'Email address is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = 'Please enter a valid email (e.g., name@example.com)';
     }
-    
+
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
     } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number in format (123) 456-7890';
+      newErrors.phone = 'Please enter a valid 10-digit phone number';
     }
     
     if (!formData.discipline) {
@@ -279,7 +282,7 @@ const TherapistApplicationForm = () => {
     <div className="motive-simplified-therapist-form-container">
       <div className="motive-form-hero-section">
         <div className="motive-hero-content">
-          <h1>Connect with Premium Home health Opportunities</h1>
+          <h1>Connect with Premium Home Health Therapy Opportunities</h1>
           <p>Join California's leading therapy professionals. Quick application, fast placement, competitive opportunities.</p>
           <div className="motive-hero-stats">
             <div className="motive-stat-item">
@@ -301,8 +304,16 @@ const TherapistApplicationForm = () => {
       <div className="motive-form-main-container">
         <div className="motive-form-card">
           <div className="motive-form-header">
+            <span className="motive-form-step-indicator">Step 1 of 1 • Takes about 2 minutes</span>
             <h2>Therapist Application</h2>
-            <p>Simple, quick, and secure. Get started in less than 2 minutes.</p>
+            <p>Simple, quick and secure — start now in under 2 minutes.</p>
+            <div className="motive-security-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <span>Your information is secure and confidential</span>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="motive-application-form">
@@ -319,8 +330,9 @@ const TherapistApplicationForm = () => {
                     value={formData.fullName}
                     onChange={(e) => handleInputChange('fullName', e.target.value)}
                     className={errors.fullName ? 'motive-input-error' : ''}
-                    placeholder="Enter your full name"
+                    placeholder="First and last name"
                   />
+                  <span className="motive-helper-text">As it appears on your professional license</span>
                   {errors.fullName && <span className="motive-error-message">{errors.fullName}</span>}
                 </div>
 
@@ -334,6 +346,7 @@ const TherapistApplicationForm = () => {
                     className={errors.email ? 'motive-input-error' : ''}
                     placeholder="your.email@example.com"
                   />
+                  <span className="motive-helper-text">Used to contact you about placements</span>
                   {errors.email && <span className="motive-error-message">{errors.email}</span>}
                 </div>
 
@@ -345,9 +358,10 @@ const TherapistApplicationForm = () => {
               value={formData.phone}
               onChange={(e) => handleInputChange('phone', e.target.value)}
               className={errors.phone ? 'motive-input-error' : ''}
-              placeholder="(123) 456-7890"
+              placeholder="Enter a 10-digit phone number"
               maxLength={14}
             />
+            <span className="motive-helper-text">For scheduling interviews and updates</span>
             {errors.phone && <span className="motive-error-message">{errors.phone}</span>}
           </div>
         </div>
@@ -367,6 +381,7 @@ const TherapistApplicationForm = () => {
                 onClick={() => handleInputChange('discipline', disc.value)}
               >
                 <span className="motive-discipline-label">{disc.label}</span>
+                <span className="motive-discipline-tooltip">{disc.tooltip}</span>
               </div>
             ))}
           </div>
@@ -395,29 +410,57 @@ const TherapistApplicationForm = () => {
       {/* Coverage Areas */}
       <div className="motive-form-section">
         <h3>Coverage Areas *</h3>
-        <p className="motive-section-description">Select all areas where you're willing to provide services</p>
+        <p className="motive-section-description">Select all counties where you can provide services</p>
+        <div className="motive-county-filter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input
+            type="text"
+            placeholder="Search counties..."
+            value={countyFilter}
+            onChange={(e) => setCountyFilter(e.target.value)}
+          />
+          {countyFilter && (
+            <button
+              type="button"
+              className="motive-filter-clear"
+              onClick={() => setCountyFilter('')}
+            >
+              ×
+            </button>
+          )}
+        </div>
         <div className="motive-coverage-grid">
-          {coverageAreas.map(area => (
-            <label key={area} className="motive-checkbox-item">
+          {coverageAreas
+            .filter(area => area.toLowerCase().includes(countyFilter.toLowerCase()))
+            .map(area => (
+              <label key={area} className="motive-checkbox-item">
+                <input
+                  type="checkbox"
+                  checked={formData.coverageAreas.includes(area)}
+                  onChange={() => handleAreaChange(area)}
+                />
+                <span className="motive-checkmark"></span>
+                <span className="motive-checkbox-label">{area}</span>
+              </label>
+            ))}
+          {!countyFilter && (
+            <label className="motive-checkbox-item">
               <input
                 type="checkbox"
-                checked={formData.coverageAreas.includes(area)}
-                onChange={() => handleAreaChange(area)}
+                checked={formData.coverageAreas.includes('Other')}
+                onChange={() => handleAreaChange('Other')}
               />
               <span className="motive-checkmark"></span>
-              <span className="motive-checkbox-label">{area}</span>
+              <span className="motive-checkbox-label">Other (please specify)</span>
             </label>
-          ))}
-          <label className="motive-checkbox-item">
-            <input
-              type="checkbox"
-              checked={formData.coverageAreas.includes('Other')}
-              onChange={() => handleAreaChange('Other')}
-            />
-            <span className="motive-checkmark"></span>
-            <span className="motive-checkbox-label">Other</span>
-          </label>
+          )}
         </div>
+        {coverageAreas.filter(area => area.toLowerCase().includes(countyFilter.toLowerCase())).length === 0 && countyFilter && (
+          <p className="motive-no-results">No counties match your search</p>
+        )}
         {formData.coverageAreas.includes('Other') && (
           <div className="motive-other-area-input">
             <input
@@ -444,8 +487,7 @@ const TherapistApplicationForm = () => {
             />
             <span className="motive-checkmark"></span>
             <span className="motive-checkbox-label motive-sms-label">
-              I agree to receive SMS messages from Motive Home Care. Message frequency varies.
-              Message & data rates may apply. Reply STOP to opt out at any time.
+              I consent to receive SMS updates about placement opportunities. Message & data rates may apply. Reply STOP to opt out at any time.
               View our <a href="/#/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
             </span>
           </label>
@@ -466,13 +508,14 @@ const TherapistApplicationForm = () => {
             </>
           ) : (
             <>
-              Submit Application
+              Submit Application – Get Matched Today
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </>
           )}
         </button>
+        <p className="motive-response-time">Responses typically within 24 hours</p>
         <p className="motive-submit-note">
           By submitting this application, you agree to be contacted by our team regarding therapy opportunities.
         </p>
@@ -495,36 +538,55 @@ const TherapistApplicationForm = () => {
         <li>
           <span className="motive-benefit-icon">🏆</span>
           <div>
-            <strong>Quality Home health Facilities</strong>
-            <p>Accredited Home health providers</p>
+            <strong>Accredited Home Health Providers</strong>
+            <p>Verified and quality-assured partners</p>
           </div>
         </li>
         <li>
           <span className="motive-benefit-icon">📊</span>
           <div>
-            <strong>Fair Compensation</strong>
-            <p>Market-aligned compensation packages</p>
+            <strong>Market-Aligned Compensation</strong>
+            <p>Competitive packages for your expertise</p>
           </div>
         </li>
         <li>
           <span className="motive-benefit-icon">👤</span>
           <div>
-            <strong>Professional Support</strong>
-            <p>Dedicated account coordinator</p>
+            <strong>Dedicated Account Coordinator</strong>
+            <p>Personal support every step of the way</p>
           </div>
         </li>
       </ul>
+      <div className="motive-social-proof">
+        <span>Trusted by 8,000+ therapists across Southern California</span>
+      </div>
+      <a href="/#/therapists/benefits" className="motive-benefits-link">
+        Learn more about benefits
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
     </div>
 
     <div className="motive-contact-card">
-      <h4>Questions?</h4>
+      <h4>Speak with our Partnership Team</h4>
       <p>Our team is here to help you every step of the way.</p>
       <a href="tel:+12134950092" className="motive-contact-button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
         </svg>
-        (213) 495-0092
+        Call Our Partnership Team
       </a>
+      <div className="motive-contact-info">
+        <span className="motive-operating-hours">Mon–Fri 9 AM–5:30 PM • Sat 9 AM–12 PM PT</span>
+        <a href="mailto:info@motivehomecare.com" className="motive-email-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          info@motivehomecare.com
+        </a>
+      </div>
     </div>
   </div>
 </div>

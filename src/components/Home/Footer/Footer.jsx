@@ -168,6 +168,24 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Agency Call-out */}
+      <div className="footer__callout">
+        <div className="container">
+          <div className="footer__callout-content">
+            <span className="footer__callout-text">Home health agencies:</span>
+            <button
+              onClick={(e) => handleNavClick('/agencies/join', e)}
+              className="footer__callout-link"
+            >
+              Partner with us
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Bottom Bar */}
       <div className="footer__bottom">
         <div className="container">
@@ -206,6 +224,15 @@ const Footer = () => {
               </div>
             </div>
             <div className="footer__bottom-right">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="footer__back-to-top"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
+                Back to top
+              </button>
               <p className="footer__tagline">
                 Connecting Care. Building Trust.
               </p>
