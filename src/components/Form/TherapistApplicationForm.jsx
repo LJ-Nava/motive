@@ -17,10 +17,61 @@ const TherapistApplicationForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [countyFilter, setCountyFilter] = useState('');
+  const [experienceDropdownOpen, setExperienceDropdownOpen] = useState(false);
+
+  // Animated stats values
+  const [animatedPlacements, setAnimatedPlacements] = useState(0);
+  const [animatedSatisfaction, setAnimatedSatisfaction] = useState(0);
+  const [animatedResponse, setAnimatedResponse] = useState(0);
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  // Close experience dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (experienceDropdownOpen && !event.target.closest('.custom-experience-select')) {
+        setExperienceDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [experienceDropdownOpen]);
+
+  // Counting animation for stats
+  useEffect(() => {
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const interval = duration / steps;
+
+    // Target values
+    const targetPlacements = 8000;
+    const targetSatisfaction = 98.5;
+    const targetResponse = 24;
+
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep++;
+      const progress = currentStep / steps;
+      // Easing function for smooth deceleration
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+
+      setAnimatedPlacements(Math.round(targetPlacements * easeOut));
+      setAnimatedSatisfaction(Math.round(targetSatisfaction * easeOut * 10) / 10);
+      setAnimatedResponse(Math.round(targetResponse * easeOut));
+
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        setAnimatedPlacements(targetPlacements);
+        setAnimatedSatisfaction(targetSatisfaction);
+        setAnimatedResponse(targetResponse);
+      }
+    }, interval);
+
+    return () => clearInterval(timer);
   }, []);
 
   const disciplines = [
@@ -47,9 +98,27 @@ const TherapistApplicationForm = () => {
   ];
 
   const experienceOptions = [
-    { value: '0-1', label: '0–1 yr' },
-    { value: '2-4', label: '2–4 yrs' },
-    { value: '5+', label: '5+ yrs' }
+    {
+      value: '0-1',
+      label: '0–1 year',
+      description: 'New graduate or recent entry',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="M2 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M12 18v4"/><path d="m19.07 19.07-2.83-2.83"/><path d="M22 12h-4"/><path d="m19.07 4.93-2.83 2.83"/></svg>,
+      color: '#10b981'
+    },
+    {
+      value: '2-4',
+      label: '2–4 years',
+      description: 'Growing professional',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>,
+      color: '#3b82f6'
+    },
+    {
+      value: '5+',
+      label: '5+ years',
+      description: 'Experienced professional',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>,
+      color: '#f59e0b'
+    }
   ];
 
   const formatPhoneNumber = (value) => {
@@ -282,19 +351,19 @@ const TherapistApplicationForm = () => {
     <div className="motive-simplified-therapist-form-container">
       <div className="motive-form-hero-section">
         <div className="motive-hero-content">
-          <h1>Connect with Premium Home Health Therapy Opportunities</h1>
+          <h1>Connect with <span className="highlight-orange">Premium</span> Home Health Therapy Opportunities</h1>
           <p>Join California's leading therapy professionals. Quick application, fast placement, competitive opportunities.</p>
           <div className="motive-hero-stats">
             <div className="motive-stat-item">
-              <span className="motive-stat-number">8,000+</span>
+              <span className="motive-stat-number">{animatedPlacements.toLocaleString()}+</span>
               <span className="motive-stat-label">Successful Placements</span>
             </div>
             <div className="motive-stat-item">
-              <span className="motive-stat-number">98.5%</span>
+              <span className="motive-stat-number">{animatedSatisfaction}%</span>
               <span className="motive-stat-label">Satisfaction Rate</span>
             </div>
             <div className="motive-stat-item">
-              <span className="motive-stat-number">24hrs</span>
+              <span className="motive-stat-number">{animatedResponse}hrs</span>
               <span className="motive-stat-label">Response Time</span>
             </div>
           </div>
@@ -322,50 +391,73 @@ const TherapistApplicationForm = () => {
             <div className="motive-form-section">
               <h3>Personal Information</h3>
               <div className="motive-form-grid">
-                <div className="motive-form-group">
+                <div className="motive-form-group fullname-group">
                   <label htmlFor="fullName">Full Name *</label>
-                  <input
-                    id="fullName"
-                    type="text"
-                    value={formData.fullName}
-                    onChange={(e) => handleInputChange('fullName', e.target.value)}
-                    className={errors.fullName ? 'motive-input-error' : ''}
-                    placeholder="First and last name"
-                  />
+                  <div className="motive-input-wrapper">
+                    <span className="motive-input-icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                      </svg>
+                    </span>
+                    <input
+                      id="fullName"
+                      type="text"
+                      value={formData.fullName}
+                      onChange={(e) => handleInputChange('fullName', e.target.value)}
+                      className={errors.fullName ? 'motive-input-error' : ''}
+                      placeholder="First and last name"
+                    />
+                  </div>
                   <span className="motive-helper-text">As it appears on your professional license</span>
                   {errors.fullName && <span className="motive-error-message">{errors.fullName}</span>}
                 </div>
 
-                <div className="motive-form-group">
+                <div className="motive-form-group email-group">
                   <label htmlFor="email">Email Address *</label>
-                  <input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    className={errors.email ? 'motive-input-error' : ''}
-                    placeholder="your.email@example.com"
-                  />
+                  <div className="motive-input-wrapper">
+                    <span className="motive-input-icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                      </svg>
+                    </span>
+                    <input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      className={errors.email ? 'motive-input-error' : ''}
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
                   <span className="motive-helper-text">Used to contact you about placements</span>
                   {errors.email && <span className="motive-error-message">{errors.email}</span>}
                 </div>
 
-          <div className="motive-form-group">
-            <label htmlFor="phone">Phone Number *</label>
-            <input
-              id="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={(e) => handleInputChange('phone', e.target.value)}
-              className={errors.phone ? 'motive-input-error' : ''}
-              placeholder="Enter a 10-digit phone number"
-              maxLength={14}
-            />
-            <span className="motive-helper-text">For scheduling interviews and updates</span>
-            {errors.phone && <span className="motive-error-message">{errors.phone}</span>}
-          </div>
-        </div>
-      </div>
+                <div className="motive-form-group phone-group">
+                  <label htmlFor="phone">Phone Number *</label>
+                  <div className="motive-input-wrapper">
+                    <span className="motive-input-icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                      </svg>
+                    </span>
+                    <input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      className={errors.phone ? 'motive-input-error' : ''}
+                      placeholder="Enter a 10-digit phone number"
+                      maxLength={14}
+                    />
+                  </div>
+                  <span className="motive-helper-text">For scheduling interviews and updates</span>
+                  {errors.phone && <span className="motive-error-message">{errors.phone}</span>}
+                </div>
+              </div>
+            </div>
 
       {/* Professional Information */}
       <div className="motive-form-section">
@@ -388,21 +480,61 @@ const TherapistApplicationForm = () => {
           {errors.discipline && <span className="motive-error-message">{errors.discipline}</span>}
         </div>
 
-        <div className="motive-form-group">
-          <label htmlFor="yearsExperience">Years of Experience *</label>
-          <select
-            id="yearsExperience"
-            value={formData.yearsExperience}
-            onChange={(e) => handleInputChange('yearsExperience', e.target.value)}
-            className={errors.yearsExperience ? 'motive-input-error' : ''}
-          >
-            <option value="">Select your experience level</option>
-            {experienceOptions.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+        <div className="motive-form-group experience-group">
+          <label>Years of Experience *</label>
+          <div className={`custom-experience-select ${experienceDropdownOpen ? 'open' : ''} ${errors.yearsExperience ? 'has-error' : ''}`}>
+            <div
+              className="custom-experience-select__trigger"
+              onClick={() => setExperienceDropdownOpen(!experienceDropdownOpen)}
+            >
+              <span className="custom-experience-select__icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 8v4l3 3"/>
+                  <circle cx="12" cy="12" r="10"/>
+                </svg>
+              </span>
+              {formData.yearsExperience ? (
+                <span className="custom-experience-select__value">
+                  <span className="custom-experience-select__value-icon" style={{ color: experienceOptions.find(o => o.value === formData.yearsExperience)?.color }}>
+                    {experienceOptions.find(o => o.value === formData.yearsExperience)?.icon}
+                  </span>
+                  <span>{experienceOptions.find(o => o.value === formData.yearsExperience)?.label}</span>
+                </span>
+              ) : (
+                <span className="custom-experience-select__placeholder">Select your experience level</span>
+              )}
+              <svg className="custom-experience-select__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+            {experienceDropdownOpen && (
+              <div className="custom-experience-select__dropdown">
+                {experienceOptions.map(option => (
+                  <div
+                    key={option.value}
+                    className={`custom-experience-select__option ${formData.yearsExperience === option.value ? 'selected' : ''}`}
+                    onClick={() => {
+                      handleInputChange('yearsExperience', option.value);
+                      setExperienceDropdownOpen(false);
+                    }}
+                  >
+                    <span className="custom-experience-select__option-icon" style={{ color: option.color }}>
+                      {option.icon}
+                    </span>
+                    <div className="custom-experience-select__option-content">
+                      <span className="custom-experience-select__option-label">{option.label}</span>
+                      <span className="custom-experience-select__option-desc">{option.description}</span>
+                    </div>
+                    {formData.yearsExperience === option.value && (
+                      <svg className="custom-experience-select__check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           {errors.yearsExperience && <span className="motive-error-message">{errors.yearsExperience}</span>}
         </div>
       </div>
@@ -412,10 +544,12 @@ const TherapistApplicationForm = () => {
         <h3>Coverage Areas *</h3>
         <p className="motive-section-description">Select all counties where you can provide services</p>
         <div className="motive-county-filter">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="M21 21l-4.35-4.35"/>
-          </svg>
+          <span className="motive-search-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+          </span>
           <input
             type="text"
             placeholder="Search counties..."
@@ -529,35 +663,64 @@ const TherapistApplicationForm = () => {
       <h4>Why Choose Motive?</h4>
       <ul className="motive-benefits-list">
         <li>
-          <span className="motive-benefit-icon">🏥</span>
+          <span className="motive-benefit-icon motive-benefit-icon--blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </span>
           <div>
             <strong>Efficient Placement</strong>
             <p>Get matched within 48 hours</p>
           </div>
         </li>
         <li>
-          <span className="motive-benefit-icon">🏆</span>
+          <span className="motive-benefit-icon motive-benefit-icon--emerald">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 21h18"/>
+              <path d="M5 21V7l8-4v18"/>
+              <path d="M19 21V11l-6-4"/>
+              <path d="M9 9v.01"/>
+              <path d="M9 12v.01"/>
+              <path d="M9 15v.01"/>
+            </svg>
+          </span>
           <div>
-            <strong>Accredited Home Health Providers</strong>
+            <strong>Accredited Providers</strong>
             <p>Verified and quality-assured partners</p>
           </div>
         </li>
         <li>
-          <span className="motive-benefit-icon">📊</span>
+          <span className="motive-benefit-icon motive-benefit-icon--amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </span>
           <div>
-            <strong>Market-Aligned Compensation</strong>
-            <p>Competitive packages for your expertise</p>
+            <strong>Competitive Compensation</strong>
+            <p>Market-aligned packages for your expertise</p>
           </div>
         </li>
         <li>
-          <span className="motive-benefit-icon">👤</span>
+          <span className="motive-benefit-icon motive-benefit-icon--sky">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </span>
           <div>
-            <strong>Dedicated Account Coordinator</strong>
+            <strong>Dedicated Coordinator</strong>
             <p>Personal support every step of the way</p>
           </div>
         </li>
       </ul>
       <div className="motive-social-proof">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
         <span>Trusted by 8,000+ therapists across Southern California</span>
       </div>
       <a href="/#/therapists/benefits" className="motive-benefits-link">
@@ -569,23 +732,42 @@ const TherapistApplicationForm = () => {
     </div>
 
     <div className="motive-contact-card">
-      <h4>Speak with our Partnership Team</h4>
-      <p>Our team is here to help you every step of the way.</p>
-      <a href="tel:+12134950092" className="motive-contact-button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-        </svg>
-        Call Our Partnership Team
-      </a>
-      <div className="motive-contact-info">
-        <span className="motive-operating-hours">Mon–Fri 9 AM–5:30 PM • Sat 9 AM–12 PM PT</span>
-        <a href="mailto:info@motivehomecare.com" className="motive-email-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
+      <div className="motive-contact-header">
+        <span className="motive-contact-icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
-          info@motivehomecare.com
-        </a>
+        </span>
+        <h4>Need Help?</h4>
+        <p>Our partnership team is ready to assist you</p>
+      </div>
+      <a href="tel:+12134950092" className="motive-contact-button">
+        <span className="motive-contact-button-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </span>
+        <span className="motive-contact-button-text">
+          <span className="motive-contact-button-label">Call Us Now</span>
+          <span className="motive-contact-button-number">(213) 495-0092</span>
+        </span>
+      </a>
+      <div className="motive-contact-divider">
+        <span>or</span>
+      </div>
+      <a href="mailto:info@motivehomecare.com" className="motive-email-button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        info@motivehomecare.com
+      </a>
+      <div className="motive-contact-hours">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>Mon–Fri 9 AM–5:30 PM • Sat 9 AM–12 PM PT</span>
       </div>
     </div>
   </div>

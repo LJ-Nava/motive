@@ -20,6 +20,8 @@ const AgenciesJoin = () => {
   const [errors, setErrors] = useState({});
   const [animationStep, setAnimationStep] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [heroActiveStep, setHeroActiveStep] = useState(1);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -30,17 +32,86 @@ const AgenciesJoin = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Auto-animate hero steps every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroActiveStep(prev => prev >= 3 ? 1 : prev + 1);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownOpen && !event.target.closest('.custom-select')) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [dropdownOpen]);
+
   const agencyTypes = [
-    { value: 'Home Health Agency', icon: '🏠', description: 'In-home patient care' },
-    { value: 'Skilled Nursing Facility', icon: '🏥', description: '24/7 skilled care' },
-    { value: 'Hospital/Health System', icon: '🏨', description: 'Acute care facilities' },
-    { value: 'Outpatient Clinic', icon: '🩺', description: 'Ambulatory care' },
-    { value: 'Rehabilitation Center', icon: '💪', description: 'Recovery & therapy' },
-    { value: 'Hospice Care', icon: '🤲', description: 'Compassionate end-of-life care' },
-    { value: 'Assisted Living', icon: '🏘️', description: 'Independent living support' },
-    { value: 'Memory Care Facility', icon: '🧠', description: 'Specialized dementia care' },
-    { value: 'Long Term Care', icon: '⏳', description: 'Extended care services' },
-    { value: 'Other Homehealth Facility', icon: '🔧', description: 'Tell us about your specialty' }
+    {
+      value: 'Home Health Agency',
+      description: 'In-home patient care',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+      color: '#1e3a8a'
+    },
+    {
+      value: 'Skilled Nursing Facility',
+      description: '24/7 skilled care',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/></svg>,
+      color: '#7c3aed'
+    },
+    {
+      value: 'Hospital/Health System',
+      description: 'Acute care facilities',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 6v4"/><path d="M14 14h-4"/><path d="M14 18h-4"/><path d="M14 8h-4"/><path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/></svg>,
+      color: '#dc2626'
+    },
+    {
+      value: 'Outpatient Clinic',
+      description: 'Ambulatory care',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>,
+      color: '#0ea5e9'
+    },
+    {
+      value: 'Rehabilitation Center',
+      description: 'Recovery & therapy',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 20a6 6 0 0 0-12 0"/><circle cx="12" cy="10" r="4"/><circle cx="12" cy="12" r="10"/></svg>,
+      color: '#10b981'
+    },
+    {
+      value: 'Hospice Care',
+      description: 'Compassionate end-of-life care',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>,
+      color: '#ec4899'
+    },
+    {
+      value: 'Assisted Living',
+      description: 'Independent living support',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+      color: '#f59e0b'
+    },
+    {
+      value: 'Memory Care Facility',
+      description: 'Specialized dementia care',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M12 18v4"/></svg>,
+      color: '#8b5cf6'
+    },
+    {
+      value: 'Long Term Care',
+      description: 'Extended care services',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+      color: '#06b6d4'
+    },
+    {
+      value: 'Other Homehealth Facility',
+      description: 'Tell us about your specialty',
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>,
+      color: '#64748b'
+    }
   ];
 
   const validateEmail = (email) => {
@@ -311,7 +382,7 @@ ${formData.additionalInfo || 'No additional information provided'}
             </h1>
 
             <p className="hero-subtitle">
-              Same-day access to licensed PT, OT & ST professionals across Southern California.
+              Same-day access to licensed <span className="hero-abbrev">PT</span>, <span className="hero-abbrev">OT</span> & <span className="hero-abbrev">ST</span> professionals across Southern California.
             </p>
 
             <div className="hero-cta-container">
@@ -326,20 +397,14 @@ ${formData.additionalInfo || 'No additional information provided'}
               </button>
 
               <a href="/#/therapists/apply" className="therapist-link">
-                Are you a therapist? <span className="therapist-link-arrow">→</span> Join our team
+                Are you a therapist? <span className="therapist-link-separator">—</span> <span className="therapist-link-cta">Join our team</span> <span className="therapist-link-arrow">→</span>
               </a>
             </div>
 
             <div className="journey-steps">
-              <div className={`step ${currentStep >= 1 ? 'step--active' : ''} ${currentStep > 1 ? 'step--completed' : ''}`}>
+              <div className={`step ${heroActiveStep === 1 ? 'step--active' : ''}`}>
                 <div className="step-indicator">
-                  <div className="step-number">
-                    {currentStep > 1 ? (
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                      </svg>
-                    ) : '1'}
-                  </div>
+                  <div className="step-number">1</div>
                   <div className="step-pulse"></div>
                 </div>
                 <div className="step-content">
@@ -347,21 +412,15 @@ ${formData.additionalInfo || 'No additional information provided'}
                   <span className="step-subtitle">Tell us about your agency</span>
                 </div>
               </div>
-              
+
               <div className="step-connector">
                 <div className="connector-line"></div>
                 <div className="connector-flow"></div>
               </div>
-              
-              <div className={`step ${currentStep >= 2 ? 'step--active' : ''} ${submitted ? 'step--completed' : ''}`}>
+
+              <div className={`step ${heroActiveStep === 2 ? 'step--active' : ''}`}>
                 <div className="step-indicator">
-                  <div className="step-number">
-                    {submitted ? (
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                      </svg>
-                    ) : '2'}
-                  </div>
+                  <div className="step-number">2</div>
                   <div className="step-pulse"></div>
                 </div>
                 <div className="step-content">
@@ -369,21 +428,15 @@ ${formData.additionalInfo || 'No additional information provided'}
                   <span className="step-subtitle">Help us understand your needs</span>
                 </div>
               </div>
-              
+
               <div className="step-connector">
                 <div className="connector-line"></div>
                 <div className="connector-flow"></div>
               </div>
-              
-              <div className={`step ${submitted ? 'step--active step--completed' : ''}`}>
+
+              <div className={`step ${heroActiveStep === 3 ? 'step--active' : ''}`}>
                 <div className="step-indicator">
-                  <div className="step-number">
-                    {submitted ? (
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                      </svg>
-                    ) : '3'}
-                  </div>
+                  <div className="step-number">3</div>
                   <div className="step-pulse"></div>
                 </div>
                 <div className="step-content">
@@ -414,7 +467,17 @@ ${formData.additionalInfo || 'No additional information provided'}
                     <div className="form-row">
                       <div className="form-group agency-name-group">
                         <label htmlFor="agencyName">
-                          <span className="label-icon">🏢</span>
+                          <span className="label-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M3 21h18"/>
+                              <path d="M5 21V7l8-4v18"/>
+                              <path d="M19 21V11l-6-4"/>
+                              <path d="M9 9v.01"/>
+                              <path d="M9 12v.01"/>
+                              <path d="M9 15v.01"/>
+                              <path d="M9 18v.01"/>
+                            </svg>
+                          </span>
                           Agency Name
                         </label>
                         <input
@@ -428,32 +491,80 @@ ${formData.additionalInfo || 'No additional information provided'}
                         {errors.agencyName && <span className="error-message">{errors.agencyName}</span>}
                       </div>
                       
-                      <div className="form-group">
-                        <label htmlFor="agencyType">
-                          <span className="label-icon">🏥</span>
-                          Select your facility type (Home Health, SNF, Outpatient, Other)
+                      <div className="form-group facility-type-group">
+                        <label>
+                          <span className="label-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M3 21h18"/>
+                              <path d="M9 8h1"/>
+                              <path d="M9 12h1"/>
+                              <path d="M9 16h1"/>
+                              <path d="M14 8h1"/>
+                              <path d="M14 12h1"/>
+                              <path d="M14 16h1"/>
+                              <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
+                            </svg>
+                          </span>
+                          Select your facility type
                         </label>
-                        <select
-                          id="agencyType"
-                          value={formData.agencyType}
-                          onChange={(e) => handleInputChange('agencyType', e.target.value)}
-                          className={errors.agencyType ? 'input--error' : ''}
-                        >
-                          <option value="">Facility type</option>
-                          {agencyTypes.map(type => (
-                            <option key={type.value} value={type.value}>
-                              {type.icon} {type.value} - {type.description}
-                            </option>
-                          ))}
-                        </select>
+                        <div className={`custom-select ${dropdownOpen ? 'custom-select--open' : ''} ${errors.agencyType ? 'custom-select--error' : ''}`}>
+                          <div
+                            className="custom-select__trigger"
+                            onClick={() => setDropdownOpen(!dropdownOpen)}
+                          >
+                            <span className={formData.agencyType ? 'custom-select__value' : 'custom-select__placeholder'}>
+                              {formData.agencyType ? (
+                                <>
+                                  <span className="custom-select__selected-icon" style={{ color: agencyTypes.find(t => t.value === formData.agencyType)?.color }}>
+                                    {agencyTypes.find(t => t.value === formData.agencyType)?.icon}
+                                  </span>
+                                  {formData.agencyType}
+                                </>
+                              ) : 'Select facility type'}
+                            </span>
+                            <svg className="custom-select__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                          </div>
+                          {dropdownOpen && (
+                            <div className="custom-select__dropdown">
+                              {agencyTypes.map(type => (
+                                <div
+                                  key={type.value}
+                                  className={`custom-select__option ${formData.agencyType === type.value ? 'custom-select__option--selected' : ''}`}
+                                  onClick={() => {
+                                    handleInputChange('agencyType', type.value);
+                                    setDropdownOpen(false);
+                                  }}
+                                >
+                                  <span className="custom-select__option-icon" style={{ color: type.color }}>{type.icon}</span>
+                                  <div className="custom-select__option-content">
+                                    <span className="custom-select__option-title">{type.value}</span>
+                                    <span className="custom-select__option-desc">{type.description}</span>
+                                  </div>
+                                  {formData.agencyType === type.value && (
+                                    <svg className="custom-select__check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={type.color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                      <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                         {errors.agencyType && <span className="error-message">{errors.agencyType}</span>}
                       </div>
                     </div>
 
                     <div className="form-row">
-                      <div className="form-group">
+                      <div className="form-group email-group">
                         <label htmlFor="contactEmail">
-                          <span className="label-icon">📧</span>
+                          <span className="label-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                              <rect x="2" y="4" width="20" height="16" rx="2"/>
+                              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                          </span>
                           Contact Email
                         </label>
                         <input
@@ -467,9 +578,13 @@ ${formData.additionalInfo || 'No additional information provided'}
                         {errors.contactEmail && <span className="error-message">{errors.contactEmail}</span>}
                       </div>
                       
-                      <div className="form-group">
+                      <div className="form-group phone-group">
                         <label htmlFor="phone">
-                          <span className="label-icon">📱</span>
+                          <span className="label-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                          </span>
                           Phone Number
                         </label>
                         <input
@@ -486,17 +601,27 @@ ${formData.additionalInfo || 'No additional information provided'}
                   </div>
 
                   <div className="form-footer">
-                    <button 
+                    <button
                       onClick={handleStep1Submit}
                       className="btn btn-primary btn-large"
                     >
-                      <span className="btn-icon">➡️</span>
+                      <span className="btn-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12h14"/>
+                          <path d="m12 5 7 7-7 7"/>
+                        </svg>
+                      </span>
                       Continue to Step 2
                       <div className="btn-shine"></div>
                     </button>
                     
                     <div className="security-note">
-                      <span className="security-icon">🔒</span>
+                      <span className="security-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                      </span>
                       <span>Your information is secure and will be kept confidential.</span>
                     </div>
                   </div>
@@ -504,15 +629,27 @@ ${formData.additionalInfo || 'No additional information provided'}
               ) : (
                 <div className="form-card">
                   <div className="form-header">
-                    <div className="header-icon">📝</div>
+                    <div className="header-icon">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <line x1="10" y1="9" x2="8" y2="9"/>
+                      </svg>
+                    </div>
                     <h2>Additional Information</h2>
                     <p>Please share any additional details about your agency, specific needs, or questions you may have. This helps us prepare for our conversation and better understand how we can assist you.</p>
                   </div>
 
                   <div className="form-body">
-                    <div className="form-group">
+                    <div className="form-group message-group">
                       <label htmlFor="additionalInfo">
-                        <span className="label-icon">💬</span>
+                        <span className="label-icon">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                          </svg>
+                        </span>
                         Tell us more about your agency and needs (Optional)
                       </label>
                       <textarea
@@ -589,48 +726,72 @@ ${formData.additionalInfo || 'No additional information provided'}
       <section className="cta-section">
         <div className="container">
           <div className="cta-content">
-            <h2 className='ColorBack'>Your Community Deserves Excellence</h2>
-            <p className='ColorBack'>Every home health agency plays a vital role in community well-being. Let's explore how we can work together to enhance the care you provide.</p>
-            
+            <div className="cta-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+              Partner With Us
+            </div>
+            <h2>Your Community Deserves Excellence</h2>
+            <p>Every home health agency plays a vital role in community well-being. Let's explore how we can work together to enhance the care you provide.</p>
+
             <div className="cta-actions">
               <button
                 onClick={() => {
                   const formSection = document.querySelector('.form-section');
                   formSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary btn-hero"
+                className="cta-btn cta-btn--primary"
               >
-                <span className="btn-icon">📝</span>
-                Start Partnership Application – Connect with Licensed Clinicians
-                <div className="btn-shine"></div>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+                Start Partnership Application
               </button>
 
-              <a href="tel:+12134950092" className="btn btn-secondary">
-                <span className="btn-icon">📞</span>
-                Call Our Partnership Team
+              <a href="tel:+12134950092" className="cta-btn cta-btn--secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Call Our Team
               </a>
             </div>
 
-            <div className="cta-social-proof">
-              Trusted by home health agencies across Southern California
+            <div className="cta-trust">
+              <div className="cta-trust__item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Trusted Partner
+              </div>
+              <div className="cta-trust__item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                Same-Day Support
+              </div>
+              <div className="cta-trust__item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                Licensed Clinicians
+              </div>
             </div>
 
-            <div className="cta-promise">
-              <div className="promise-icon">🤝</div>
-              <p className='ColorBack'>We are committed to supporting your agency's mission with the same professionalism and dedication you bring to patient care.</p>
-            </div>
-
-            <a href="/#/therapists/apply" className="therapist-redirect-link">
-              Therapist looking for work? <span>→</span> Join our team
+            <a href="/#/therapists/apply" className="cta-therapist-link">
+              <span className="cta-therapist-link__text">Are you a therapist looking for opportunities?</span>
+              <span className="cta-therapist-link__cta">Join our team <span className="cta-therapist-link__arrow">→</span></span>
             </a>
           </div>
         </div>
       </section>
-
-      {/* Pre-Footer Agency Banner */}
-      <div className="agency-footer-banner">
-        Partnering with home health agencies throughout Southern California
-      </div>
     </div>
   );
 };
