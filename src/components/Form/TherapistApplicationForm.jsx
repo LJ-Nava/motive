@@ -277,7 +277,7 @@ const TherapistApplicationForm = () => {
       
       console.log('Enviando formulario de terapeuta a FormSubmit...');
       
-      const response = await fetch('https://formsubmit.co/info@motivehomecare.com', {
+      const response = await fetch('https://formsubmit.co/hr@motivehomecare.com', {
         method: 'POST',
         body: formDataToSend
       });
@@ -755,12 +755,12 @@ const TherapistApplicationForm = () => {
       <div className="motive-contact-divider">
         <span>or</span>
       </div>
-      <a href="mailto:info@motivehomecare.com" className="motive-email-button">
+      <a href="mailto:hr@motivehomecare.com" className="motive-email-button">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
           <polyline points="22,6 12,13 2,6"/>
         </svg>
-        info@motivehomecare.com
+        hr@motivehomecare.com
       </a>
       <div className="motive-contact-hours">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

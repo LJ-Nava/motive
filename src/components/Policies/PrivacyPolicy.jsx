@@ -371,7 +371,7 @@ const PrivacyPolicy = () => {
             <div className="privacy-policy__contact-info">
               <p><strong>Motive Home Care</strong></p>
               <p>
-                Email: <a href="mailto:info@motivehomecare.com">info@motivehomecare.com</a>
+                Email: <a href="mailto:hr@motivehomecare.com">hr@motivehomecare.com</a>
               </p>
               <p>
                 Phone: <a href="tel:+12134950092">(213) 495-0092</a>

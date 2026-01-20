@@ -265,8 +265,8 @@ const CoverageAreas = () => {
               
               <div className="alternative-contact">
                 <span>Prefer email?</span>
-                <a href="mailto:info@motivehomecare.com" className="email-link">
-                  info@motivehomecare.com
+                <a href="mailto:hr@motivehomecare.com" className="email-link">
+                  hr@motivehomecare.com
                 </a>
               </div>
             </div>

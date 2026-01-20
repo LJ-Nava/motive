@@ -24,7 +24,7 @@ const createTransporter = () => {
   return nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.EMAIL_USER, // info@motivehomecare.com
+      user: process.env.EMAIL_USER, // hr@motivehomecare.com
       pass: process.env.EMAIL_PASS  // ufjt ynvh dcjh cmio
     }
   });
