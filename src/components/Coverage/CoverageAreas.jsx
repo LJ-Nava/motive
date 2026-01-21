@@ -94,18 +94,28 @@ const CoverageAreas = () => {
   const [activeService, setActiveService] = useState('PT_OT');
   const [zipCode, setZipCode] = useState('');
   const [zipResult, setZipResult] = useState(null); // null, true, or false
+  const [showResult, setShowResult] = useState(false);
 
   // Handle ZIP code search
   const handleZipSearch = () => {
     if (zipCode.length === 5) {
       const result = checkZipCoverage(zipCode, activeService);
       setZipResult(result);
+      setShowResult(true);
+
+      // Auto-hide after 3 seconds if covered
+      if (result) {
+        setTimeout(() => {
+          setShowResult(false);
+        }, 3000);
+      }
     }
   };
 
   // Reset ZIP result when service changes
   useEffect(() => {
     setZipResult(null);
+    setShowResult(false);
   }, [activeService]);
 
   // Obtener el servicio de los parámetros de búsqueda de la URL
@@ -155,46 +165,77 @@ const CoverageAreas = () => {
       
       {/* Hero Section */}
       <section className="coverage-hero">
+        <div className="hero-background-pattern"></div>
         <div className="hero-container">
           <div className="hero-content">
             <div className="hero-badge">
-              <div className="badge-icon">🏥</div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="badge-icon-svg">
+                <path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4zM8 14v3M12 14v3M16 14v3"/>
+              </svg>
               <span>Home Health Therapy Coverage</span>
             </div>
             <h1 className="hero-title">
-              Where We
-              <span className="title-gradient"> Serve</span>
+              Where We <span className="title-highlight">Serve</span>
             </h1>
             <p className="hero-description">
               Discover where our licensed therapists provide in-home care across Southern California.
               Whether you're a patient, caregiver, or agency — we're here to help.
             </p>
+
+            {/* CTA Button */}
+            <button
+              className="hero-cta-button"
+              onClick={() => document.querySelector('.coverage-section')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <span>Explore Coverage Areas</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
           </div>
-          
+
           {/* Stats Cards */}
           <div className="stats-grid">
             <div className="stat-card">
-              <div className="stat-number">300+</div>
-              <div className="stat-label">Licensed Therapists</div>
+              <div className="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div className="stat-content">
+                <div className="stat-number">300<span className="stat-plus">+</span></div>
+                <div className="stat-label">Licensed Therapists</div>
+              </div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">50+</div>
-              <div className="stat-label">Cities We Serve</div>
+              <div className="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div className="stat-content">
+                <div className="stat-number">50<span className="stat-plus">+</span></div>
+                <div className="stat-label">Cities We Serve</div>
+              </div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">15+</div>
-              <div className="stat-label">Languages Spoken</div>
+              <div className="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                  <path d="M2 12h20"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div className="stat-content">
+                <div className="stat-number">15<span className="stat-plus">+</span></div>
+                <div className="stat-label">Languages Spoken</div>
+              </div>
             </div>
           </div>
-
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="scroll-indicator">
-          <span>View Coverage Maps</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-          </svg>
         </div>
       </section>
 
@@ -202,75 +243,133 @@ const CoverageAreas = () => {
       <section className="coverage-section">
         <div className="coverage-container">
           <div className="section-header">
-            <h2>Explore Our Home Health Therapy Coverage Areas</h2>
-            <p>Select a service below to view coverage maps or contact us for assistance.</p>
-            <button
-              className="help-link"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Not sure? Talk to our team
-            </button>
+            <span className="section-tag">Coverage Areas</span>
+            <h2>Explore Our <span className="text-highlight">Service Coverage</span></h2>
+            <p>Select a therapy type below to view our coverage map and check availability in your area.</p>
           </div>
 
           {/* Service Tabs */}
           <div className="service-tabs">
-            {serviceOrder.map((service) => {
-              const serviceData = coverageByService[service];
-              return (
-                <button
-                  key={service}
-                  className={`service-tab ${activeService === service ? 'active' : ''}`}
-                  onClick={() => handleServiceChange(service)}
-                  style={{ '--service-color': serviceData.color }}
-                >
-                  <div className="tab-header">
-                    <h3>{serviceData.title}</h3>
-                    <p>{serviceData.subtitle}</p>
-                  </div>
-                  {serviceData.stats && (
-                    <div className="tab-stats">
-                      <span className="stat">{serviceData.stats.therapists}</span>
-                      <span className="stat">{serviceData.stats.counties}</span>
-                      <span className="stat">{serviceData.stats.response}</span>
-                    </div>
-                  )}
-                </button>
-              );
-            })}
+            <button
+              className={`service-tab ${activeService === 'PT_OT' ? 'active' : ''}`}
+              onClick={() => handleServiceChange('PT_OT')}
+            >
+              <div className="tab-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                  <path d="M12 11v6"/>
+                  <path d="M9 14h6"/>
+                </svg>
+              </div>
+              <div className="tab-content">
+                <h3>Physical & Occupational Therapy</h3>
+                <p>Licensed PTs/OTs & PTAs/COTAs</p>
+              </div>
+              <div className="tab-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </div>
+            </button>
+
+            <button
+              className={`service-tab ${activeService === 'ST' ? 'active' : ''}`}
+              onClick={() => handleServiceChange('ST')}
+            >
+              <div className="tab-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </div>
+              <div className="tab-content">
+                <h3>Speech Therapy</h3>
+                <p>Licensed SLPs</p>
+              </div>
+              <div className="tab-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+
+          {/* Help Link */}
+          <div className="help-section">
+            <p>Not sure which service you need?</p>
+            <button
+              className="help-link"
+              onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Talk to our team
+            </button>
           </div>
 
           {/* Large Map Display */}
           <div className="map-display">
             <div className="map-container">
+              {/* Map Header */}
               <div className="map-header">
-                <div className="map-title">
-                  <h3>{currentService.title} Coverage Map</h3>
-                  <p>Areas where we have {currentService.subtitle.toLowerCase()} available</p>
+                <div className="map-header-content">
+                  <div className="map-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  </div>
+                  <div className="map-title">
+                    <h3>{currentService.title} Coverage Map</h3>
+                    <p>Areas where we have {currentService.subtitle.toLowerCase()} available</p>
+                  </div>
+                </div>
+                <div className="map-header-badge">
+                  <span className="badge-dot"></span>
+                  <span>Live Coverage</span>
                 </div>
               </div>
 
-              {/* ZIP Code Lookup */}
+              {/* ZIP Code Lookup - Premium Design */}
               <div className="zip-lookup">
-                <label htmlFor="zip-input">Enter your ZIP code to check coverage</label>
-                <div className="zip-input-group">
-                  <input
-                    id="zip-input"
-                    type="text"
-                    placeholder="e.g. 90210"
-                    value={zipCode}
-                    onChange={(e) => {
-                      const value = e.target.value.replace(/\D/g, '').slice(0, 5);
-                      setZipCode(value);
-                      setZipResult(null);
-                    }}
-                    onKeyDown={(e) => e.key === 'Enter' && handleZipSearch()}
-                    maxLength={5}
-                  />
-                  <button onClick={handleZipSearch} disabled={zipCode.length !== 5}>
-                    Check
-                  </button>
+                <div className="zip-lookup-content">
+                  <div className="zip-lookup-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="11" cy="11" r="8"/>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                  </div>
+                  <div className="zip-lookup-form">
+                    <label htmlFor="zip-input">Check if we serve your area</label>
+                    <div className="zip-input-group">
+                      <input
+                        id="zip-input"
+                        type="text"
+                        placeholder="Enter ZIP code"
+                        value={zipCode}
+                        onChange={(e) => {
+                          const value = e.target.value.replace(/\D/g, '').slice(0, 5);
+                          setZipCode(value);
+                          setZipResult(null);
+                          setShowResult(false);
+                        }}
+                        onKeyDown={(e) => e.key === 'Enter' && handleZipSearch()}
+                        maxLength={5}
+                      />
+                      <button onClick={handleZipSearch} disabled={zipCode.length !== 5}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                        Check Coverage
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                {zipResult !== null && (
+                {showResult && zipResult !== null && (
                   <div className={`zip-result ${zipResult ? 'covered' : 'not-covered'}`}>
                     {zipResult ? (
                       <>
@@ -278,7 +377,7 @@ const CoverageAreas = () => {
                           <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
                           <polyline points="22 4 12 14.01 9 11.01"/>
                         </svg>
-                        <span>Great news! We provide {currentService.title.toLowerCase()} services in your area.</span>
+                        <span>We cover <strong>{zipCode}</strong> for {currentService.title.toLowerCase()}!</span>
                       </>
                     ) : (
                       <>
@@ -287,190 +386,350 @@ const CoverageAreas = () => {
                           <line x1="15" y1="9" x2="9" y2="15"/>
                           <line x1="9" y1="9" x2="15" y2="15"/>
                         </svg>
-                        <span>We don't currently cover this ZIP code for {currentService.title.toLowerCase()}, but <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="contact-link">contact us</button> — we may still be able to help!</span>
+                        <span>ZIP {zipCode} not covered — <button onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })} className="contact-link">contact us</button></span>
                       </>
                     )}
                   </div>
                 )}
               </div>
 
+              {/* Map Image */}
               <div className="large-map">
                 <img
                   src={currentService.mapImage}
                   alt={`Coverage map showing licensed ${activeService === 'PT_OT' ? 'PT/OT' : 'Speech Therapy'} service areas across Southern California`}
                   className="map-image"
                 />
-                <div
-                  className="map-overlay"
-                  style={{ backgroundColor: `${currentService.color}08` }}
-                ></div>
-
-                {/* Map Stats Overlay */}
-                {currentService.stats && (
-                  <div className="map-stats">
-                    <div className="stat-pill">
-                      <span className="value">{currentService.stats.therapists}</span>
-                      <span className="label">Available</span>
-                    </div>
-                    <div className="stat-pill">
-                      <span className="value">{currentService.stats.response}</span>
-                      <span className="label">Response</span>
-                    </div>
-                  </div>
-                )}
               </div>
 
               {/* Counties Served */}
               <div className="counties-served">
-                <span className="counties-label">Counties served:</span>
+                <div className="counties-header">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span className="counties-label">Counties we serve:</span>
+                </div>
                 <div className="counties-list">
-                  {ZIP_COVERAGE[activeService].counties.map((county, index) => (
+                  {ZIP_COVERAGE[activeService].counties.map((county) => (
                     <span key={county} className="county-tag">
-                      {county} County{index < ZIP_COVERAGE[activeService].counties.length - 1 ? '' : ''}
+                      {county}
                     </span>
                   ))}
                 </div>
               </div>
+
+              {/* Expansion Notice */}
+              <div className="expansion-notice">
+                <div className="expansion-content">
+                  <div className="expansion-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M23 6l-9.5 9.5-5-5L1 18"/>
+                      <path d="M17 6h6v6"/>
+                    </svg>
+                  </div>
+                  <div className="expansion-text">
+                    <p>We're <strong>constantly expanding</strong> our coverage areas across Southern California.</p>
+                    <span>Don't see your area? We may still be able to help — our network grows every month.</span>
+                  </div>
+                </div>
+                <button
+                  className="expansion-cta"
+                  onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Check with us
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
 
         </div>
       </section>
 
-      {/* Languages Section */}
+      {/* Languages Section - WOW Design */}
       <section className="languages-section">
         <div className="languages-container">
-          <h3>We Speak Your Language</h3>
-          <p>Our team serves families in all these languages.</p>
+          {/* Header */}
+          <div className="languages-header">
+            <div className="languages-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span>Multilingual Care</span>
+            </div>
+            <h2>We Speak <span className="highlight">Your Language</span></h2>
+            <p>Connecting patients with therapists who understand their culture and communicate in their native language.</p>
+          </div>
 
-          <div className="languages-grouped">
-            <div className="language-group">
-              <span className="group-label">Common</span>
-              <div className="languages-grid">
-                {["English", "Spanish"].map((language, index) => (
-                  <div key={index} className="language-tag">{language}</div>
+          {/* Stats */}
+          <div className="languages-stats">
+            <div className="stat-item">
+              <span className="stat-number">15+</span>
+              <span className="stat-label">Languages</span>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <span className="stat-number">300+</span>
+              <span className="stat-label">Bilingual Therapists</span>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">Patient-Centered</span>
+            </div>
+          </div>
+
+          {/* Languages Display */}
+          <div className="languages-showcase">
+            {/* Primary Languages */}
+            <div className="language-category primary">
+              <div className="category-label">
+                <div className="label-dot"></div>
+                <span>Primary Languages</span>
+              </div>
+              <div className="language-cards">
+                <div className="language-card featured">
+                  <span className="lang-name">English</span>
+                  <span className="lang-flag">🇺🇸</span>
+                </div>
+                <div className="language-card featured">
+                  <span className="lang-name">Spanish</span>
+                  <span className="lang-flag">🇲🇽</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Asian Languages */}
+            <div className="language-category">
+              <div className="category-label">
+                <div className="label-dot"></div>
+                <span>Asian Languages</span>
+              </div>
+              <div className="language-cards">
+                {[
+                  { name: "Tagalog", flag: "🇵🇭" },
+                  { name: "Korean", flag: "🇰🇷" },
+                  { name: "Chinese", flag: "🇨🇳" },
+                  { name: "Vietnamese", flag: "🇻🇳" },
+                  { name: "Japanese", flag: "🇯🇵" },
+                  { name: "Hindi", flag: "🇮🇳" },
+                  { name: "Punjabi", flag: "🇮🇳" },
+                  { name: "Bengali", flag: "🇧🇩" }
+                ].map((lang, index) => (
+                  <div key={index} className="language-card">
+                    <span className="lang-name">{lang.name}</span>
+                    <span className="lang-flag">{lang.flag}</span>
+                  </div>
                 ))}
               </div>
             </div>
 
-            <div className="language-group">
-              <span className="group-label">Asian Languages</span>
-              <div className="languages-grid">
-                {["Tagalog", "Korean", "Chinese (Cantonese)", "Vietnamese", "Japanese", "Hindi", "Punjabi", "Bengali"].map((language, index) => (
-                  <div key={index} className="language-tag">{language}</div>
+            {/* Middle Eastern Languages */}
+            <div className="language-category">
+              <div className="category-label">
+                <div className="label-dot"></div>
+                <span>Middle Eastern</span>
+              </div>
+              <div className="language-cards">
+                {[
+                  { name: "Arabic", flag: "🇸🇦" },
+                  { name: "Farsi", flag: "🇮🇷" },
+                  { name: "Armenian", flag: "🇦🇲" }
+                ].map((lang, index) => (
+                  <div key={index} className="language-card">
+                    <span className="lang-name">{lang.name}</span>
+                    <span className="lang-flag">{lang.flag}</span>
+                  </div>
                 ))}
               </div>
             </div>
 
-            <div className="language-group">
-              <span className="group-label">Middle Eastern</span>
-              <div className="languages-grid">
-                {["Arabic", "Farsi", "Armenian"].map((language, index) => (
-                  <div key={index} className="language-tag">{language}</div>
-                ))}
+            {/* European Languages */}
+            <div className="language-category">
+              <div className="category-label">
+                <div className="label-dot"></div>
+                <span>European</span>
               </div>
-            </div>
-
-            <div className="language-group">
-              <span className="group-label">European</span>
-              <div className="languages-grid">
-                {["French", "Russian"].map((language, index) => (
-                  <div key={index} className="language-tag">{language}</div>
+              <div className="language-cards">
+                {[
+                  { name: "French", flag: "🇫🇷" },
+                  { name: "Russian", flag: "🇷🇺" }
+                ].map((lang, index) => (
+                  <div key={index} className="language-card">
+                    <span className="lang-name">{lang.name}</span>
+                    <span className="lang-flag">{lang.flag}</span>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
 
-          <button
-            className="interpreter-cta"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Need an interpreter? Contact us
-          </button>
+          {/* CTA */}
+          <div className="languages-cta">
+            <p>Don't see your language? We have access to professional interpreters.</p>
+            <button
+              onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              Request Language Support
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact-section" className="contact-section">
-        <div className="contact-container">
-          <div className="contact-content">
-            <div className="contact-text">
-              <h2>Don't See Your Area?</h2>
-              <p className="subheadline">We're expanding and want to help.</p>
-              <p>
-                If you need coverage in your area or have questions about our services,
-                just give us a call. We believe every patient deserves quality care,
-                and we'll work with you to find a solution.
-              </p>
-              
-              <div className="contact-features">
-                <div className="feature">
-                  <div className="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+      {/* Contact Section - Premium Elegant Design */}
+      <section id="contact-section" className="contact-section-premium">
+        {/* Decorative Background Elements */}
+        <div className="contact-bg-shapes">
+          <div className="shape shape-1"></div>
+          <div className="shape shape-2"></div>
+          <div className="shape shape-3"></div>
+        </div>
+
+        <div className="contact-premium-container">
+          {/* Section Header */}
+          <div className="contact-header">
+            <div className="header-badge">
+              <div className="badge-glow"></div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              <span>Get In Touch</span>
+            </div>
+            <h2>
+              Don't See <span className="gradient-text">Your Area?</span>
+            </h2>
+            <p className="header-subtitle">
+              We're constantly expanding our coverage. Reach out and let's find a solution together.
+            </p>
+          </div>
+
+          {/* Main Content Grid */}
+          <div className="contact-premium-grid">
+            {/* Left Side - Features */}
+            <div className="features-side">
+              <div className="features-intro">
+                <h3>Why Connect With Us?</h3>
+                <p>We believe every patient deserves quality home health care. Our dedicated team is ready to help you find the right coverage.</p>
+              </div>
+
+              <div className="premium-features">
+                <div className="premium-feature">
+                  <div className="feature-icon-wrapper">
+                    <div className="icon-bg"></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                     </svg>
                   </div>
-                  <div className="feature-content">
-                    <h4>Quick Response</h4>
-                    <p>Our staffing team will have a response within minutes</p>
+                  <div className="feature-info">
+                    <h4>Lightning Fast Response</h4>
+                    <p>Our staffing team responds within minutes, not hours</p>
+                  </div>
+                  <div className="feature-indicator">
+                    <span>&lt; 5 min</span>
                   </div>
                 </div>
-                
-                <div className="feature">
-                  <div className="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-                      <circle cx="9" cy="7" r="4"/>
-                      <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-                      <path d="M16 3.13a4 4 0 010 7.75"/>
+
+                <div className="premium-feature">
+                  <div className="feature-icon-wrapper">
+                    <div className="icon-bg"></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
                   </div>
-                  <div className="feature-content">
-                    <h4>Personal Touch</h4>
-                    <p>You'll speak with real people who care about your needs</p>
+                  <div className="feature-info">
+                    <h4>Personal Care Approach</h4>
+                    <p>Real people who genuinely care about your needs</p>
+                  </div>
+                  <div className="feature-indicator">
+                    <span>100%</span>
                   </div>
                 </div>
-                
-                <div className="feature">
-                  <div className="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+                <div className="premium-feature">
+                  <div className="feature-icon-wrapper">
+                    <div className="icon-bg"></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <path d="M9 12l2 2 4-4"/>
                     </svg>
                   </div>
-                  <div className="feature-content">
-                    <h4>Reliable Service</h4>
-                    <p>We help home health agencies stay compliant, avoid missed visits and accept more referrals</p>
+                  <div className="feature-info">
+                    <h4>Trusted & Reliable</h4>
+                    <p>Helping agencies stay compliant and accept more referrals</p>
+                  </div>
+                  <div className="feature-indicator">
+                    <span>300+</span>
                   </div>
                 </div>
               </div>
             </div>
-            
-            <div className="contact-card">
-              <div className="card-header">
-                <div className="contact-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                  </svg>
+
+            {/* Right Side - Contact Card */}
+            <div className="contact-card-side">
+              <div className="premium-contact-card">
+                <div className="card-glow"></div>
+                <div className="card-inner">
+                  {/* Card Header */}
+                  <div className="card-top">
+                    <div className="card-icon-ring">
+                      <div className="ring-pulse"></div>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                      </svg>
+                    </div>
+                    <div className="card-title">
+                      <span className="title-label">Call Us Directly</span>
+                      <h4>Let's Talk Coverage</h4>
+                    </div>
+                  </div>
+
+                  {/* Phone Number */}
+                  <a href="tel:+12134950092" className="premium-phone-btn">
+                    <span className="phone-number">(213) 495-0092</span>
+                    <div className="btn-shine"></div>
+                  </a>
+
+                  {/* Status */}
+                  <div className="status-row">
+                    <div className="hours-info">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12,6 12,12 16,14"/>
+                      </svg>
+                      <span>Mon-Fri 9AM-5PM | Sat 9AM-12PM PST</span>
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="card-divider">
+                    <span>or reach us via email</span>
+                  </div>
+
+                  {/* Email Option */}
+                  <a href="mailto:hr@motivehomecare.com" className="email-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <span>hr@motivehomecare.com</span>
+                  </a>
+
+                  {/* Trust Badge */}
+                  <div className="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Trusted by 50+ agencies across Southern California</span>
+                  </div>
                 </div>
-                <h4>Let's Talk</h4>
-              </div>
-              
-              <p>Call us and we'll help you find the right therapy coverage for your area</p>
-              
-              <a href="tel:+12134950092" className="phone-button">
-                (213) 495-0092
-              </a>
-              
-              <div className="availability">
-                <div className="availability-dot"></div>
-                <span>Mon–Fri 9 AM–5:30 PM, Sat 9 AM–12 PM PT</span>
-              </div>
-              
-              <div className="alternative-contact">
-                <span>Prefer email?</span>
-                <a href="mailto:hr@motivehomecare.com" className="email-link">
-                  hr@motivehomecare.com
-                </a>
               </div>
             </div>
           </div>

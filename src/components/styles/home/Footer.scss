@@ -153,6 +153,7 @@
   &__social {
     display: flex;
     gap: 1rem;
+    margin-bottom: 1.25rem;
 
     @media (max-width: 768px) {
       justify-content: center;
@@ -175,6 +176,57 @@
         color: #ffffff;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(74, 144, 194, 0.3);
+      }
+    }
+  }
+
+  // Agency Partnership CTA - Integrated in company section
+  &__agency-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__agency-label {
+    color: #a0aec0;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  &__agency-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border: none;
+    color: #4A90E2;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    transition: all 0.2s ease;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      color: #ffffff;
+
+      svg {
+        transform: translateX(3px);
       }
     }
   }
@@ -368,65 +420,6 @@
     font-weight: 500;
     margin: 0;
     font-style: italic;
-  }
-
-  // Agency Call-out
-  &__callout {
-    background: linear-gradient(135deg, rgba(74, 144, 226, 0.15) 0%, rgba(53, 122, 189, 0.1) 100%);
-    border-top: 1px solid rgba(74, 144, 226, 0.2);
-    border-bottom: 1px solid rgba(74, 144, 226, 0.2);
-    padding: 1rem 0;
-    position: relative;
-    z-index: 2;
-
-    &-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-
-      @media (max-width: 480px) {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-    }
-
-    &-text {
-      color: #e2e8f0;
-      font-size: 0.938rem;
-      font-weight: 500;
-    }
-
-    &-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: transparent;
-      border: 1px solid #4A90E2;
-      color: #4A90E2;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-
-      svg {
-        width: 16px;
-        height: 16px;
-        transition: transform 0.2s ease-in-out;
-      }
-
-      &:hover {
-        background: #4A90E2;
-        color: white;
-
-        svg {
-          transform: translateX(3px);
-        }
-      }
-    }
   }
 
   // Back to top
