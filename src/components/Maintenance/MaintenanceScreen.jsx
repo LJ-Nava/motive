@@ -88,7 +88,7 @@ const MaintenanceScreen = () => {
           <div className="contact-info">
             <p>If you need help right away, please contact us:</p>
             <div className="contact-methods">
-              <p>📧 <a href="mailto:info@motivehomecare.com">info@motivehomecare.com</a></p>
+              <p>📧 <a href="mailto:hr@motivehomecare.com">hr@motivehomecare.com</a></p>
               <p>📞 <a href="tel:+12134950092">(213) 495-0092</a></p>
               <p>🕒 Mon - Fri, 9AM - 5:30PM PST</p>
             </div>

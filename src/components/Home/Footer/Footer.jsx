@@ -141,8 +141,8 @@ const Footer = () => {
                       </svg>
                     </div>
                     <div className="footer__contact-info">
-                      <a href="mailto:info@motivehomecare.com" className="footer__contact-value">
-                        info@motivehomecare.com
+                      <a href="mailto:hr@motivehomecare.com" className="footer__contact-value">
+                        hr@motivehomecare.com
                       </a>
                       <span className="footer__contact-label">Email</span>
                     </div>

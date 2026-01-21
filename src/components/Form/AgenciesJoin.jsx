@@ -246,7 +246,7 @@ ${formData.additionalInfo || 'No additional information provided'}
       console.log('Enviando formulario a FormSubmit...');
       
       // Enviar a FormSubmit
-      const response = await fetch('https://formsubmit.co/info@motivehomecare.com', {
+      const response = await fetch('https://formsubmit.co/hr@motivehomecare.com', {
         method: 'POST',
         body: formDataToSend
       });

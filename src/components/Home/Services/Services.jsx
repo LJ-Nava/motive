@@ -19,30 +19,27 @@ const Services = () => {
     {
       name: "Celeste E.",
       role: "Physical Therapist",
-      region: "Southern California",
       quote: "I've had such a positive experience with this PT staffing agency. They're responsive, easy to talk to, and genuinely understanding of therapists' needs. The team is supportive and always advocates for their clinicians, which I truly appreciate."
     },
     {
       name: "Jordyn F.",
       role: "Physical Therapist Assistant",
-      region: "Southern California",
       quote: "I work with several home health agencies, and Motive Home Care truly stands out. They genuinely care about their therapists, are highly responsive, and consistently go above and beyond to provide support and timely answers."
     },
     {
       name: "Dominik A.",
       role: "Physical Therapist Assistant",
-      region: "Southern California",
       quote: "Motive Home Care has been a great company to work for, always responsive and very understanding with my needs as a PTA. I greatly appreciate all they do for me as a company and look forward to working with them more in the future."
     },
     {
-      role: "Speech Therapist",
-      region: "Southern California",
-      quote: "Finally a staffing partner that values work-life balance and responds quickly."
+      name: "Steven S.",
+      role: "Physical Therapist Assistant",
+      quote: "I enjoy working with Motive PT home health company because it allows me to build meaningful one-on-one relationships with patients while delivering care in their own environment. The scheduling flexibility and streamlined documentation of home health also let me focus on what matters most—helping patients regain independence and improve their quality of life."
     },
     {
-      role: "Home Health OT",
-      region: "Southern California",
-      quote: "Professional team that matches me with the right cases for my expertise."
+      name: "Willie B.",
+      role: "Physical Therapist",
+      quote: "I have dedicated over forty years to the field of physical therapy as a physical therapist. I have several years of experience working with Motive Home Care, and it has been highly positive. The organization is widely acknowledged as the leading provider of physical therapy and occupational therapy services. The owner is a licensed physical therapist who exemplifies professionalism and integrity. His team is distinguished by their exceptional attentiveness and supportiveness."
     }
   ];
 
