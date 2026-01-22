@@ -289,26 +289,54 @@ const AuthGate = ({ onAuthenticate }) => {
   return (
     <div className="emr-auth">
       <div className="emr-auth__container">
-        <div className="emr-auth__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
+        {/* Icon with animated ring */}
+        <div className="emr-auth__icon-wrapper">
+          <div className="emr-auth__icon-ring"></div>
+          <div className="emr-auth__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
         </div>
-        <h2 className="emr-auth__title">EMR Documentation Access</h2>
-        <p className="emr-auth__description">
-          Enter your access key to view the TherapySync documentation guides.
-        </p>
+
+        {/* Header section */}
+        <div className="emr-auth__header">
+          <div className="emr-auth__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <span>Secure Access</span>
+          </div>
+          <h2 className="emr-auth__title">EMR Documentation</h2>
+          <p className="emr-auth__description">
+            Enter your access key to view the TherapySync documentation guides.
+          </p>
+        </div>
+
+        {/* Form */}
         <form onSubmit={handleSubmit} className="emr-auth__form">
           <div className="emr-auth__input-group">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter access key"
-              className={`emr-auth__input ${error ? 'emr-auth__input--error' : ''}`}
-              autoFocus
-            />
-            {error && <span className="emr-auth__error">{error}</span>}
+            <div className="emr-auth__input-wrapper">
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter access key"
+                className={`emr-auth__input ${error ? 'emr-auth__input--error' : ''}`}
+                autoFocus
+              />
+              <svg className="emr-auth__input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+              </svg>
+            </div>
+            {error && (
+              <span className="emr-auth__error">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {error}
+              </span>
+            )}
           </div>
           <button
             type="submit"
@@ -331,6 +359,13 @@ const AuthGate = ({ onAuthenticate }) => {
             )}
           </button>
         </form>
+
+        {/* Footer */}
+        <div className="emr-auth__footer">
+          <p className="emr-auth__footer-text">
+            Motive Home Care Services
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -448,6 +483,8 @@ const GuideViewer = ({ guide, onBack }) => {
   const stepImage = getStepImage();
   const stepData = getCurrentStepData();
 
+  const isLastStep = currentStep === totalSteps;
+
   return (
     <div className="emr-viewer">
       <div className="emr-viewer__header">
@@ -458,10 +495,17 @@ const GuideViewer = ({ guide, onBack }) => {
           <span>Back to Guides</span>
         </button>
         <div className="emr-viewer__title-container">
-          <h2 className="emr-viewer__title">{guide.title}</h2>
+          <div className="emr-viewer__title-wrapper">
+            <div className="emr-viewer__title-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d={guide.icon} />
+              </svg>
+            </div>
+            <h2 className="emr-viewer__title">{guide.title}</h2>
+          </div>
           <div className="emr-viewer__progress">
             <span className="emr-viewer__step-indicator">
-              Step {currentStep} of {totalSteps}
+              {currentStep} <span>/ {totalSteps}</span>
             </span>
             <div className="emr-viewer__progress-bar">
               <div
@@ -479,7 +523,12 @@ const GuideViewer = ({ guide, onBack }) => {
           <div className="emr-viewer__step-centered">
             <StepInstruction stepData={stepData} stepNumber={currentStep} isCentered />
             {currentStep === 1 && (
-              <p className="emr-viewer__step-hint">Click "Next" to start the visual guide</p>
+              <p className="emr-viewer__step-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+                Press Next to begin
+              </p>
             )}
           </div>
         ) : (
@@ -530,21 +579,33 @@ const GuideViewer = ({ guide, onBack }) => {
           ))}
         </div>
 
-        <button
-          onClick={handleNext}
-          disabled={currentStep === totalSteps}
-          className="emr-viewer__nav-button emr-viewer__nav-button--next"
-        >
-          <span>Next</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+        {isLastStep ? (
+          <button
+            onClick={onBack}
+            className="emr-viewer__nav-button emr-viewer__nav-button--complete"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Complete</span>
+          </button>
+        ) : (
+          <button
+            onClick={handleNext}
+            className="emr-viewer__nav-button emr-viewer__nav-button--next"
+          >
+            <span>Next</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        )}
       </div>
 
       <div className="emr-viewer__keyboard-hint">
-        <span>Use arrow keys to navigate</span>
-        <span>Press ESC to go back</span>
+        <span><kbd>←</kbd> Previous step</span>
+        <span><kbd>→</kbd> Next step</span>
+        <span><kbd>ESC</kbd> Back to guides</span>
       </div>
     </div>
   );
@@ -587,7 +648,17 @@ const EMRDocumentation = () => {
     <div className="emr-docs">
       <div className="emr-docs__hero">
         <div className="emr-docs__hero-content">
-          <div className="emr-docs__hero-badge">TherapySync Guides</div>
+          <div className="emr-docs__hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div className="emr-docs__hero-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            TherapySync Guides
+          </div>
           <h1 className="emr-docs__hero-title">EMR Documentation</h1>
           <p className="emr-docs__hero-subtitle">
             Step-by-step visual guides to help you navigate TherapySync effectively
@@ -604,8 +675,24 @@ const EMRDocumentation = () => {
         {guideSections.map((section) => (
           <div key={section.id} className="emr-docs__section">
             <div className="emr-docs__section-header">
-              <h2 className="emr-docs__section-title">{section.title}</h2>
-              <p className="emr-docs__section-description">{section.description}</p>
+              <div className="emr-docs__section-icon">
+                {section.id === 'general' ? (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                  </svg>
+                )}
+              </div>
+              <div className="emr-docs__section-text">
+                <h2 className="emr-docs__section-title">{section.title}</h2>
+                <p className="emr-docs__section-description">{section.description}</p>
+              </div>
+              <div className="emr-docs__section-count">
+                {section.guides.length} {section.guides.length === 1 ? 'Guide' : 'Guides'}
+              </div>
             </div>
             <div className="emr-docs__grid">
               {section.guides.map((guide, index) => (
@@ -615,27 +702,32 @@ const EMRDocumentation = () => {
                   onClick={() => handleSelectGuide(guide)}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="emr-docs__card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d={guide.icon} />
-                    </svg>
+                  <div className="emr-docs__card-header">
+                    <div className="emr-docs__card-icon-wrapper">
+                      <div className="emr-docs__card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d={guide.icon} />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="emr-docs__card-info">
+                      <h3 className="emr-docs__card-title">{guide.title}</h3>
+                      <p className="emr-docs__card-description">{guide.description}</p>
+                    </div>
                   </div>
-                  <div className="emr-docs__card-content">
-                    <h3 className="emr-docs__card-title">{guide.title}</h3>
-                    <p className="emr-docs__card-description">{guide.description}</p>
+                  <div className="emr-docs__card-footer">
                     <div className="emr-docs__card-meta">
                       <span className="emr-docs__card-steps">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                         </svg>
                         {guide.steps} steps
                       </span>
-                      <span className="emr-docs__card-action">
-                        View Guide
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-                      </span>
+                    </div>
+                    <div className="emr-docs__card-arrow">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
                     </div>
                   </div>
                 </button>
