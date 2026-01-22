@@ -152,7 +152,6 @@ const CoverageAreas = () => {
     }
   };
 
-  const serviceOrder = ['PT_OT', 'ST'];
   const currentService = coverageByService[activeService];
 
   const handleServiceChange = (service) => {
