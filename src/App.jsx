@@ -13,6 +13,7 @@ import TherapistApplicationForm from './components/Form/TherapistApplicationForm
 import AboutUs from './components/AboutUs/AboutUs';
 import ReferralForm from './components/Referrals/ReferralForm';
 import PrivacyPolicy from './components/Policies/PrivacyPolicy';
+import EMRDocumentation from './components/EMRDocumentation/EMRDocumentation';
 import './components/styles/globals.scss';
 
 // Home Page Component
@@ -109,6 +110,16 @@ function App() {
             element={
               <PageLayout>
                 <PrivacyPolicy />
+              </PageLayout>
+            }
+          />
+
+          {/* EMR Documentation Route */}
+          <Route
+            path="/emr-documentation"
+            element={
+              <PageLayout>
+                <EMRDocumentation />
               </PageLayout>
             }
           />
