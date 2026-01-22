@@ -337,7 +337,7 @@ const AuthGate = ({ onAuthenticate }) => {
 };
 
 // Step Instruction Component
-const StepInstruction = ({ stepData, stepNumber }) => {
+const StepInstruction = ({ stepData, stepNumber, isCentered }) => {
   const renderText = (text, hasLink) => {
     if (hasLink) {
       return (
@@ -359,7 +359,7 @@ const StepInstruction = ({ stepData, stepNumber }) => {
   };
 
   return (
-    <div className="emr-viewer__instruction">
+    <div className={`emr-viewer__instruction ${isCentered ? 'emr-viewer__instruction--centered' : ''}`}>
       <div className="emr-viewer__instruction-number">{stepNumber}</div>
       <div className="emr-viewer__instruction-content">
         <p className="emr-viewer__instruction-text">
@@ -474,39 +474,34 @@ const GuideViewer = ({ guide, onBack }) => {
       </div>
 
       <div className="emr-viewer__content">
-        <div className="emr-viewer__step-container">
-          {/* Step Instruction */}
-          <StepInstruction stepData={stepData} stepNumber={currentStep} />
-
-          {/* Step Image */}
-          {currentStep > 1 && (
+        {!stepImage ? (
+          /* No image - Centered layout */
+          <div className="emr-viewer__step-centered">
+            <StepInstruction stepData={stepData} stepNumber={currentStep} isCentered />
+            {currentStep === 1 && (
+              <p className="emr-viewer__step-hint">Click "Next" to start the visual guide</p>
+            )}
+          </div>
+        ) : (
+          /* With image - Two column layout */
+          <div className="emr-viewer__step-container">
+            <StepInstruction stepData={stepData} stepNumber={currentStep} />
             <div className="emr-viewer__image-container">
-              {!imageLoaded && stepImage && (
+              {!imageLoaded && (
                 <div className="emr-viewer__image-loading">
                   <div className="emr-viewer__spinner"></div>
                   <span>Loading image...</span>
                 </div>
               )}
-              {stepImage && (
-                <img
-                  src={stepImage}
-                  alt={`${guide.title} - Step ${currentStep}`}
-                  className={`emr-viewer__image ${imageLoaded ? 'emr-viewer__image--loaded' : ''}`}
-                  onLoad={() => setImageLoaded(true)}
-                />
-              )}
+              <img
+                src={stepImage}
+                alt={`${guide.title} - Step ${currentStep}`}
+                className={`emr-viewer__image ${imageLoaded ? 'emr-viewer__image--loaded' : ''}`}
+                onLoad={() => setImageLoaded(true)}
+              />
             </div>
-          )}
-
-          {/* Step 1 Icon for login step */}
-          {currentStep === 1 && !stepData.isIntro && (
-            <div className="emr-viewer__step-one-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-              </svg>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       <div className="emr-viewer__navigation">

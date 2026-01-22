@@ -611,22 +611,40 @@
     animation: fadeIn 0.5s ease;
   }
 
-  &__step-one-icon {
-    width: 100%;
-    min-height: 300px;
+  &__step-centered {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    gap: var(--spacing-xl);
+    width: 100%;
+    max-width: 700px;
+    min-height: 300px;
+  }
 
-    svg {
-      width: 100px;
-      height: 100px;
-      color: var(--color-primary);
-      opacity: 0.6;
-      animation: pulse 2s ease-in-out infinite;
+  &__step-hint {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-400);
+    font-style: italic;
+    margin: 0;
+  }
+
+  &__instruction--centered {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: var(--spacing-xl);
+    position: relative;
+    top: 0;
+
+    .emr-viewer__instruction-number {
+      width: 56px;
+      height: 56px;
+      font-size: var(--font-size-xl);
+    }
+
+    .emr-viewer__instruction-text {
+      font-size: var(--font-size-lg);
     }
   }
 
@@ -767,41 +785,48 @@
   }
 
   &__instruction-download {
-    margin-top: var(--spacing-md);
-    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
     border-top: 1px solid var(--color-gray-200);
+    text-align: center;
   }
 
   &__instruction-download-note {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
     color: var(--color-gray-600);
     line-height: var(--leading-relaxed);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
   }
 
   &__download-button {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-xs);
-    padding: var(--spacing-sm) var(--spacing-md);
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg) var(--spacing-2xl);
     background: var(--gradient-primary);
     color: var(--color-white);
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(74, 144, 194, 0.3);
+    box-shadow: 0 6px 20px rgba(74, 144, 194, 0.35);
+    min-width: 280px;
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(74, 144, 194, 0.4);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(74, 144, 194, 0.5);
       color: var(--color-white);
     }
 
+    &:active {
+      transform: translateY(-1px);
+    }
+
     svg {
-      width: 16px;
-      height: 16px;
+      width: 24px;
+      height: 24px;
     }
   }
 
