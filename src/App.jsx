@@ -11,7 +11,6 @@ import CoverageAreas from './components/Coverage/CoverageAreas';
 import AgenciesJoin from './components/Form/AgenciesJoin';
 import TherapistApplicationForm from './components/Form/TherapistApplicationForm';
 import AboutUs from './components/AboutUs/AboutUs';
-import ReferralForm from './components/Referrals/ReferralForm';
 import PrivacyPolicy from './components/Policies/PrivacyPolicy';
 import EMRDocumentation from './components/EMRDocumentation/EMRDocumentation';
 import './components/styles/globals.scss';
@@ -90,16 +89,6 @@ function App() {
             element={
               <PageLayout>
                 <AboutUs />
-              </PageLayout>
-            }
-          />
-
-          {/* Referrals Route */}
-          <Route
-            path="/referrals"
-            element={
-              <PageLayout>
-                <ReferralForm />
               </PageLayout>
             }
           />

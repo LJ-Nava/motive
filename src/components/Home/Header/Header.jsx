@@ -62,12 +62,6 @@ const Header = () => {
       icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
     },
     {
-      label: 'Referrals & Patients',
-      type: 'page',
-      link: '/referrals',
-      icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75 M9 7a4 4 0 1 1 8 0 4 4 0 0 1-8 0'
-    },
-    {
       label: 'Policies & Terms',
       type: 'page',
       link: '/privacy-policy',
@@ -77,7 +71,7 @@ const Header = () => {
       label: 'EMR Documentation',
       type: 'page',
       link: '/emr-documentation',
-      icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+      icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
     }
   ];
 

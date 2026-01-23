@@ -11,7 +11,8 @@ const Footer = () => {
     { label: 'Services', href: '/' },
     { label: 'Agencies', href: '/agencies/join' },
     { label: 'Therapists', href: '/therapists/apply' },
-    { label: 'About Us', href: '/about' }
+    { label: 'About Us', href: '/about' },
+    { label: 'Accessibility & Diversity', href: '/accessibility-diversity' }
   ];
 
   const services = [
