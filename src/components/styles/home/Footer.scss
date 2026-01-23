@@ -243,7 +243,7 @@
   }
 
   &__link {
-    color: #cbd5e0;
+    color: #e2e8f0;
     text-decoration: none;
     font-size: 0.95rem;
     transition: all 0.3s ease;
@@ -257,8 +257,8 @@
       position: absolute;
       left: -15px;
       width: 0;
-      height: 1px;
-      background: var(--color-primary);
+      height: 2px;
+      background: #d06a2b;
       transition: width 0.3s ease;
     }
 
@@ -269,6 +269,11 @@
       &::before {
         width: 10px;
       }
+    }
+
+    &:focus {
+      outline: 2px solid #d06a2b;
+      outline-offset: 2px;
     }
 
     @media (max-width: 768px) {
@@ -393,7 +398,7 @@
   }
 
   &__copyright {
-    color: #a0aec0;
+    color: #cbd5e0;
     font-size: 0.875rem;
     margin: 0;
   }
@@ -403,39 +408,46 @@
     gap: 1.5rem;
 
     &-link {
-      color: #a0aec0;
+      color: #cbd5e0;
       text-decoration: none;
       font-size: 0.875rem;
       transition: color 0.3s ease;
 
       &:hover {
-        color: var(--color-primary);
+        color: #ffffff;
+        text-decoration: underline;
+      }
+
+      &:focus {
+        outline: 2px solid #d06a2b;
+        outline-offset: 2px;
       }
     }
   }
 
   &__tagline {
-    color: #cbd5e0;
+    color: #e2e8f0;
     font-size: 0.875rem;
     font-weight: 500;
     margin: 0;
     font-style: italic;
   }
 
-  // Back to top
+  // Back to top - improved visibility
   &__back-to-top {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: transparent;
-    border: none;
-    color: #a0aec0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #e2e8f0;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    padding: 0.5rem 0;
+    padding: 0.625rem 1rem;
     transition: all 0.2s ease-in-out;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 
     svg {
       width: 16px;
@@ -444,15 +456,24 @@
     }
 
     &:hover {
-      color: #4A90E2;
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
 
       svg {
         transform: translateY(-3px);
       }
     }
 
+    &:focus {
+      outline: 2px solid #d06a2b;
+      outline-offset: 2px;
+    }
+
     @media (max-width: 768px) {
-      margin-bottom: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
     }
   }
 
@@ -547,10 +568,11 @@
     &__social-link,
     &__link {
       transition: none;
-      
+
       &:hover {
         transform: none;
       }
     }
   }
 }
+
