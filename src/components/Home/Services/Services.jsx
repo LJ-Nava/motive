@@ -54,7 +54,7 @@ const Services = () => {
       ),
       title: "Specialized Therapy Staffing",
       subtitle: "Expert PT, OT & ST professionals",
-      description: "We specialize exclusively in therapy staffing, connecting home health agencies with licensed Physical, Occupational, and Speech Therapists across California.",
+      description: "We specialize exclusively in therapy staffing, connecting home health agencies with licensed Physical, Occupational, and Speech Therapists across Southern California.",
       image: specializedTherapyImg,
       accent: "#3b82f6"
     },
@@ -93,7 +93,7 @@ const Services = () => {
       ),
       title: "Home Health Expertise",
       subtitle: "Home Health–Focused Care Teams",
-      description: "Our therapists are experienced in home health settings, providing quality PT, OT, and ST services specifically for elderly patients in their homes.",
+      description: "Our therapists are experienced in home health settings, providing quality PT, OT, and ST services tailored to each patient's unique needs in the comfort of their home.",
       image: homeHealthExpertiseImg,
       accent: "#f59e0b"
     }

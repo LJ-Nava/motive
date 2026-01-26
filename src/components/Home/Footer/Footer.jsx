@@ -172,7 +172,7 @@ const Footer = () => {
                     </div>
                     <div className="footer__contact-info">
                       <span className="footer__contact-value">Mon - Fri, 9AM - 5:30PM</span>
-                      <span className="footer__contact-value">Saturday, 9AM - 12nn</span>
+                      <span className="footer__contact-value">Saturday, 9AM - 12pm</span>
                       <span className="footer__contact-label">Business Hours</span>
                     </div>
                   </div>

@@ -60,7 +60,7 @@ const AboutUs = () => {
                 About <span className="about-us__hero-title--accent">Motive Home Care</span>
               </h1>
               <h2 className="about-us__hero-subtitle">
-                Connecting California agencies with exceptional PT, OT & SLP professionals.
+                Connecting Southern California agencies with exceptional PT, OT & SLP professionals.
               </h2>
 
               {/* ✅ CONTENIDO MOVIDO DESDE SERVICES */}
@@ -75,7 +75,7 @@ const AboutUs = () => {
                 <p className="about-us__hero-description">
                   Founded by a Physical Therapist who understood patients deserved better.
                   Today, we deliver exceptional response times, quality outcomes,
-                  and genuine partnership to agencies across California.
+                  and genuine partnership to agencies across Southern California.
                 </p>
               </div>
 
@@ -221,7 +221,7 @@ const AboutUs = () => {
                     <h3>The Beginning</h3>
                     <ul className="about-us__timeline-bullets">
                       <li>Founded by Alex Martinez, licensed Physical Therapist</li>
-                      <li>Identified critical gaps in California's home health staffing</li>
+                      <li>Identified critical gaps in Southern California's home health staffing</li>
                       <li>Launched first agency partnership in Los Angeles</li>
                       <li>Built technology-driven matching system from day one</li>
                     </ul>
@@ -238,7 +238,7 @@ const AboutUs = () => {
                   <span>Today</span>
                 </div>
                 <div className="about-us__timeline-content">
-                  <h3>California's Most Responsive Staffing Solution</h3>
+                  <h3>Southern California's Most Responsive Staffing Solution</h3>
                   <ul className="about-us__timeline-bullets">
                     <li>550+ active PT, OT & SLP professionals statewide</li>
                     <li>Sub-2 hour average response time</li>
@@ -473,7 +473,7 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <h3>Statewide Excellence</h3>
-                <p>Expanding our proven model across California</p>
+                <p>Expanding our proven model across Southern California</p>
               </div>
               <div className="about-us__vision-item">
                 <div className="about-us__vision-icon">
