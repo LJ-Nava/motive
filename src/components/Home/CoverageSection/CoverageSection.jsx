@@ -60,7 +60,7 @@ const CoverageSection = () => {
         {/* Título principal */}
         <div className="coverage-section__header">
           <h2 className="coverage-section__title">
-            Connect with California's <span className="coverage-section__highlight">Top Therapy Professionals</span>
+            Connect with Southern California's <span className="coverage-section__highlight">Top Therapy Professionals</span>
           </h2>
         </div>
 

@@ -352,7 +352,7 @@ const TherapistApplicationForm = () => {
       <div className="motive-form-hero-section">
         <div className="motive-hero-content">
           <h1>Connect with <span className="highlight-orange">Premium</span> Home Health Therapy Opportunities</h1>
-          <p>Join California's leading therapy professionals. Quick application, fast placement, competitive opportunities.</p>
+          <p>Join Southern California's leading therapy professionals. Quick application, fast placement, competitive opportunities.</p>
           <div className="motive-hero-stats">
             <div className="motive-stat-item">
               <span className="motive-stat-number">{animatedPlacements.toLocaleString()}+</span>
