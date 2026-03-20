@@ -1,2 +1,5 @@
 # Redirect favicon.ico requests to favicon.png
 /favicon.ico /favicon.png 200!
+
+# SPA fallback — all routes serve index.html (required for BrowserRouter)
+/*  /index.html  200

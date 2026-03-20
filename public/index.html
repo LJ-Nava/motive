@@ -5,40 +5,147 @@
     <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png?v=4" />
     <link rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/favicon.png?v=4" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Motive Home Care - Connecting caring therapists with families who need home health services across Southern California"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="theme-color" content="#2A6F5B" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Motive Home Care</title>
+    <!-- SEO -->
+    <title>Motive Home Care | Home Health Services in Southern California</title>
+    <meta name="description" content="Motive Home Care connects caring therapists with families who need home health services across Southern California. Physical therapy, occupational therapy, speech therapy and skilled nursing. Contact us today." />
+    <meta name="keywords" content="home health care, home health services, physical therapy, occupational therapy, speech therapy, skilled nursing, Southern California, home care agency" />
+    <meta name="author" content="Motive Home Care" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://motivehomecare.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://motivehomecare.com/" />
+    <meta property="og:title" content="Motive Home Care | Home Health Services in Southern California" />
+    <meta property="og:description" content="Connecting caring therapists with families who need home health services across Southern California. Physical therapy, occupational therapy, speech therapy and skilled nursing." />
+    <meta property="og:image" content="https://motivehomecare.com/logo512.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Motive Home Care" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Motive Home Care | Home Health Services in Southern California" />
+    <meta name="twitter:description" content="Connecting caring therapists with families who need home health services across Southern California." />
+    <meta name="twitter:image" content="https://motivehomecare.com/logo512.png" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeHealthCareService",
+      "name": "Motive Home Care",
+      "description": "Connecting caring therapists with families who need home health services across Southern California. Physical therapy, occupational therapy, speech therapy and skilled nursing.",
+      "url": "https://motivehomecare.com",
+      "logo": "https://motivehomecare.com/logo512.png",
+      "image": "https://motivehomecare.com/logo512.png",
+      "telephone": "+1-800-000-0000",
+      "email": "info@motivehomecare.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "California"
+      },
+      "serviceType": ["Physical Therapy", "Occupational Therapy", "Speech Therapy", "Skilled Nursing"],
+      "sameAs": []
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Motive Home Care",
+      "url": "https://motivehomecare.com",
+      "logo": "https://motivehomecare.com/logo512.png"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Motive Home Care",
+      "url": "https://motivehomecare.com",
+      "inLanguage": "en"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Coverage Areas",
+          "description": "View our home health service coverage areas across Southern California",
+          "url": "https://motivehomecare.com/coverage-areas"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "About Us",
+          "description": "Learn about Motive Home Care and our mission to connect therapists with families",
+          "url": "https://motivehomecare.com/about"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Apply as a Therapist",
+          "description": "Join our team of caring physical, occupational and speech therapists",
+          "url": "https://motivehomecare.com/therapists/apply"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Agencies",
+          "description": "Partner with Motive Home Care and grow your home health agency",
+          "url": "https://motivehomecare.com/agencies/join"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Icons & PWA -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="root">
+      <!-- Static SEO content for crawlers — hidden visually, React replaces on mount -->
+      <main style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
+        <h1>Motive Home Care — Home Health Services in Southern California</h1>
+        <p>Connecting caring therapists with families who need home health services across Southern California. Physical therapy, occupational therapy, speech therapy and skilled nursing.</p>
+        <h2>Our Services</h2>
+        <ul>
+          <li><a href="/coverage-areas">Coverage Areas</a> — Home health services across Southern California</li>
+          <li>Physical Therapy — In-home physical therapy services</li>
+          <li>Occupational Therapy — In-home occupational therapy services</li>
+          <li>Speech Therapy — In-home speech therapy services</li>
+          <li>Skilled Nursing — Professional nursing care at home</li>
+        </ul>
+        <h2>Join Our Team</h2>
+        <ul>
+          <li><a href="/therapists/apply">Apply as a Therapist</a> — Join our team of caring professionals</li>
+          <li><a href="/agencies/join">Partner as an Agency</a> — Grow your agency with Motive</li>
+        </ul>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/about">About Us</a>
+          <a href="/coverage-areas">Coverage Areas</a>
+          <a href="/therapists/apply">Apply Now</a>
+          <a href="/agencies/join">Agencies</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+        </nav>
+      </main>
+    </div>
   </body>
 </html>

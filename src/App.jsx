@@ -1,6 +1,5 @@
 import React from 'react';
-// ✅ CAMBIO PRINCIPAL: HashRouter en lugar de BrowserRouter
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Home/Header/Header';
 import Hero from './components/Home/Hero/Hero';
 import CoverageSection from './components/Home/CoverageSection/CoverageSection';
@@ -45,7 +44,6 @@ const PageLayout = ({ children }) => {
 };
 
 function App() {
-  // ✅ HashRouter no necesita basename, maneja las rutas automáticamente
   return (
     <Router>
       <div className="App">
